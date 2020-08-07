@@ -13,14 +13,16 @@
     },
     "require": {
         "php": "^7.4",
-        "nyholm/psr7": "^1.3.0",
         "foxy/foxy": "^1.0.8",
+        "nyholm/psr7": "^1.3.0",
+        "roxblnfk/smart-stream": "*",
         "yiisoft/aliases": "^1.0",
         "yiisoft/assets": "@dev",
         "yiisoft/cache": "@dev",
         "yiisoft/cache-file": "@dev",
-        "yiisoft/di": "@dev",
+        "yiisoft/composer-config-plugin": "^1.0@dev",
         "yiisoft/data-response": "@dev",
+        "yiisoft/di": "@dev",
         "yiisoft/form": "@dev",
         "yiisoft/i18n": "^3.0@dev",
         "yiisoft/i18n-message-php": "^3.0@dev",
@@ -36,8 +38,7 @@
         "yiisoft/yii-bulma": "@dev",
         "yiisoft/yii-debug": "@dev",
         "yiisoft/yii-event": "@dev",
-        "yiisoft/yii-web": "@dev",
-        "yiisoft/composer-config-plugin": "^1.0@dev"
+        "yiisoft/yii-web": "@dev"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",

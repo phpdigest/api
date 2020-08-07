@@ -10,6 +10,7 @@ use App\Provider\FileRotatorProvider;
 use App\Provider\FileTargetProvider;
 use App\Provider\LoggerProvider;
 use App\Provider\RouterProvider;
+use App\Provider\SmartStreamProvider;
 use Yiisoft\Arrays\Modifier\ReverseBlockMerge;
 
 return [
@@ -38,6 +39,7 @@ return [
         ],
     ],
     'yiisoft/log/logger' =>  LoggerProvider::class,
+    'roxblnfk/smart-stream/smartstream' =>  SmartStreamProvider::class,
 
     ReverseBlockMerge::class => new ReverseBlockMerge()
 ];
