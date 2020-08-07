@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Yiisoft\Yii\Bulma\Nav;
 use Yiisoft\Yii\Bulma\NavBar;
 
-/* @var App\ApplicationParameters $applicationParameters */
+/* @var App\Common\Application\ApplicationParameters $applicationParameters */
 /* @var Yiisoft\Router\UrlGeneratorInterface $url */
 /* @var Yiisoft\Router\UrlMatcherInterface $urlMatcher */
 

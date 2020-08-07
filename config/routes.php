@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Contact\ContactController;
-use App\Controller\SiteController;
+use App\Api\UI\Controller\ContactController;
+use App\Api\UI\Controller\SiteController;
 use Yiisoft\Http\Method;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
@@ -13,8 +13,9 @@ return [
     Route::get('/about', [SiteController::class, 'about'])->name('site/about'),
     Route::methods([Method::GET, Method::POST], '/contact', [ContactController::class, 'contact'])
         ->name('contact/form'),
+    // External API
     Group::create('/api', [
-        Route::anyMethod('/link', \App\Controller\LinkController::class)->name('api/link'),
+        Route::anyMethod('/link', \App\Api\External\Controller\LinkController::class)->name('api/link'),
 
     ])->addMiddleware(\roxblnfk\SmartStream\Middleware\BucketStreamMiddleware::class),
 ];

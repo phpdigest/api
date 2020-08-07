@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\ApplicationParameters;
+use App\Common\Application\ApplicationParameters;
 use Psr\Log\LogLevel;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Form\Widget\Field;

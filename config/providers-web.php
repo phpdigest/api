@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 /* @var array $params */
 
-use App\Provider\FieldProvider;
-use App\Provider\FlashProvider;
-use App\Provider\I18nProvider;
-use App\Provider\MailerInterfaceProvider;
-use App\Provider\MiddlewareProvider;
-use App\Provider\Psr17Provider;
-use App\Provider\SessionProvider;
-use App\Provider\SwiftTransportProvider;
-use App\Provider\SwiftSmtpTransportProvider;
-use App\Provider\ThemeProvider;
-use App\Provider\WebViewProvider;
+use App\Common\Application\Provider\FieldProvider;
+use App\Common\Application\Provider\FlashProvider;
+use App\Common\Application\Provider\I18nProvider;
+use App\Common\Application\Provider\MailerInterfaceProvider;
+use App\Common\Application\Provider\MiddlewareProvider;
+use App\Common\Application\Provider\Psr17Provider;
+use App\Common\Application\Provider\SessionProvider;
+use App\Common\Application\Provider\SwiftTransportProvider;
+use App\Common\Application\Provider\SwiftSmtpTransportProvider;
+use App\Common\Application\Provider\ThemeProvider;
+use App\Common\Application\Provider\WebViewProvider;
 use Yiisoft\Arrays\Modifier\ReverseBlockMerge;
 
 return [

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use App\Asset\AppAsset;
-use App\Widget\FlashMessage;
-use App\Asset\CdnFontAwesomeAsset;
+use App\Api\UI\Asset\AppAsset;
+use App\Api\UI\Asset\CdnFontAwesomeAsset;
+use App\Api\UI\Widget\FlashMessage;
 use Yiisoft\Html\Html;
 
 /**
- * @var App\ApplicationParameters $applicationParameters
+ * @var App\Common\Application\ApplicationParameters $applicationParameters
  * @var Yiisoft\Assets\AssetManager $assetManager
  * @var Yiisoft\View\WebView $this
  * @var string|null $csrf

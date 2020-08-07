@@ -157,7 +157,7 @@ See ["Logging"](https://github.com/yiisoft/docs/blob/master/guide/en/runtime/log
 'yiisoft/view' => [
     // Custom parameters that are shared among view templates.
     'defaultParameters' => [
-        'applicationParameters' => 'App\ApplicationParameters',
+        'applicationParameters' => 'App\\Common\\Application\\ApplicationParameters',
         'assetManager' => 'Yiisoft\Assets\AssetManager',
     ],
     'theme' => [

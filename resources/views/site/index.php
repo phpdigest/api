@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/** @var \App\ApplicationParameters $applicationParameters */
+/** @var \App\Common\Application\ApplicationParameters $applicationParameters */
 
 $this->params['breadcrumbs'] = '/';
 

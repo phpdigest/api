@@ -6,7 +6,7 @@ use Yiisoft\Html\Html;
 
 /**
  * @var \Yiisoft\View\WebView $this
- * @var \App\ApplicationParameters $applicationParameters
+ * @var \App\Common\Application\ApplicationParameters $applicationParameters
  * @var string|null $csrf
  */
 ?>

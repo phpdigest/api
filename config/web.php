@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\ApplicationParameters;
+use App\Common\Application\ApplicationParameters;
 use Yiisoft\Validator\ValidatorFactory;
 use Yiisoft\Validator\ValidatorFactoryInterface;
 

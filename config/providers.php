@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 /* @var array $params */
 
-use App\Provider\CacheProvider;
-use App\Provider\EventDispatcherProvider;
-use App\Provider\FileRotatorProvider;
-use App\Provider\FileTargetProvider;
-use App\Provider\LoggerProvider;
-use App\Provider\RouterProvider;
-use App\Provider\SmartStreamProvider;
+use App\Common\Application\Provider\CacheProvider;
+use App\Common\Application\Provider\EventDispatcherProvider;
+use App\Common\Application\Provider\FileRotatorProvider;
+use App\Common\Application\Provider\FileTargetProvider;
+use App\Common\Application\Provider\LoggerProvider;
+use App\Common\Application\Provider\RouterProvider;
+use App\Common\Application\Provider\SmartStreamProvider;
 use Yiisoft\Arrays\Modifier\ReverseBlockMerge;
 
 return [
