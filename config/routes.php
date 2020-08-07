@@ -16,6 +16,7 @@ return [
     // External API
     Group::create('/api', [
         Route::anyMethod('/link', \App\Api\External\Controller\LinkController::class)->name('api/link'),
+        Route::anyMethod('/user', \App\Api\External\Controller\UserController::class)->name('api/user'),
 
     ])->addMiddleware(\roxblnfk\SmartStream\Middleware\BucketStreamMiddleware::class),
 ];

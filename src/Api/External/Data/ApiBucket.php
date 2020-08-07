@@ -6,6 +6,6 @@ namespace App\Api\External\Data;
 
 use roxblnfk\SmartStream\Data\DataBucket;
 
-abstract class ApiBucket extends DataBucket
+class ApiBucket extends DataBucket
 {
 }
