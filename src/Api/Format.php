@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Common\Data;
+namespace App\Api;
 
 final class Format
 {

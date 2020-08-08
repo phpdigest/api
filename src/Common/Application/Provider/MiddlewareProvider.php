@@ -26,7 +26,7 @@ final class MiddlewareProvider extends ServiceProvider
                 ->addMiddleware($container->get(Router::class))
                 ->addMiddleware($container->get(SubFolder::class))
                 ->addMiddleware($container->get(SessionMiddleware::class))
-                ->addMiddleware($container->get(Csrf::class))
+                // ->addMiddleware($container->get(Csrf::class))
                 ->addMiddleware($container->get(ErrorCatcher::class));
         });
     }

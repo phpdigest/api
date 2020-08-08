@@ -20,6 +20,9 @@ $this->setTitle($applicationParameters->getName());
 </a>
 
 <ul>
-    <li><a href="http://digest-api/api/link?url=http%3A%2F%2Fdigest-api%2Fapi"> link</a> </li>
-    <li><a href="http://digest-api/api/user?token=<?= urlencode(Random::string(128)) ?>"> user</a> </li>
+    <li><a href="/api/link?url=http%3A%2F%2Fdigest-api%2Fapi"> link</a> </li>
+    <li><a href="/api/user?token=<?= urlencode(Random::string(128)) ?>"> user</a> </li>
+    <li>
+        <form action="/api/user" method="post"><button>Create user</button></form>
+    </li>
 </ul>

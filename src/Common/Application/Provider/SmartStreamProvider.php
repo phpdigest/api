@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Common\Application\Provider;
 
 use App\Api\External\Data\ApiBucket;
-use App\Common\Data\Format;
+use App\Api\Format;
 use Psr\Container\ContainerInterface;
 use roxblnfk\SmartStream\Converter\JSONConverter;
 use roxblnfk\SmartStream\ConverterMatcherInterface;
