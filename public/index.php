@@ -7,7 +7,6 @@ use Yiisoft\Composer\Config\Builder;
 use Yiisoft\Di\Container;
 use Yiisoft\Http\Method;
 use Yiisoft\Yii\Web\Application;
-use Yiisoft\Yii\Event\EventConfigurator;
 use Yiisoft\Yii\Web\SapiEmitter;
 use Yiisoft\Yii\Web\ServerRequestFactory;
 
@@ -31,9 +30,7 @@ $container = new Container(
     require Builder::path('web'),
     require Builder::path('providers-web')
 );
-
-$eventConfigurator = $container->get(EventConfigurator::class);
-$eventConfigurator->registerListeners(require Builder::path('events-web', dirname(__DIR__)));
+$container = $container->get(ContainerInterface::class);
 
 $application = $container->get(Application::class);
 

@@ -1,96 +1,74 @@
-<p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://github.com/yiisoft.png" height="100px">
-    </a>
-    <h1 align="center">Yii application template</h1>
-    <br>
-</p>
+## Installation
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/app/v/stable.png)](https://packagist.org/packages/yiisoft/app)
-[![Total Downloads](https://poser.pugx.org/yiisoft/app/downloads.png)](https://packagist.org/packages/yiisoft/app)
-[![build](https://github.com/yiisoft/app/workflows/build/badge.svg)](https://github.com/yiisoft/app/actions)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yiisoft/app/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/app/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/yiisoft/app/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/app/?branch=master)
+1. [Configure project](#configuration)
+2. Run migrations
+    ```bash
+    ./vendor/bin/yii migrate/up
+    ```
 
-<p align="center">
-    <a href="https://github.com/yiisoft/app" target="_blank">
-        <img src="docs/images/home.png" alt="Home page" >
-    </a>
-</p>
-
-Yii application template for Yii 3 is best for rapidly creating projects.
 
 ## Requirements
 
 The minimum requirement by this project template that your Web server supports PHP 7.4.0.
 
-## Installation
-
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md).
-
-You can then install this project template using the following command:
-
-```
-composer create-project --prefer-dist --stability=dev yiisoft/app <your project>
-```
-
-In order to launch development web server run:
-
-```
-composer run serve
-```
-
-Now you should be able to access the application through the URL printed to console.
-Usually it is `http://localhost:8080`.
-
-## Directory structure
-
-The application template has the following structure:
-
-```
-config/             Configuration files.
-docs/               Documentation.
-public/             Files publically accessible from the Internet.
-    assets/         Published assets.
-    index.php       Entry script.
-resources/          Application resources.
-    assets/         Asset bundle resources.
-    layout/         Layout view templates.
-    view/           View templates.
-runtime/            Files generated during runtime.
-src/                Application source code.
-    Asset/          Asset bundle definitions.
-    Controller/     Web controller classes.
-    Provider/       Providers that take configuration and configure services.
-tests/              A set of Codeception tests for the application.
-vendor/             Installed Composer packages.
-```
-
 ## Configuration
 
-You can find configuration in `config` directory. There are multiple
-configs, and the most interesting is `params.php`. Below there are details about its sections:
-
-### Application Services
-
-There are multiple pre-configured application services. 
-
-#### Aliases
+Local params example:
 
 ```php
-'aliases' => [
-    // standard directory aliases
-    '@root' => dirname(__DIR__),
-    '@assets' => '@root/public/assets',
-    '@assetsUrl' => '/assets',
-    '@npm' => '@root/node_modules',
-    '@public' => '@root/public',
-    '@resources' => '@root/resources',
-    '@runtime' => '@root/runtime',
-    '@views' => '@root/resources/views'
-],
+<?php // File config/params-local.php
+
+declare(strict_types=1);
+
+return [
+    // Common Cycle config
+    'yiisoft/yii-cycle' => [
+        // Cycle DBAL config
+        'dbal' => [
+            /**
+             * SQL query logger
+             * You may use {@see \Yiisoft\Yii\Cycle\Logger\StdoutQueryLogger} class to pass log to
+             * stdout or any PSR-compatible logger
+             */
+            'query-logger' => null,
+            // Default database (from 'databases' list)
+            'default' => 'default',
+            'aliases' => [],
+            'databases' => [
+                'default' => ['connection' => 'postgres']
+            ],
+            'connections' => [
+                // Example SQLite connection:
+                'postgres' => [
+                    'driver' => \Spiral\Database\Driver\Postgres\PostgresDriver::class,
+                    'options' => [
+                        'connection' => 'pgsql:host=127.0.0.1;dbname=YOUR_DB_NAME',
+                        'username' => 'YOUR_LOGIN',
+                        'password' => 'YOUR_PASSWORD',
+                    ],
+                ]
+            ],
+        ],
+
+        /**
+         * A list of DB schema providers for {@see \Yiisoft\Yii\Cycle\Schema\SchemaManager}
+         * Providers are implementing {@see SchemaProviderInterface}.
+         * The configuration is an array of provider class names. Alternatively, you can specify provider class as key
+         * and its config as value:
+         */
+        'schema-providers' => [
+            \Yiisoft\Yii\Cycle\Schema\Provider\SimpleCacheSchemaProvider::class => [
+                'key' => 'db-schema'
+            ],
+            // \Yiisoft\Yii\Cycle\Schema\Provider\FromFileSchemaProvider::class => [
+            //     'file' => '@runtime/cycle-schema.php'
+            // ],
+            \Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider::class,
+        ],
+    ],
+];
 ```
+
 
 See ["Aliases"](https://github.com/yiisoft/docs/blob/master/guide/en/concept/aliases.md) in the guide.
 

@@ -149,11 +149,11 @@ return [
             // \Yiisoft\Yii\Cycle\Schema\Provider\FromFileSchemaProvider::class => [
             //     'file' => '@runtime/cycle-schema.php'
             // ],
-            \Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider::class => [
-                'generators' => [
-                    Generator\SyncTables::class, // sync table changes to database
-                ]
-            ],
+            // \Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider::class => [
+            //     'generators' => [
+            //         // Generator\SyncTables::class, // sync table changes to database
+            //     ]
+            // ],
         ],
 
         /**

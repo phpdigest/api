@@ -39,3 +39,6 @@ phpunit.result.cache
 #codeception
 /tests/_output
 c3.php
+
+# local app configs
+config/params-local.php
