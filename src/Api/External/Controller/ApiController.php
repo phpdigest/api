@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Api\External\Controller;
 
 use App\Api\External\Data\ErrorBucket;
+use App\Api\External\Exception\HttpException;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,6 +16,7 @@ use roxblnfk\SmartStream\Data\DataBucket;
 use roxblnfk\SmartStream\SmartStreamFactory;
 use RuntimeException;
 use Throwable;
+use Yiisoft\Http\Status;
 use Yiisoft\Injector\Injector;
 
 abstract class ApiController implements MiddlewareInterface
@@ -38,7 +40,7 @@ abstract class ApiController implements MiddlewareInterface
         try {
             $callable = [$this, $request->getMethod()];
             if (!is_callable($callable)) {
-                throw new RuntimeException('Method not allowed.');
+                throw new HttpException(Status::METHOD_NOT_ALLOWED, 'Method not allowed.');
             }
             $data = $this->injector->invoke($callable, [$request]);
         } catch (Throwable $e) {
@@ -48,7 +50,11 @@ abstract class ApiController implements MiddlewareInterface
     }
 
     protected function errorToBucket(Throwable $error): DataBucket {
-        return new ErrorBucket($error, true);
+        $bucket = new ErrorBucket($error, false);
+        if ($error instanceof HttpException) {
+            $bucket = $bucket->withStatusCode($error->getStatus());
+        }
+        return $bucket;
     }
 
     protected function prepareResponse($data, ?ServerRequestInterface $request = null): ResponseInterface

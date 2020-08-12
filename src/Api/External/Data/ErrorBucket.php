@@ -18,10 +18,11 @@ class ErrorBucket extends ApiBucket
 
     public function getData(): array
     {
-        $data = [
-            'code' => $this->error->getCode(),
-            'message' => $this->error->getMessage(),
-        ];
+        $data = parent::getData();
+        $data['success'] = false;
+        $data['data'] = null;
+        $data['code'] = $this->error->getCode();
+        $data['message'] = $this->error->getMessage();
         if ($this->modeDev) {
             $data['file'] = $this->error->getFile();
             $data['line'] = $this->error->getLine();
