@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Api\External\Data;
 
+use App\Api\External\Exception\HttpException;
+
 class ErrorBucket extends ApiBucket
 {
     protected \Throwable $error;
@@ -13,6 +15,9 @@ class ErrorBucket extends ApiBucket
     {
         $this->error = $error;
         $this->modeDev = $modeDev;
+        if ($error instanceof HttpException) {
+            $this->setStatusCode($error->getStatus());
+        }
         parent::__construct('');
     }
 

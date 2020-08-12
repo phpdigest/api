@@ -1,6 +1,10 @@
 ## Installation
 
 1. [Configure project](#configuration)
+1. Install dependencies
+    ```bash
+   composer install --no-dev
+    ```
 2. Run migrations
     ```bash
     ./vendor/bin/yii migrate/up

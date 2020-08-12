@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "59f00fd22dab761bb88d7191344d77b5",
+    "content-hash": "62492dfd49a826fbe86c758097aa00e0",
     "packages": [
         {
             "name": "alexkart/curl-builder",
@@ -2152,16 +2152,16 @@
         },
         {
             "name": "roxblnfk/smart-stream",
-            "version": "0.7.0",
+            "version": "0.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roxblnfk/smart-stream.git",
-                "reference": "0313edfa322f0ead558eb86fe3e546d784a4fbb6"
+                "reference": "6bc1c4c9dd68ca7f313fb7e072311ffbc7d6a097"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roxblnfk/smart-stream/zipball/0313edfa322f0ead558eb86fe3e546d784a4fbb6",
-                "reference": "0313edfa322f0ead558eb86fe3e546d784a4fbb6",
+                "url": "https://api.github.com/repos/roxblnfk/smart-stream/zipball/6bc1c4c9dd68ca7f313fb7e072311ffbc7d6a097",
+                "reference": "6bc1c4c9dd68ca7f313fb7e072311ffbc7d6a097",
                 "shasum": ""
             },
             "require": {
@@ -2191,7 +2191,7 @@
                 "http-message",
                 "stream"
             ],
-            "time": "2020-08-06T11:46:20+00:00"
+            "time": "2020-08-12T21:33:36+00:00"
         },
         {
             "name": "seld/jsonlint",

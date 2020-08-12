@@ -14,8 +14,9 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use roxblnfk\SmartStream\Data\DataBucket;
 use roxblnfk\SmartStream\SmartStreamFactory;
-use RuntimeException;
 use Throwable;
+use Yiisoft\Http\Header;
+use Yiisoft\Http\Method;
 use Yiisoft\Http\Status;
 use Yiisoft\Injector\Injector;
 
@@ -40,9 +41,11 @@ abstract class ApiController implements MiddlewareInterface
         try {
             $callable = [$this, $request->getMethod()];
             if (!is_callable($callable)) {
-                throw new HttpException(Status::METHOD_NOT_ALLOWED, 'Method not allowed.');
+                $data = (new ErrorBucket(new HttpException(Status::METHOD_NOT_ALLOWED, 'Method not allowed.'), false))
+                    ->withHeader(Header::ALLOW, implode(', ', $this->getAllowedMethods()));
+            } else {
+                $data = $this->injector->invoke($callable, [$request]);
             }
-            $data = $this->injector->invoke($callable, [$request]);
         } catch (Throwable $e) {
             $data = $this->errorToBucket($e);
         }
@@ -51,9 +54,6 @@ abstract class ApiController implements MiddlewareInterface
 
     protected function errorToBucket(Throwable $error): DataBucket {
         $bucket = new ErrorBucket($error, false);
-        if ($error instanceof HttpException) {
-            $bucket = $bucket->withStatusCode($error->getStatus());
-        }
         return $bucket;
     }
 
@@ -68,5 +68,16 @@ abstract class ApiController implements MiddlewareInterface
             $stream = $this->smartStreamFactory->createStream($data, $request);
         }
         return $this->responseFactory->createResponse()->withBody($stream);
+    }
+
+    protected function getAllowedMethods(): array
+    {
+        $result = [];
+        foreach (Method::ANY as $method) {
+            if (is_callable([$this, $method])) {
+                $result[] = $method;
+            }
+        }
+        return $result;
     }
 }
