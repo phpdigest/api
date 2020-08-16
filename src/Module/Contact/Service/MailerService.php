@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Module\Contact\Service;
 
 use App\Module\Contact\Api\ContactMailer;
-use App\Service\Mailer;
-use App\Service\Message;
+use App\Common\Service\Mailer;
+use App\Common\Service\Message;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Form\FormModelInterface;
 

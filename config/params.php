@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Common\Application\ApplicationParameters;
-use Cycle\Schema\Generator;
 use Psr\Log\LogLevel;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Form\Widget\Field;
@@ -143,25 +142,19 @@ return [
          * and its config as value:
          */
         'schema-providers' => [
-            // \Yiisoft\Yii\Cycle\Schema\Provider\SimpleCacheSchemaProvider::class => [
-            //     'key' => 'db-schema'
-            // ],
-            // \Yiisoft\Yii\Cycle\Schema\Provider\FromFileSchemaProvider::class => [
-            //     'file' => '@runtime/cycle-schema.php'
-            // ],
             // \Yiisoft\Yii\Cycle\Schema\Provider\FromConveyorSchemaProvider::class => [
             //     'generators' => [
-            //         // Generator\SyncTables::class, // sync table changes to database
+            //         // \Cycle\Schema\Generator\SyncTables::class, // sync table changes to database
             //     ]
             // ],
         ],
-
         /**
          * {@see \Yiisoft\Yii\Cycle\Schema\Conveyor\AnnotatedSchemaConveyor} settings
          * A list of entity directories. You can use {@see \Yiisoft\Aliases\Aliases} in paths.
          */
         'annotated-entity-paths' => [
             '@src/Common/Domain/Entity',
+            '@src/Module/Link/Domain/Entity',
         ],
     ],
 

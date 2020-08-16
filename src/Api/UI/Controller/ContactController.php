@@ -4,7 +4,7 @@
 namespace App\Api\UI\Controller;
 
 
-use App\Form\ContactForm;
+use App\Api\UI\Form\ContactForm;
 use App\Module\Contact\Api\ContactMailer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

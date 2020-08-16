@@ -4,35 +4,37 @@ declare(strict_types=1);
 
 namespace App\Api\External\Controller;
 
+use App\Api\External\Data\ApiBucket;
 use App\Api\External\Data\ErrorBucket;
 use App\Api\External\Exception\HttpException;
+use App\Common\Domain\Entity\Identity;
+use App\Common\Domain\Exception\EntityNotFound;
+use ErrorException;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use roxblnfk\SmartStream\Data\DataBucket;
-use roxblnfk\SmartStream\SmartStreamFactory;
 use Throwable;
+use Yiisoft\Auth\Middleware\Auth;
 use Yiisoft\Http\Header;
 use Yiisoft\Http\Method;
 use Yiisoft\Http\Status;
 use Yiisoft\Injector\Injector;
+use roxblnfk\SmartStream\Data\DataBucket;
+use roxblnfk\SmartStream\SmartStreamFactory;
 
 abstract class ApiController implements MiddlewareInterface
 {
     protected ResponseFactoryInterface $responseFactory;
-    protected SmartStreamFactory $smartStreamFactory;
     private Injector $injector;
 
     public function __construct(
         ResponseFactoryInterface $responseFactory,
-        SmartStreamFactory $smartStreamFactory,
         Injector $injector
     ) {
         $this->responseFactory = $responseFactory;
-        $this->smartStreamFactory = $smartStreamFactory;
         $this->injector = $injector;
     }
 
@@ -52,8 +54,16 @@ abstract class ApiController implements MiddlewareInterface
         return $this->prepareResponse($data, $request);
     }
 
-    protected function errorToBucket(Throwable $error): DataBucket {
-        $bucket = new ErrorBucket($error, false);
+    protected function errorToBucket(Throwable $error): DataBucket
+    {
+        $bucket =  new ErrorBucket($error);
+
+        if ($error instanceof EntityNotFound) {
+            $bucket = $bucket->withStatusCode(Status::NOT_FOUND);
+        } elseif ($error instanceof ErrorException) {
+            $bucket = $bucket->withStatusCode(Status::INTERNAL_SERVER_ERROR);
+        }
+
         return $bucket;
     }
 
@@ -65,7 +75,11 @@ abstract class ApiController implements MiddlewareInterface
         if ($data instanceof StreamInterface) {
             $stream = $data;
         } else {
-            $stream = $this->smartStreamFactory->createStream($data, $request);
+            $smartStreamFactory = $this->injector->make(
+                SmartStreamFactory::class,
+                ['defaultBucketClass' => ApiBucket::class]
+            );
+            $stream = $smartStreamFactory->createStream($data, $request);
         }
         return $this->responseFactory->createResponse()->withBody($stream);
     }
@@ -79,5 +93,15 @@ abstract class ApiController implements MiddlewareInterface
             }
         }
         return $result;
+    }
+
+    protected function getIdentityFromRequest(ServerRequestInterface $request): Identity
+    {
+        /**
+         * @var Identity $identity
+         */
+        $identity = $request->getAttribute(Auth::REQUEST_NAME);
+
+        return $identity;
     }
 }

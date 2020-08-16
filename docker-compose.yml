@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+    php:
+        container_name: digest-php
+        image: yiisoftware/yii-php:7.4-apache
+        working_dir: /app
+        ports:
+            - 8080:80
+        volumes:
+            - ./:/app
+            - ~/.composer-docker/cache:/root/.composer/cache:delegated
+
+    postgresql:
+        container_name: postgresql
+        image: postgres:10.12
+        env_file:
+            - ./docker/postgres/database.env
+        ports:
+            - 5432:5432
+        volumes:
+            - ./docker/postgres/data/:/var/lib/postgresql/data/
+        restart: always
+

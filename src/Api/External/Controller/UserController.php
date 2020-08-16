@@ -4,39 +4,26 @@ declare(strict_types=1);
 
 namespace App\Api\External\Controller;
 
-use App\Api\External\Data\ApiBucket;
+use App\Api\External\Exception\HttpException;
 use App\Common\Domain\Service\IdentityService;
 use Psr\Http\Message\ServerRequestInterface;
-use roxblnfk\SmartStream\Data\DataBucket;
-use Yiisoft\Auth\IdentityRepositoryInterface;
+use Yiisoft\Http\Status;
 
 class UserController extends ApiController
 {
-    public function get(ServerRequestInterface $request, IdentityRepositoryInterface $repository): DataBucket
+    public function get(ServerRequestInterface $request): array
     {
-        $token = $request->getQueryParams()['token'] ?? null;
-        $this->validateToken($token);
-        $identity = $repository->findIdentityByToken($token, '');
+        $identity = $this->getIdentityFromRequest($request);
         if ($identity === null) {
-            throw new \RuntimeException('User not found.');
+            throw new HttpException(Status::NOT_FOUND, 'User not found.');
         }
-        return new ApiBucket(['id' => $identity->getId()]);
+        return ['id' => $identity->getId()];
     }
 
-    public function post(ServerRequestInterface $request, IdentityService $service): DataBucket
+    public function post(ServerRequestInterface $request, IdentityService $service): array
     {
-        $data = $request->getParsedBody();
-        $identity = $service->createIdentity($data);
-        return new ApiBucket(['token' => $identity->getToken()]);
-    }
+        $identity = $service->createIdentity($request->getParsedBody());
 
-    protected function validateToken($token): void
-    {
-        if (!is_string($token)) {
-            throw new \InvalidArgumentException('Token should be string.');
-        }
-        if (strlen($token) !== 128) {
-            throw new \InvalidArgumentException('Invalid token.');
-        }
+        return ['token' => $identity->getToken()];
     }
 }

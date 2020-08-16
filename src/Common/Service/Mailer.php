@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace App\Common\Service;
 
 use Yiisoft\Mailer\MailerInterface;
 

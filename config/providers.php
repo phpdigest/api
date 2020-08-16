@@ -5,7 +5,6 @@ declare(strict_types=1);
 /* @var array $params */
 
 use App\Common\Application\Provider\CacheProvider;
-use App\Common\Application\Provider\EventDispatcherProvider;
 use App\Common\Application\Provider\FileRotatorProvider;
 use App\Common\Application\Provider\FileTargetProvider;
 use App\Common\Application\Provider\LoggerProvider;

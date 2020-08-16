@@ -42,3 +42,5 @@ c3.php
 
 # local app configs
 config/params-local.php
+
+/docker/postgres/data/*

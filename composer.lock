@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "62492dfd49a826fbe86c758097aa00e0",
+    "content-hash": "1468f07f5e47f5bb6e0dc10bb57b0eb4",
     "packages": [
         {
             "name": "alexkart/curl-builder",
@@ -5566,6 +5566,72 @@
             "time": "2020-08-09T18:33:44+00:00"
         },
         {
+            "name": "yiisoft/request-body-parser",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/request-body-parser.git",
+                "reference": "2f54166e57b8972217e4b93c444f0622ea0550b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/request-body-parser/zipball/2f54166e57b8972217e4b93c444f0622ea0550b7",
+                "reference": "2f54166e57b8972217e4b93c444f0622ea0550b7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.4|^8.0",
+                "psr/container": "1.0.0",
+                "psr/http-message": "^1.0",
+                "psr/http-message-implementation": "1.0",
+                "psr/http-server-handler": "^1.0",
+                "psr/http-server-middleware": "^1.0",
+                "yiisoft/http": "1.0.x-dev"
+            },
+            "require-dev": {
+                "infection/infection": "^0.16.3",
+                "nyholm/psr7": "^1.0",
+                "phan/phan": "^3.0",
+                "phpunit/phpunit": "^9.3",
+                "yiisoft/di": "^3.0@dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yiisoft\\Request\\Body\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Middleware for parsing various data formats",
+            "homepage": "https://www.yiiframework.com/",
+            "keywords": [
+                "body",
+                "middleware",
+                "parser",
+                "yii3"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/yiisoft",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/yiisoft",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2020-08-09T18:32:25+00:00"
+        },
+        {
             "name": "yiisoft/router",
             "version": "dev-master",
             "source": {
@@ -9346,6 +9412,7 @@
         "yiisoft/log-target-file": 20,
         "yiisoft/mailer": 20,
         "yiisoft/mailer-swiftmailer": 20,
+        "yiisoft/request-body-parser": 20,
         "yiisoft/router": 20,
         "yiisoft/router-fastroute": 20,
         "yiisoft/view": 20,
@@ -9363,5 +9430,6 @@
     "platform": {
         "php": "^7.4"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
