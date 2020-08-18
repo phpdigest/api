@@ -7,7 +7,6 @@ namespace App\Module\Link\Domain\Validation;
 use Yiisoft\Form\FormModel;
 use Yiisoft\Validator\Rule\HasLength;
 use Yiisoft\Validator\Rule\Required;
-use Yiisoft\Validator\Rule\Url;
 
 final class CreateLinkForm extends FormModel
 {
@@ -34,8 +33,8 @@ final class CreateLinkForm extends FormModel
         return [
             'url' => [
                 new Required(),
-                new Url(),
-                (new HasLength())->max(255)
+                RuleFactory::createUrlRule(),
+                RuleFactory::createUrlLengthRule()
             ],
             'description' => [
                 (new HasLength())->max(255)->skipOnEmpty(true)

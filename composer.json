@@ -34,6 +34,7 @@
         "yiisoft/request-body-parser": "^3.0@dev",
         "yiisoft/router": "@dev",
         "yiisoft/router-fastroute": "@dev",
+        "yiisoft/validator": "^3.0@dev",
         "yiisoft/view": "@dev",
         "yiisoft/widget": "@dev",
         "yiisoft/yii-bulma": "@dev",

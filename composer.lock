@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1468f07f5e47f5bb6e0dc10bb57b0eb4",
+    "content-hash": "d70400f943462f79a9d1aed4bc37256a",
     "packages": [
         {
             "name": "alexkart/curl-builder",
@@ -5874,12 +5874,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/validator.git",
-                "reference": "a9d3579431d31329e5c858b51924c057cc427c92"
+                "reference": "8e355c8335b5d17e18fef5e979d142569b3039bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/validator/zipball/a9d3579431d31329e5c858b51924c057cc427c92",
-                "reference": "a9d3579431d31329e5c858b51924c057cc427c92",
+                "url": "https://api.github.com/repos/yiisoft/validator/zipball/8e355c8335b5d17e18fef5e979d142569b3039bf",
+                "reference": "8e355c8335b5d17e18fef5e979d142569b3039bf",
                 "shasum": ""
             },
             "require": {
@@ -5925,7 +5925,17 @@
                 "validation",
                 "validator"
             ],
-            "time": "2020-08-10T18:44:02+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/yiisoft",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/yiisoft",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2020-08-17T23:58:23+00:00"
         },
         {
             "name": "yiisoft/var-dumper",
@@ -9415,6 +9425,7 @@
         "yiisoft/request-body-parser": 20,
         "yiisoft/router": 20,
         "yiisoft/router-fastroute": 20,
+        "yiisoft/validator": 20,
         "yiisoft/view": 20,
         "yiisoft/widget": 20,
         "yiisoft/yii-bulma": 20,

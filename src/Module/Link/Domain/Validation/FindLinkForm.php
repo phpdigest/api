@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace App\Module\Link\Domain\Validation;
 
 use Yiisoft\Form\FormModel;
-use Yiisoft\Validator\Rule\HasLength;
 use Yiisoft\Validator\Rule\Required;
-use Yiisoft\Validator\Rule\Url;
 
 final class FindLinkForm extends FormModel
 {
@@ -23,8 +21,8 @@ final class FindLinkForm extends FormModel
         return [
             'url' => [
                 new Required(),
-                new Url(),
-                (new HasLength())->max(255)
+                RuleFactory::createUrlRule(),
+                RuleFactory::createUrlLengthRule()
             ],
         ];
     }
