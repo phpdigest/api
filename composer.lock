@@ -5619,16 +5619,6 @@
                 "parser",
                 "yii3"
             ],
-            "funding": [
-                {
-                    "url": "https://github.com/yiisoft",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/yiisoft",
-                    "type": "open_collective"
-                }
-            ],
             "time": "2020-08-09T18:32:25+00:00"
         },
         {
@@ -5874,12 +5864,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/validator.git",
-                "reference": "8e355c8335b5d17e18fef5e979d142569b3039bf"
+                "reference": "13b18407091da69f698f7f93c1d5a32fbcbabbfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/validator/zipball/8e355c8335b5d17e18fef5e979d142569b3039bf",
-                "reference": "8e355c8335b5d17e18fef5e979d142569b3039bf",
+                "url": "https://api.github.com/repos/yiisoft/validator/zipball/13b18407091da69f698f7f93c1d5a32fbcbabbfa",
+                "reference": "13b18407091da69f698f7f93c1d5a32fbcbabbfa",
                 "shasum": ""
             },
             "require": {
@@ -5935,7 +5925,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-08-17T23:58:23+00:00"
+            "time": "2020-08-18T21:12:17+00:00"
         },
         {
             "name": "yiisoft/var-dumper",
