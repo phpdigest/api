@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 use App\Api\External\Controller\LinkController;
 use App\Api\External\Controller\UserController;
+use App\Api\Telegram\Controller\WebhookAction;
 use App\Api\UI\Controller\ContactController;
 use App\Api\UI\Controller\SiteController;
+use roxblnfk\SmartStream\Middleware\BucketStreamMiddleware;
 use Yiisoft\Auth\Middleware\Auth;
 use Yiisoft\Http\Method;
+use Yiisoft\Request\Body\RequestBodyParser;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
-use roxblnfk\SmartStream\Middleware\BucketStreamMiddleware;
-use Yiisoft\Request\Body\RequestBodyParser;
 
 return [
     // UI
@@ -41,5 +42,8 @@ return [
             Route::head('/link', LinkController::class)->name('api/link/head'),
         ]
     )->addMiddleware(BucketStreamMiddleware::class)
-        ->addMiddleware(RequestBodyParser::class)
+        ->addMiddleware(RequestBodyParser::class),
+
+    // Telegram
+    Route::post('/telegram', [WebhookAction::class, '__invoke'])->name('telegram/webhook'),
 ];

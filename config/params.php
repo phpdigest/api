@@ -172,7 +172,12 @@ return [
     'app' => [
         'charset' => 'UTF-8',
         'language' => 'en',
-        'name' => 'My Project'
+        'name' => 'My Project',
+        'api_url' => '',
+    ],
+
+    'telegram-bot' => [
+        'token' => '',
     ],
 
     'mailer' => [

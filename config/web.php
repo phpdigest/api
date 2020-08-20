@@ -13,7 +13,8 @@ return [
         return (new ApplicationParameters())
             ->charset($params['app']['charset'])
             ->language($params['app']['language'])
-            ->name($params['app']['name']);
+            ->name($params['app']['name'])
+            ;
     },
 
     ValidatorFactoryInterface::class => ValidatorFactory::class,
