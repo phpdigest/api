@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d70400f943462f79a9d1aed4bc37256a",
+    "content-hash": "1d058813b4e6d56d72165d5867bc595d",
     "packages": [
         {
             "name": "alexkart/curl-builder",
@@ -2152,16 +2152,16 @@
         },
         {
             "name": "roxblnfk/smart-stream",
-            "version": "0.7.1",
+            "version": "0.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roxblnfk/smart-stream.git",
-                "reference": "6bc1c4c9dd68ca7f313fb7e072311ffbc7d6a097"
+                "reference": "fc56047c0f6199885f2b02e98bdf87f3bf047998"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roxblnfk/smart-stream/zipball/6bc1c4c9dd68ca7f313fb7e072311ffbc7d6a097",
-                "reference": "6bc1c4c9dd68ca7f313fb7e072311ffbc7d6a097",
+                "url": "https://api.github.com/repos/roxblnfk/smart-stream/zipball/fc56047c0f6199885f2b02e98bdf87f3bf047998",
+                "reference": "fc56047c0f6199885f2b02e98bdf87f3bf047998",
                 "shasum": ""
             },
             "require": {
@@ -2191,7 +2191,7 @@
                 "http-message",
                 "stream"
             ],
-            "time": "2020-08-12T21:33:36+00:00"
+            "time": "2020-08-24T17:34:06+00:00"
         },
         {
             "name": "seld/jsonlint",
@@ -5915,16 +5915,6 @@
                 "validation",
                 "validator"
             ],
-            "funding": [
-                {
-                    "url": "https://github.com/yiisoft",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/yiisoft",
-                    "type": "open_collective"
-                }
-            ],
             "time": "2020-08-18T21:12:17+00:00"
         },
         {
@@ -9431,6 +9421,5 @@
     "platform": {
         "php": "^7.4"
     },
-    "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "platform-dev": []
 }

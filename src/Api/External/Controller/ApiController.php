@@ -75,10 +75,9 @@ abstract class ApiController implements MiddlewareInterface
         if ($data instanceof StreamInterface) {
             $stream = $data;
         } else {
-            $smartStreamFactory = $this->injector->make(
-                SmartStreamFactory::class,
-                ['defaultBucketClass' => ApiBucket::class]
-            );
+            $smartStreamFactory = $this->injector
+                ->make(SmartStreamFactory::class)
+                ->withDefaultBucketClass(ApiBucket::class);
             $stream = $smartStreamFactory->createStream($data, $request);
         }
         return $this->responseFactory->createResponse()->withBody($stream);
