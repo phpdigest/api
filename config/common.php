@@ -19,7 +19,7 @@ use BotMan\Drivers\Telegram\TelegramDriver;
 use Cycle\ORM\ORMInterface;
 use Psr\Container\ContainerInterface;
 use Yiisoft\Aliases\Aliases;
-use Yiisoft\Auth\AuthInterface;
+use Yiisoft\Auth\AuthenticationMethodInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
 use Yiisoft\Auth\Method\HttpHeader;
 use Yiisoft\Factory\Definitions\Reference;
@@ -48,7 +48,7 @@ return [
         return $container->get(ORMInterface::class)
             ->getRepository(Link::class);
     },
-    AuthInterface::class => static function (ContainerInterface $container) {
+    AuthenticationMethodInterface::class => static function (ContainerInterface $container) {
         $httHeader = $container->get(HttpHeader::class);
         $httHeader->setHeaderName('Authorization');
 

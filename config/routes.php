@@ -8,7 +8,7 @@ use App\Api\Telegram\Controller\WebhookAction;
 use App\Api\UI\Controller\ContactController;
 use App\Api\UI\Controller\SiteController;
 use roxblnfk\SmartStream\Middleware\BucketStreamMiddleware;
-use Yiisoft\Auth\Middleware\Auth;
+use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\Http\Method;
 use Yiisoft\Request\Body\RequestBodyParser;
 use Yiisoft\Router\Group;
@@ -25,7 +25,7 @@ return [
     Group::create(
         '/api',
         [
-            Route::get('/user', UserController::class)->name('api/user/get')->addMiddleware(Auth::class),
+            Route::get('/user', UserController::class)->name('api/user/get')->addMiddleware(Authentication::class),
             Route::post('/user', UserController::class)->name('api/user/post'),
             Route::delete('/user', UserController::class)->name('api/user/delete'),
             Route::put('/user', UserController::class)->name('api/user/put'),
@@ -33,9 +33,9 @@ return [
             Route::options('/user', UserController::class)->name('api/user/options'),
             Route::head('/user', UserController::class)->name('api/user/head'),
 
-            Route::get('/link', LinkController::class)->name('api/link/get')->addMiddleware(Auth::class),
-            Route::post('/link', LinkController::class)->name('api/link/post')->addMiddleware(Auth::class),
-            Route::delete('/link', LinkController::class)->name('api/link/delete')->addMiddleware(Auth::class),
+            Route::get('/link', LinkController::class)->name('api/link/get')->addMiddleware(Authentication::class),
+            Route::post('/link', LinkController::class)->name('api/link/post')->addMiddleware(Authentication::class),
+            Route::delete('/link', LinkController::class)->name('api/link/delete')->addMiddleware(Authentication::class),
             Route::put('/link', LinkController::class)->name('api/link/put'),
             Route::patch('/link', LinkController::class)->name('api/link/patch'),
             Route::options('/link', LinkController::class)->name('api/link/options'),
