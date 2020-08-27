@@ -1,0 +1,180 @@
+openapi: 3.0.0
+info:
+  title: Swagger php digest
+  version: 1.0.1
+servers:
+- url: https://127.0.0.1
+  description: Local server
+tags:
+- name: link
+  description: Operations about links
+- name: user
+  description: Operations about user
+paths:
+  /api/link:
+    get:
+      tags:
+      - link
+      summary: Get link
+      parameters:
+      - name: url
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: domain.com/bla-bla
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+      security:
+      - ApiKeyAuth: []
+    post:
+      tags:
+      - link
+      summary: Add a new link
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/body'
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+      security:
+      - ApiKeyAuth: []
+    delete:
+      tags:
+      - link
+      summary: Delete link
+      parameters:
+      - name: url
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: domain.com/bla-bla
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_1'
+      security:
+      - ApiKeyAuth: []
+  /api/user:
+    get:
+      tags:
+      - user
+      summary: Get current user info
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_2'
+      security:
+      - ApiKeyAuth: []
+    post:
+      tags:
+      - user
+      summary: Create user
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_3'
+components:
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        status:
+          type: integer
+          example: 200
+        code:
+          type: integer
+          nullable: true
+        message:
+          type: string
+          nullable: true
+    inline_response_200:
+      allOf:
+      - $ref: '#/components/schemas/SuccessResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/inline_response_200_data'
+    body:
+      type: object
+      properties:
+        url:
+          type: string
+          example: domain.com/bla-bla
+        description:
+          type: string
+          nullable: true
+          example: description text
+    inline_response_200_1:
+      allOf:
+      - $ref: '#/components/schemas/SuccessResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            nullable: true
+    inline_response_200_2:
+      allOf:
+      - $ref: '#/components/schemas/SuccessResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/inline_response_200_2_data'
+    inline_response_200_3:
+      allOf:
+      - $ref: '#/components/schemas/SuccessResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/inline_response_200_3_data'
+    inline_response_200_data:
+      type: object
+      properties:
+        url:
+          type: string
+          example: domain.com/bla-bla
+    inline_response_200_2_data:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 100
+    inline_response_200_3_data:
+      type: object
+      properties:
+        token:
+          type: string
+          example: wkkacipforbqgccdqwlhpcexlelrxjmo
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: Authorization
+      in: header

@@ -18,7 +18,7 @@
         "foxy/foxy": "^1.0.8",
         "guzzlehttp/guzzle": "^7.0",
         "nyholm/psr7": "^1.3.0",
-        "roxblnfk/smart-stream": ">=0.7.1",
+        "roxblnfk/smart-stream": "^0.8.1",
         "yiisoft/aliases": "^1.0",
         "yiisoft/assets": "@dev",
         "yiisoft/cache": "@dev",
