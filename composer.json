@@ -100,7 +100,8 @@
                 "$events",
                 "config/events-console.php"
             ],
-            "routes": "config/routes.php"
+            "routes": "config/routes.php",
+            "telegram-commands": "config/telegram/commands.php"
         }
     },
     "config": {
