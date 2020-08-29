@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Api\Telegram\Telegram\Conversation;
 
-use App\Api\Telegram\ApiClient\BackendApiClient;
 use App\Api\Telegram\Helper\UrlHelper;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
@@ -17,14 +16,10 @@ final class SuggestLinkConversation extends Conversation
 
     protected UrlHelper $urlHelper;
 
-    protected BackendApiClient $backendApiClient;
-
     public function __construct(
-        UrlHelper $urlValidator,
-        BackendApiClient $backendApiClient
+        UrlHelper $urlValidator
     ) {
         $this->urlHelper = $urlValidator;
-        $this->backendApiClient = $backendApiClient;
     }
 
     public function askLink(): void
@@ -65,7 +60,9 @@ TEXT;
 ```
 MARKDOWN;
 
-            $this->backendApiClient->postLink($this->link, $this->description);
+            /**
+             * TODO: Вызвать сохранение ссылки.
+             */
 
             $this->say($quote, [
                 'parse_mode' => 'Markdown',

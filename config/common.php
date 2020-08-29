@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Api\Telegram\Adapter\BotManCacheAdapter;
-use App\Api\Telegram\ApiClient\BackendApiClient;
 use App\Common\Domain\Entity\Identity;
 use App\Common\Service\Mailer;
 use App\Module\Contact\Api\ContactMailer;
@@ -55,12 +54,6 @@ return [
         return $httHeader;
     },
     UserLinkService::class => Reference::to(UserLink::class),
-    BackendApiClient::class => [
-        'class' => BackendApiClient::class,
-        '__construct()' => [
-            'uri' => $params['app']['api_url'],
-        ],
-    ],
     BotMan::class => static function ($container) use ($params) {
         $config = [
             'telegram' => [
