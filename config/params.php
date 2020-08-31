@@ -173,7 +173,6 @@ return [
         'charset' => 'UTF-8',
         'language' => 'en',
         'name' => 'My Project',
-        'api_url' => '',
     ],
 
     'telegram-bot' => [

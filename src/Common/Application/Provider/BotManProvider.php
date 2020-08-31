@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Api\Telegram\Provider;
+namespace App\Common\Application\Provider;
 
 use App\Api\Telegram\Telegram\Command\CommandInterface;
 use BotMan\BotMan\BotMan;

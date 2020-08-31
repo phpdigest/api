@@ -24,9 +24,8 @@ final class SuggestLinkConversation extends Conversation
 
     public function askLink(): void
     {
-        $str = <<<TEXT
-Введите ссылку
-TEXT;
+        $str = 'Введите ссылку';
+
         $this->ask($str, function (Answer $answer) {
             $this->link = $this->urlHelper->normalize($answer->getText());
 

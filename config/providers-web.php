@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 /* @var array $params */
 
-use App\Api\Telegram\Provider\BotManProvider;
+use App\Common\Application\Provider\BotManProvider;
 use App\Common\Application\Provider\FieldProvider;
 use App\Common\Application\Provider\FlashProvider;
 use App\Common\Application\Provider\I18nProvider;
@@ -16,7 +16,6 @@ use App\Common\Application\Provider\SwiftSmtpTransportProvider;
 use App\Common\Application\Provider\SwiftTransportProvider;
 use App\Common\Application\Provider\ThemeProvider;
 use App\Common\Application\Provider\WebViewProvider;
-use Yiisoft\Arrays\Modifier\ReverseBlockMerge;
 use Yiisoft\Composer\Config\Builder;
 use Yiisoft\Yii\Event\EventDispatcherProvider;
 
@@ -82,6 +81,4 @@ return [
         '__construct()' => [require Builder::path('events-web')],
     ],
     'app/botman' => BotManProvider::class,
-
-    ReverseBlockMerge::class => new ReverseBlockMerge(),
 ];
