@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Api\Telegram\Helper;
 
+use App\Module\Link\Domain\Validation\Rules\UrlRule;
+
 final class UrlHelper
 {
-    public function validate(string $url)
+    public function validate(string $url): bool
     {
         if (strpos($url, '.') === false) {
             return false;
@@ -14,7 +16,7 @@ final class UrlHelper
 
         $url = $this->normalize($url);
 
-        return preg_match('#^(?:https?://)?[\w\-.]+\.[\w]{2,10}/?.*?$#ui', $url);
+        return (new UrlRule())->validate($url)->isValid();
     }
 
     public function normalize(string $url): string
