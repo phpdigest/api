@@ -42,22 +42,22 @@ final class SuggestLinkConversation extends Conversation
     public function askDescription(): void
     {
         $str = <<<TEXT
-Опишите то, что хотите предложить.
-Можно добавлять ссылки и/или произвольный текст. Максимальная длина сообщения - 300 символов.
-TEXT;
+        Опишите то, что хотите предложить.
+        Можно добавлять ссылки и/или произвольный текст. Максимальная длина сообщения - 300 символов.
+        TEXT;
         $this->ask($str, function (Answer $answer) {
             $this->description = $answer->getText();
 
             $this->say('Спасибо. Мы обработаем ваше предложение.');
 
             $quote = <<<MARKDOWN
-Ссылка: `{$this->link}`
+            Ссылка: `{$this->link}`
 
-Описание:
-```
-{$this->description}
-```
-MARKDOWN;
+            Описание:
+            ```
+            {$this->description}
+            ```
+            MARKDOWN;
 
             /**
              * TODO: Вызвать сохранение ссылки.
