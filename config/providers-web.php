@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 /* @var array $params */
 
+use App\Common\Application\Provider\BotManProvider;
 use App\Common\Application\Provider\FieldProvider;
 use App\Common\Application\Provider\FlashProvider;
 use App\Common\Application\Provider\I18nProvider;
@@ -11,11 +12,11 @@ use App\Common\Application\Provider\MailerInterfaceProvider;
 use App\Common\Application\Provider\MiddlewareProvider;
 use App\Common\Application\Provider\Psr17Provider;
 use App\Common\Application\Provider\SessionProvider;
-use App\Common\Application\Provider\SwiftTransportProvider;
 use App\Common\Application\Provider\SwiftSmtpTransportProvider;
+use App\Common\Application\Provider\SwiftTransportProvider;
 use App\Common\Application\Provider\ThemeProvider;
 use App\Common\Application\Provider\WebViewProvider;
-use Yiisoft\Arrays\Modifier\ReverseBlockMerge;
+use Yiisoft\Composer\Config\Builder;
 use Yiisoft\Yii\Event\EventDispatcherProvider;
 
 return [
@@ -25,7 +26,7 @@ return [
         '__class' => SessionProvider::class,
         '__construct()' => [
             $params['yiisoft/yii-web']['session']['options'],
-            $params['yiisoft/yii-web']['session']['handler']
+            $params['yiisoft/yii-web']['session']['handler'],
         ],
     ],
     'yiisoft/yii-web/flash' => FlashProvider::class,
@@ -43,7 +44,7 @@ return [
             $params['yiisoft/mailer']['swiftSmtpTransport']['port'],
             $params['yiisoft/mailer']['swiftSmtpTransport']['encryption'],
             $params['yiisoft/mailer']['swiftSmtpTransport']['username'],
-            $params['yiisoft/mailer']['swiftSmtpTransport']['password']
+            $params['yiisoft/mailer']['swiftSmtpTransport']['password'],
         ],
     ],
     'yiisoft/mailer/mailerinterface' => [
@@ -73,12 +74,11 @@ return [
         '__construct()' => [
             $params['yiisoft/i18n']['locale'],
             $params['yiisoft/i18n']['translator']['path'],
-        ]
+        ],
     ],
     'yiisoft/event-dispatcher/eventdispatcher' => [
         '__class' => EventDispatcherProvider::class,
-        '__construct()' => [$config['events-web']],
+        '__construct()' => [require Builder::path('events-web')],
     ],
-
-    ReverseBlockMerge::class => new ReverseBlockMerge(),
+    'app/botman' => BotManProvider::class,
 ];

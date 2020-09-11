@@ -13,7 +13,10 @@
     },
     "require": {
         "php": "^7.4",
+        "botman/botman": "^2.6",
+        "botman/driver-telegram": "^1.6",
         "foxy/foxy": "^1.0.8",
+        "guzzlehttp/guzzle": "^7.0",
         "nyholm/psr7": "^1.3.0",
         "roxblnfk/smart-stream": "^0.8.1",
         "yiisoft/aliases": "^1.0",
@@ -97,7 +100,8 @@
                 "$events",
                 "config/events-console.php"
             ],
-            "routes": "config/routes.php"
+            "routes": "config/routes.php",
+            "telegram-commands": "config/telegram/commands.php"
         }
     },
     "config": {
