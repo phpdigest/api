@@ -17,28 +17,25 @@ use BotMan\BotMan\Drivers\DriverManager;
 use BotMan\Drivers\Telegram\TelegramDriver;
 use Cycle\ORM\ORMInterface;
 use Psr\Container\ContainerInterface;
-use Yiisoft\Aliases\Aliases;
+use Psr\SimpleCache\CacheInterface;
 use Yiisoft\Auth\AuthenticationMethodInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
 use Yiisoft\Auth\Method\HttpHeader;
+use Yiisoft\Cache\File\FileCache;
 use Yiisoft\Factory\Definitions\Reference;
 
 /* @var array $params */
 
 return [
-    ContainerInterface::class => static function (ContainerInterface $container) {
-        return $container;
-    },
-    Aliases::class => [
-        '__class' => Aliases::class,
-        '__construct()' => [$params['aliases']],
-    ],
+    CacheInterface::class => FileCache::class,
     ContactMailer::class => static function (ContainerInterface $container) use ($params) {
         return (new MailerService(
             $container->get(Mailer::class),
             $params['mailer']['adminEmail']
         ));
     },
+
+    # Repositories
     IdentityRepositoryInterface::class => static function (ContainerInterface $container) {
         return $container->get(ORMInterface::class)
             ->getRepository(Identity::class);
@@ -47,14 +44,14 @@ return [
         return $container->get(ORMInterface::class)
             ->getRepository(Link::class);
     },
-    AuthenticationMethodInterface::class => static function (ContainerInterface $container) {
-        $httHeader = $container->get(HttpHeader::class);
-        $httHeader->setHeaderName('Authorization');
 
-        return $httHeader;
+    AuthenticationMethodInterface::class => static function (ContainerInterface $container) {
+        return $container->get(HttpHeader::class)
+                         ->withHeaderName('Authorization');
     },
+
     UserLinkService::class => Reference::to(UserLink::class),
-    BotMan::class => static function ($container) use ($params) {
+    BotMan::class => static function (ContainerInterface $container) use ($params) {
         $config = [
             'telegram' => [
                 'token' => $params['telegram-bot']['token'],

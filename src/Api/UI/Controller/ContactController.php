@@ -1,18 +1,16 @@
 <?php
 
-
 namespace App\Api\UI\Controller;
-
 
 use App\Api\UI\Form\ContactForm;
 use App\Module\Contact\Api\ContactMailer;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Yiisoft\Csrf\CsrfMiddleware;
 use Yiisoft\Http\Header;
 use Yiisoft\Http\Method;
 use Yiisoft\Router\UrlGeneratorInterface;
-use Yiisoft\Yii\Web\Flash;
-use Yiisoft\Yii\Web\Middleware\Csrf;
+use Yiisoft\Session\Flash\Flash;
 
 class ContactController extends AbstractController
 {
@@ -49,7 +47,7 @@ class ContactController extends AbstractController
         return $this->render(
             'contact/form',
             [
-                'csrf' => $request->getAttribute(Csrf::REQUEST_NAME),
+                'csrf' => $request->getAttribute(CsrfMiddleware::PARAMETER_NAME),
                 'form' => $form
             ]
         );

@@ -37,7 +37,6 @@ phpunit.result.cache
 .env
 
 #codeception
-/tests/_output
 c3.php
 
 # local app configs

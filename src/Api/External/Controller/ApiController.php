@@ -17,7 +17,7 @@ use Psr\Http\Message\StreamInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Throwable;
-use Yiisoft\Auth\Middleware\Auth;
+use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\Http\Header;
 use Yiisoft\Http\Method;
 use Yiisoft\Http\Status;
@@ -99,7 +99,7 @@ abstract class ApiController implements MiddlewareInterface
         /**
          * @var Identity $identity
          */
-        $identity = $request->getAttribute(Auth::REQUEST_NAME);
+        $identity = $request->getAttribute(Authentication::class);
 
         return $identity;
     }

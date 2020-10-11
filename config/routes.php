@@ -9,6 +9,7 @@ use App\Api\UI\Controller\ContactController;
 use App\Api\UI\Controller\SiteController;
 use roxblnfk\SmartStream\Middleware\BucketStreamMiddleware;
 use Yiisoft\Auth\Middleware\Authentication;
+use Yiisoft\Csrf\CsrfMiddleware;
 use Yiisoft\Http\Method;
 use Yiisoft\Request\Body\RequestBodyParser;
 use Yiisoft\Router\Group;
@@ -16,10 +17,15 @@ use Yiisoft\Router\Route;
 
 return [
     // UI
-    Route::get('/', [SiteController::class, 'index'])->name('site/index'),
-    Route::get('/about', [SiteController::class, 'about'])->name('site/about'),
-    Route::methods([Method::GET, Method::POST], '/contact', [ContactController::class, 'contact'])
-        ->name('contact/form'),
+    Group::create(
+        '',
+        [
+            Route::get('/', [SiteController::class, 'index'])->name('site/index'),
+            Route::get('/about', [SiteController::class, 'about'])->name('site/about'),
+            Route::methods([Method::GET, Method::POST], '/contact', [ContactController::class, 'contact'])
+                ->name('contact/form'),
+        ]
+    )->addMiddleware(CsrfMiddleware::class),
 
     // External API
     Group::create(

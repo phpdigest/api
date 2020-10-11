@@ -6,7 +6,7 @@ namespace App\Api\UI\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Yiisoft\Yii\Web\Middleware\Csrf;
+use Yiisoft\Csrf\CsrfMiddleware;
 
 class SiteController extends AbstractController
 {
@@ -15,7 +15,7 @@ class SiteController extends AbstractController
         return $this->render(
             'site/index',
             [
-                'csrf' => $request->getAttribute(Csrf::REQUEST_NAME)
+                'csrf' => $request->getAttribute(CsrfMiddleware::PARAMETER_NAME)
             ]
         );
     }
@@ -25,7 +25,7 @@ class SiteController extends AbstractController
         return $this->render(
             'site/about',
             [
-                'csrf' => $request->getAttribute(Csrf::REQUEST_NAME)
+                'csrf' => $request->getAttribute(CsrfMiddleware::PARAMETER_NAME)
             ]
         );
     }

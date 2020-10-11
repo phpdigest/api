@@ -7,8 +7,8 @@ namespace App\Common\Application\Provider;
 use App\Common\Application\AuthRequestErrorHandler;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
-use Yiisoft\Auth\AuthInterface;
-use Yiisoft\Auth\Middleware\Auth;
+use Yiisoft\Auth\AuthenticationMethodInterface;
+use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\Di\Container;
 use Yiisoft\Di\Support\ServiceProvider;
 use Yiisoft\Router\Middleware\Router;
@@ -32,10 +32,10 @@ final class MiddlewareProvider extends ServiceProvider
         );
 
         $container->set(
-            Auth::class,
+            Authentication::class,
             static function (ContainerInterface $container) {
-                return new Auth(
-                    $container->get(AuthInterface::class),
+                return new Authentication(
+                    $container->get(AuthenticationMethodInterface::class),
                     $container->get(ResponseFactoryInterface::class),
                     $container->get(AuthRequestErrorHandler::class)
                 );
