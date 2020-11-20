@@ -10,13 +10,13 @@ use Yiisoft\Csrf\CsrfMiddleware;
 use Yiisoft\Http\Header;
 use Yiisoft\Http\Method;
 use Yiisoft\Router\UrlGeneratorInterface;
-use Yiisoft\Session\Flash\Flash;
+use Yiisoft\Session\Flash\FlashInterface;
 
 class ContactController extends AbstractController
 {
     public function contact(
         ContactForm $form,
-        Flash $flash,
+        FlashInterface $flash,
         ContactMailer $mailer,
         UrlGeneratorInterface $url,
         ServerRequestInterface $request

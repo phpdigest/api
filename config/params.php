@@ -4,22 +4,25 @@ declare(strict_types=1);
 
 use App\Common\Application\ApplicationParameters;
 use Yiisoft\Assets\AssetManager;
+use Yiisoft\Factory\Definitions\Reference;
 use Yiisoft\Form\Widget\Field;
 use Yiisoft\Router\UrlGeneratorInterface;
 use Yiisoft\Router\UrlMatcherInterface;
 
 return [
-    'aliases' => [
-        '@root' => dirname(__DIR__),
-        '@assets' => '@root/public/assets',
-        '@assetsUrl' => '/assets',
-        '@npm' => '@root/node_modules',
-        '@public' => '@root/public',
-        '@resources' => '@root/resources',
-        '@runtime' => '@root/runtime',
-        '@views' => '@root/resources/views',
-        '@message' => '@root/resources/message',
-        '@src' => '@root/src',
+    'yiisoft/aliases' => [
+        'aliases' => [
+            '@root' => dirname(__DIR__),
+            '@assets' => '@root/public/assets',
+            '@assetsUrl' => '/assets',
+            '@npm' => '@root/node_modules',
+            '@public' => '@root/public',
+            '@resources' => '@root/resources',
+            '@runtime' => '@root/runtime',
+            '@views' => '@root/resources/views',
+            '@message' => '@root/resources/message',
+            '@src' => '@root/src',
+        ],
     ],
 
     'yiisoft/form' => [
@@ -31,40 +34,46 @@ return [
     ],
 
     'yiisoft/i18n' => [
-        'locale' => 'en-US',
         'translator' => [
-            'path' => '@message/en-US.php'
+            'locale' => 'en-US',
+            'fallbackLocale' => 'en-US'
         ]
     ],
 
     'yiisoft/mailer' => [
-        'mailerInterface' => [
-            'composerPath' => '@resources/mail',
-            'writeToFiles' => true,
-            'writeToFilesPath' => '@runtime/mail',
+        'composer' => [
+            'composerView' => '@resources/mail'
         ],
-        'swiftSmtpTransport' => [
+        'fileMailer' => [
+            'fileMailerStorage' => '@runtime/mail'
+        ],
+        'writeToFiles' => true
+    ],
+
+    'swiftmailer/swiftmailer' => [
+        'SwiftSmtpTransport' => [
             'host' => 'smtp.example.com',
             'port' => 25,
             'encryption' => null,
             'username' => 'admin@example.com',
             'password' => ''
-        ],
+        ]
     ],
 
     'yiisoft/view' => [
+        'basePath' => '@views',
         'defaultParameters' => [
-            'applicationParameters' => ApplicationParameters::class,
-            'assetManager' => AssetManager::class,
-            'field' => Field::class,
-            'url' => UrlGeneratorInterface::class,
-            'urlMatcher' => UrlMatcherInterface::class,
-        ],
-        'theme' => [
-            'pathMap' => [],
-            'basePath' => '',
-            'baseUrl' => '',
+            'applicationParameters' => Reference::to(ApplicationParameters::class),
+            'assetManager' => Reference::to(AssetManager::class),
+            'field' => Reference::to(Field::class),
+            'url' => Reference::to(UrlGeneratorInterface::class),
+            'urlMatcher' => Reference::to(UrlMatcherInterface::class)
         ]
+    ],
+
+    'yiisoft/yii-view' => [
+        'viewBasePath' => '@views',
+        'layout' => '@resources/layout/main'
     ],
 
     // Common Cycle config
@@ -142,11 +151,11 @@ return [
         'name' => 'My Project',
     ],
 
-    'telegram-bot' => [
-        'token' => '',
+    'mailer' => [
+        'adminEmail' => 'admin@example.com'
     ],
 
-    'mailer' => [
-        'adminEmail' => 'admin@example.com',
+    'telegram-bot' => [
+        'token' => '',
     ],
 ];

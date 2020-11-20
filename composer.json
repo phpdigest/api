@@ -9,17 +9,19 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "serve": "yii serve"
+        "serve": "yii serve",
+        "test": [
+            "phpunit --colors --no-interaction"
+        ]
     },
     "require": {
         "php": "^7.4",
         "botman/botman": "^2.6",
         "botman/driver-telegram": "^1.6",
-        "foxy/foxy": "^1.0.8",
         "guzzlehttp/guzzle": "^7.0",
         "nyholm/psr7": "^1.3.0",
         "roxblnfk/smart-stream": "^0.8.1",
-        "yiisoft/aliases": "^1.0",
+        "yiisoft/aliases": "^1.1",
         "yiisoft/assets": "@dev",
         "yiisoft/auth": "^1.0",
         "yiisoft/cache": "@dev",
@@ -28,6 +30,7 @@
         "yiisoft/csrf": "^3.0@dev",
         "yiisoft/data-response": "@dev",
         "yiisoft/di": "@dev",
+        "yiisoft/error-handler": "@dev",
         "yiisoft/form": "@dev",
         "yiisoft/i18n": "^3.0@dev",
         "yiisoft/i18n-message-php": "^3.0@dev",
@@ -46,14 +49,17 @@
         "yiisoft/yii-cycle": "*",
         "yiisoft/yii-debug": "@dev",
         "yiisoft/yii-event": "@dev",
+        "yiisoft/yii-view": "^3.0@dev",
         "yiisoft/yii-web": "@dev"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master",
         "codeception/codeception": "^4.1.5",
+        "codeception/c3": "^2.6.0",
         "codeception/module-asserts": "@dev",
         "codeception/module-phpbrowser": "@dev",
-        "phpunit/phpunit": "^9.2"
+        "phpunit/phpunit": "^9.4",
+        "roave/security-advisories": "dev-master",
+        "vimeo/psalm": "^4.1"
     },
     "autoload": {
         "psr-4": {
@@ -71,18 +77,18 @@
         },
         "config-plugin-output-dir": "runtime/build/config",
         "config-plugin": {
-            "common": "config/common.php",
+            "common": "config/common/*.php",
             "params": [
                 "config/params.php",
                 "?config/params-local.php"
             ],
             "web": [
                 "$common",
-                "config/web.php"
+                "config/web/*.php"
             ],
             "console": [
                 "$common",
-                "config/console.php"
+                "config/console/*.php"
             ],
             "providers": "config/providers.php",
             "providers-web": [
@@ -104,9 +110,23 @@
             ],
             "routes": "config/routes.php",
             "telegram-commands": "config/telegram/commands.php"
+        },
+        "installer-types": [
+            "npm-asset"
+        ],
+        "installer-paths": {
+            "./node_modules/{$name}": [
+                "type:npm-asset"
+            ]
         }
     },
     "config": {
         "sort-packages": true
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }

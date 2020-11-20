@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Common\Application\ApplicationParameters;
 
-/* @var array $params */
+/** @var array $params */
 
 return [
     ApplicationParameters::class => static function () use ($params) {

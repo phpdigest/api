@@ -11,7 +11,6 @@ use Yiisoft\Html\Html;
  * @var App\Common\Application\ApplicationParameters $applicationParameters
  * @var Yiisoft\Assets\AssetManager $assetManager
  * @var Yiisoft\View\WebView $this
- * @var string|null $csrf
  * @var string $content
  */
 
@@ -26,7 +25,7 @@ $this->setJsFiles($assetManager->getJsFiles());
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Html::encode($applicationParameters->getLanguage()) ?>">
-    <?= $this->render('_head', ['csrf' => $csrf]) ?>
+    <?= $this->render('_head') ?>
     <?php $this->beginBody() ?>
         <body>
             <section class="hero is-fullheight is-light">

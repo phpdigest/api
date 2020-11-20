@@ -9,19 +9,20 @@ use Yiisoft\Aliases\Aliases;
 use Yiisoft\View\ViewContextInterface;
 use Yiisoft\View\WebView;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
+use Yiisoft\Yii\View\ViewRenderer;
 
 use function array_merge;
 
 abstract class AbstractController implements ViewContextInterface
 {
-    private WebView $webView;
+    private ViewRenderer $webView;
     protected Aliases $aliases;
     protected DataResponseFactoryInterface $responseFactory;
 
     public function __construct(
         Aliases $aliases,
         DataResponseFactoryInterface $responseFactory,
-        WebView $webView
+        ViewRenderer $webView
     ) {
         $this->aliases = $aliases;
         $this->responseFactory = $responseFactory;
@@ -30,18 +31,8 @@ abstract class AbstractController implements ViewContextInterface
 
     protected function render(string $view, array $parameters = []): ResponseInterface
     {
-        $content = $this->webView->render(
-            '//main',
-            array_merge(
-                [
-                    'content' => $this->webView->render($view, $parameters, $this)
-                ],
-                $parameters
-            ),
-            $this
-        );
-
-        return $this->responseFactory->createResponse($content);
+        return $this->webView->withCsrf()
+                             ->render($view, $parameters);
     }
 
     abstract public function getViewPath(): string;
