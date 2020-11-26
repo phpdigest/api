@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Module\Link\Api;
 
-use App\Common\Domain\Entity\Identity;
 use App\Module\Link\Domain\Entity\Link;
-use App\Module\Link\Domain\Validation\CreateLinkForm;
+use App\Module\User\Domain\Entity\Identity;
+use App\Api\Common\Form\CreateLinkForm;
 
 interface UserLinkService
 {

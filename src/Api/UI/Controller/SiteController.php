@@ -4,9 +4,13 @@ declare(strict_types=1);
 
 namespace App\Api\UI\Controller;
 
+use App\Module\Link\Domain\Repository\LinkRepository;
+use App\Module\User\Domain\Repository\AccountRepository;
+use App\Module\User\Domain\Repository\IdentityRepository;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Csrf\CsrfMiddleware;
+use Yiisoft\User\User;
 
 class SiteController extends AbstractController
 {
@@ -20,18 +24,22 @@ class SiteController extends AbstractController
         );
     }
 
-    public function about(ServerRequestInterface $request): ResponseInterface
-    {
+    public function tables(
+        ServerRequestInterface $request,
+        LinkRepository $linkRepository,
+        IdentityRepository $identityRepository,
+        AccountRepository $accountRepository,
+        User $user
+    ): ResponseInterface {
         return $this->render(
-            'site/about',
+            'data/tables',
             [
-                'csrf' => $request->getAttribute(CsrfMiddleware::PARAMETER_NAME)
+                'csrf' => $request->getAttribute(CsrfMiddleware::PARAMETER_NAME),
+                'links' => $linkRepository->findAll(),
+                'identities' => $identityRepository->findAll(),
+                'accounts' => $accountRepository->findAll(),
+                'user' => $user->getIdentity(),
             ]
         );
-    }
-
-    public function getViewPath(): string
-    {
-        return $this->aliases->get('@views');
     }
 }

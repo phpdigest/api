@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Common\Application\ApplicationParameters;
+use Psr\Container\ContainerInterface;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Factory\Definitions\Reference;
 use Yiisoft\Form\Widget\Field;
@@ -73,7 +74,11 @@ return [
 
     'yiisoft/yii-view' => [
         'viewBasePath' => '@views',
-        'layout' => '@resources/layout/main'
+        'layout' => '@resources/layout/main',
+        'injections' => [
+            Reference::to(\App\Api\UI\Injection\LayoutViewInjection::class),
+            Reference::to(\Yiisoft\Yii\View\CsrfViewInjection::class),
+        ],
     ],
 
     // Common Cycle config
@@ -136,8 +141,7 @@ return [
          * A list of entity directories. You can use {@see \Yiisoft\Aliases\Aliases} in paths.
          */
         'annotated-entity-paths' => [
-            '@src/Common/Domain/Entity',
-            '@src/Module/Link/Domain/Entity',
+            '@src/Module/*/Domain/Entity',
         ],
     ],
 
@@ -148,7 +152,7 @@ return [
     'app' => [
         'charset' => 'UTF-8',
         'language' => 'en',
-        'name' => 'My Project',
+        'name' => 'PHP Digest service',
     ],
 
     'mailer' => [

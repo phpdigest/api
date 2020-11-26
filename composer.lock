@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05bfd71a364781810e4a3e4851066b0d",
+    "content-hash": "3d0e28998ef3789fb7c1e65932f9f473",
     "packages": [
         {
             "name": "alexkart/curl-builder",
@@ -3702,16 +3702,16 @@
         },
         {
             "name": "spiral/database",
-            "version": "v2.7.19",
+            "version": "v2.7.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spiral/database.git",
-                "reference": "33e6db63b86238fedeb697bffb28489f0d0dc2d5"
+                "reference": "5ae0a627f37428520b24391683df29f97c7ae7f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spiral/database/zipball/33e6db63b86238fedeb697bffb28489f0d0dc2d5",
-                "reference": "33e6db63b86238fedeb697bffb28489f0d0dc2d5",
+                "url": "https://api.github.com/repos/spiral/database/zipball/5ae0a627f37428520b24391683df29f97c7ae7f9",
+                "reference": "5ae0a627f37428520b24391683df29f97c7ae7f9",
                 "shasum": ""
             },
             "require": {
@@ -3747,9 +3747,9 @@
             "description": "DBAL, schema introspection, migration and pagination",
             "support": {
                 "issues": "https://github.com/spiral/database/issues",
-                "source": "https://github.com/spiral/database/tree/v2.7.19"
+                "source": "https://github.com/spiral/database/tree/v2.7.20"
             },
-            "time": "2020-11-10T09:33:43+00:00"
+            "time": "2020-11-20T14:49:27+00:00"
         },
         {
             "name": "spiral/files",
@@ -5853,16 +5853,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v8.14.0",
+            "version": "v8.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tighten/collect.git",
-                "reference": "8f79c602c872afd7c9371e193d6aa4ed13e97661"
+                "reference": "e63b331f3709d6c278faf14cd859cd8f44a8d4a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tighten/collect/zipball/8f79c602c872afd7c9371e193d6aa4ed13e97661",
-                "reference": "8f79c602c872afd7c9371e193d6aa4ed13e97661",
+                "url": "https://api.github.com/repos/tighten/collect/zipball/e63b331f3709d6c278faf14cd859cd8f44a8d4a6",
+                "reference": "e63b331f3709d6c278faf14cd859cd8f44a8d4a6",
                 "shasum": ""
             },
             "require": {
@@ -5901,9 +5901,9 @@
             ],
             "support": {
                 "issues": "https://github.com/tighten/collect/issues",
-                "source": "https://github.com/tighten/collect/tree/v8.14.0"
+                "source": "https://github.com/tighten/collect/tree/v8.15.0"
             },
-            "time": "2020-11-16T18:55:11+00:00"
+            "time": "2020-11-20T22:56:01+00:00"
         },
         {
             "name": "yiisoft/access",
@@ -6027,12 +6027,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/arrays.git",
-                "reference": "856a0bdc34fc6712d4f4023b94ac9fd28f368f6a"
+                "reference": "3b291f7d16e1259b3f243691a809ab3dcce037cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/arrays/zipball/856a0bdc34fc6712d4f4023b94ac9fd28f368f6a",
-                "reference": "856a0bdc34fc6712d4f4023b94ac9fd28f368f6a",
+                "url": "https://api.github.com/repos/yiisoft/arrays/zipball/3b291f7d16e1259b3f243691a809ab3dcce037cf",
+                "reference": "3b291f7d16e1259b3f243691a809ab3dcce037cf",
                 "shasum": ""
             },
             "require": {
@@ -6042,7 +6042,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -6084,7 +6084,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T16:19:54+00:00"
+            "time": "2020-11-21T00:42:28+00:00"
         },
         {
             "name": "yiisoft/assets",
@@ -6092,12 +6092,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/assets.git",
-                "reference": "fb8c0b8dedf44bd686a8f2b546f56869730b5949"
+                "reference": "1af76065539688d963dfef5b3510ee24b79198b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/assets/zipball/fb8c0b8dedf44bd686a8f2b546f56869730b5949",
-                "reference": "fb8c0b8dedf44bd686a8f2b546f56869730b5949",
+                "url": "https://api.github.com/repos/yiisoft/assets/zipball/1af76065539688d963dfef5b3510ee24b79198b5",
+                "reference": "1af76065539688d963dfef5b3510ee24b79198b5",
                 "shasum": ""
             },
             "require": {
@@ -6161,7 +6161,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:52:37+00:00"
+            "time": "2020-11-21T00:42:55+00:00"
         },
         {
             "name": "yiisoft/auth",
@@ -6232,12 +6232,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/cache.git",
-                "reference": "1a09935a995f6d526b2b3d4a510213f98ffc97b9"
+                "reference": "f573abdcf4e2727ddcbffee7c8b26c1bfc890d44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/cache/zipball/1a09935a995f6d526b2b3d4a510213f98ffc97b9",
-                "reference": "1a09935a995f6d526b2b3d4a510213f98ffc97b9",
+                "url": "https://api.github.com/repos/yiisoft/cache/zipball/f573abdcf4e2727ddcbffee7c8b26c1bfc890d44",
+                "reference": "f573abdcf4e2727ddcbffee7c8b26c1bfc890d44",
                 "shasum": ""
             },
             "require": {
@@ -6253,7 +6253,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "suggest": {
                 "yiisoft/cache-apcu": "To store cache using APCu PECL extension",
@@ -6303,7 +6303,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:51:48+00:00"
+            "time": "2020-11-21T00:42:01+00:00"
         },
         {
             "name": "yiisoft/cache-file",
@@ -6311,12 +6311,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/cache-file.git",
-                "reference": "db83fbf56436a499a5a6113f517c180009c59e8a"
+                "reference": "7d67032a15cc881e0b6a06ae6162b080dc2c3341"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/cache-file/zipball/db83fbf56436a499a5a6113f517c180009c59e8a",
-                "reference": "db83fbf56436a499a5a6113f517c180009c59e8a",
+                "url": "https://api.github.com/repos/yiisoft/cache-file/zipball/7d67032a15cc881e0b6a06ae6162b080dc2c3341",
+                "reference": "7d67032a15cc881e0b6a06ae6162b080dc2c3341",
                 "shasum": ""
             },
             "require": {
@@ -6377,7 +6377,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T17:25:12+00:00"
+            "time": "2020-11-21T00:42:03+00:00"
         },
         {
             "name": "yiisoft/composer-config-plugin",
@@ -6385,12 +6385,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/composer-config-plugin.git",
-                "reference": "47d39fe846105c590bd13f8a5a91ceaf4ad0ef3e"
+                "reference": "3860add1bbc87a57473ac6732f4409591ac97615"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/composer-config-plugin/zipball/47d39fe846105c590bd13f8a5a91ceaf4ad0ef3e",
-                "reference": "47d39fe846105c590bd13f8a5a91ceaf4ad0ef3e",
+                "url": "https://api.github.com/repos/yiisoft/composer-config-plugin/zipball/3860add1bbc87a57473ac6732f4409591ac97615",
+                "reference": "3860add1bbc87a57473ac6732f4409591ac97615",
                 "shasum": ""
             },
             "require": {
@@ -6452,7 +6452,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:51:15+00:00"
+            "time": "2020-11-21T00:41:44+00:00"
         },
         {
             "name": "yiisoft/container-proxy",
@@ -6460,12 +6460,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/container-proxy.git",
-                "reference": "3ce700f37d6dd5fefa9fa1d51e9fa94783054c4c"
+                "reference": "899e12084aea8a8b50a5c3adf6740a65aeba2172"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/container-proxy/zipball/3ce700f37d6dd5fefa9fa1d51e9fa94783054c4c",
-                "reference": "3ce700f37d6dd5fefa9fa1d51e9fa94783054c4c",
+                "url": "https://api.github.com/repos/yiisoft/container-proxy/zipball/899e12084aea8a8b50a5c3adf6740a65aeba2172",
+                "reference": "899e12084aea8a8b50a5c3adf6740a65aeba2172",
                 "shasum": ""
             },
             "require": {
@@ -6514,7 +6514,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:51:35+00:00"
+            "time": "2020-11-21T00:41:47+00:00"
         },
         {
             "name": "yiisoft/cookies",
@@ -6522,12 +6522,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/cookies.git",
-                "reference": "967f13cf92a5047831c7cdeb83987819e6ba0dd8"
+                "reference": "ec5179e9e3231c151270aad417a07c1daab3f893"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/cookies/zipball/967f13cf92a5047831c7cdeb83987819e6ba0dd8",
-                "reference": "967f13cf92a5047831c7cdeb83987819e6ba0dd8",
+                "url": "https://api.github.com/repos/yiisoft/cookies/zipball/ec5179e9e3231c151270aad417a07c1daab3f893",
+                "reference": "ec5179e9e3231c151270aad417a07c1daab3f893",
                 "shasum": ""
             },
             "require": {
@@ -6582,7 +6582,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T13:54:50+00:00"
+            "time": "2020-11-21T00:42:49+00:00"
         },
         {
             "name": "yiisoft/csrf",
@@ -6590,12 +6590,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/csrf.git",
-                "reference": "bce78c79c48b1a86a15aa96e87f2efccb5e14627"
+                "reference": "5ded1cb109adee01e24393404e5b905ba8bd3903"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/csrf/zipball/bce78c79c48b1a86a15aa96e87f2efccb5e14627",
-                "reference": "bce78c79c48b1a86a15aa96e87f2efccb5e14627",
+                "url": "https://api.github.com/repos/yiisoft/csrf/zipball/5ded1cb109adee01e24393404e5b905ba8bd3903",
+                "reference": "5ded1cb109adee01e24393404e5b905ba8bd3903",
                 "shasum": ""
             },
             "require": {
@@ -6658,7 +6658,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T09:22:20+00:00"
+            "time": "2020-11-21T00:43:09+00:00"
         },
         {
             "name": "yiisoft/data",
@@ -6666,12 +6666,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/data.git",
-                "reference": "6034d0e08fa2b260a613dc872a7eb0a3213ce8c1"
+                "reference": "dd077af16009ab93e57cf897a99c05ff3c25b516"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/data/zipball/6034d0e08fa2b260a613dc872a7eb0a3213ce8c1",
-                "reference": "6034d0e08fa2b260a613dc872a7eb0a3213ce8c1",
+                "url": "https://api.github.com/repos/yiisoft/data/zipball/dd077af16009ab93e57cf897a99c05ff3c25b516",
+                "reference": "dd077af16009ab93e57cf897a99c05ff3c25b516",
                 "shasum": ""
             },
             "require": {
@@ -6681,7 +6681,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -6721,7 +6721,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T17:04:39+00:00"
+            "time": "2020-11-21T00:41:53+00:00"
         },
         {
             "name": "yiisoft/data-response",
@@ -6729,12 +6729,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/data-response.git",
-                "reference": "651eda3f5e25d755e3e88066ffdfd3b36cc3c8c1"
+                "reference": "01a396769882fca4551b68b2f67a8ce5ebc1aa63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/data-response/zipball/651eda3f5e25d755e3e88066ffdfd3b36cc3c8c1",
-                "reference": "651eda3f5e25d755e3e88066ffdfd3b36cc3c8c1",
+                "url": "https://api.github.com/repos/yiisoft/data-response/zipball/01a396769882fca4551b68b2f67a8ce5ebc1aa63",
+                "reference": "01a396769882fca4551b68b2f67a8ce5ebc1aa63",
                 "shasum": ""
             },
             "require": {
@@ -6749,7 +6749,7 @@
                 "nyholm/psr7": "^1.3",
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -6794,7 +6794,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T16:59:09+00:00"
+            "time": "2020-11-21T00:41:58+00:00"
         },
         {
             "name": "yiisoft/di",
@@ -6802,12 +6802,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/di.git",
-                "reference": "d82fec7727c8116c0c5ee3aac598b5b474b09cab"
+                "reference": "e525a62147435ad204abc3302e1df70f4ed092ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/di/zipball/d82fec7727c8116c0c5ee3aac598b5b474b09cab",
-                "reference": "d82fec7727c8116c0c5ee3aac598b5b474b09cab",
+                "url": "https://api.github.com/repos/yiisoft/di/zipball/e525a62147435ad204abc3302e1df70f4ed092ed",
+                "reference": "e525a62147435ad204abc3302e1df70f4ed092ed",
                 "shasum": ""
             },
             "require": {
@@ -6825,7 +6825,7 @@
                 "phpbench/phpbench": "^1.0.0",
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "suggest": {
                 "phpbench/phpbench": "To run benchmarks.",
@@ -6875,7 +6875,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T17:29:22+00:00"
+            "time": "2020-11-21T00:41:46+00:00"
         },
         {
             "name": "yiisoft/error-handler",
@@ -6883,12 +6883,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/error-handler.git",
-                "reference": "159ce3f4b93619d2b6b5f9ac9f00e28f6dc32f95"
+                "reference": "f317e7cda2401f51496f04a1937fa06d497c3b10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/error-handler/zipball/159ce3f4b93619d2b6b5f9ac9f00e28f6dc32f95",
-                "reference": "159ce3f4b93619d2b6b5f9ac9f00e28f6dc32f95",
+                "url": "https://api.github.com/repos/yiisoft/error-handler/zipball/f317e7cda2401f51496f04a1937fa06d497c3b10",
+                "reference": "f317e7cda2401f51496f04a1937fa06d497c3b10",
                 "shasum": ""
             },
             "require": {
@@ -6952,7 +6952,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T10:26:50+00:00"
+            "time": "2020-11-21T00:41:45+00:00"
         },
         {
             "name": "yiisoft/event-dispatcher",
@@ -6960,12 +6960,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/event-dispatcher.git",
-                "reference": "5c921df4521b33b7f82aba89fb0bd4753336286c"
+                "reference": "d938c7188f552b29e160757d2ebf2eb8113ddf89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/event-dispatcher/zipball/5c921df4521b33b7f82aba89fb0bd4753336286c",
-                "reference": "5c921df4521b33b7f82aba89fb0bd4753336286c",
+                "url": "https://api.github.com/repos/yiisoft/event-dispatcher/zipball/d938c7188f552b29e160757d2ebf2eb8113ddf89",
+                "reference": "d938c7188f552b29e160757d2ebf2eb8113ddf89",
                 "shasum": ""
             },
             "require": {
@@ -6976,9 +6976,9 @@
                 "psr/event-dispatcher-implementation": "1.0.0"
             },
             "require-dev": {
-                "infection/infection": "^0.18.0",
                 "phpunit/phpunit": "^9.4",
-                "vimeo/psalm": "^3.18 || ^4.0"
+                "roave/infection-static-analysis-plugin": "^1.4",
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -7020,7 +7020,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:51:39+00:00"
+            "time": "2020-11-21T00:41:51+00:00"
         },
         {
             "name": "yiisoft/factory",
@@ -7028,12 +7028,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/factory.git",
-                "reference": "de1343a41ebbdd5b80108127c012c499e429d08a"
+                "reference": "90b4d566e5adb5ba912182c2e5fde56430b7abee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/factory/zipball/de1343a41ebbdd5b80108127c012c499e429d08a",
-                "reference": "de1343a41ebbdd5b80108127c012c499e429d08a",
+                "url": "https://api.github.com/repos/yiisoft/factory/zipball/90b4d566e5adb5ba912182c2e5fde56430b7abee",
+                "reference": "90b4d566e5adb5ba912182c2e5fde56430b7abee",
                 "shasum": ""
             },
             "require": {
@@ -7086,7 +7086,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:51:37+00:00"
+            "time": "2020-11-21T00:41:49+00:00"
         },
         {
             "name": "yiisoft/files",
@@ -7094,12 +7094,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/files.git",
-                "reference": "d5e3383982837cd0590e2bea95bc6a62a2f23193"
+                "reference": "307d07109803cec937fda905cf2b474b26fc8e19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/files/zipball/d5e3383982837cd0590e2bea95bc6a62a2f23193",
-                "reference": "d5e3383982837cd0590e2bea95bc6a62a2f23193",
+                "url": "https://api.github.com/repos/yiisoft/files/zipball/307d07109803cec937fda905cf2b474b26fc8e19",
+                "reference": "307d07109803cec937fda905cf2b474b26fc8e19",
                 "shasum": ""
             },
             "require": {
@@ -7109,7 +7109,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -7148,7 +7148,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T16:06:41+00:00"
+            "time": "2020-11-21T00:42:30+00:00"
         },
         {
             "name": "yiisoft/form",
@@ -7156,12 +7156,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/form.git",
-                "reference": "0a4e79af0bcf390bd8fb2a11bbcea97f229287b2"
+                "reference": "e299c56d6775e01a97c2915ae8f1db1be19494fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/form/zipball/0a4e79af0bcf390bd8fb2a11bbcea97f229287b2",
-                "reference": "0a4e79af0bcf390bd8fb2a11bbcea97f229287b2",
+                "url": "https://api.github.com/repos/yiisoft/form/zipball/e299c56d6775e01a97c2915ae8f1db1be19494fe",
+                "reference": "e299c56d6775e01a97c2915ae8f1db1be19494fe",
                 "shasum": ""
             },
             "require": {
@@ -7175,7 +7175,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1",
+                "vimeo/psalm": "^4.2",
                 "yiisoft/di": " ^3.0@dev"
             },
             "default-branch": true,
@@ -7217,7 +7217,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T12:33:41+00:00"
+            "time": "2020-11-21T00:42:54+00:00"
         },
         {
             "name": "yiisoft/friendly-exception",
@@ -7279,12 +7279,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/html.git",
-                "reference": "243f71f062e60032db8153aa132900766543ace9"
+                "reference": "3b341b8d63c299246cb35882c04f5ad0e9a07ba5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/html/zipball/243f71f062e60032db8153aa132900766543ace9",
-                "reference": "243f71f062e60032db8153aa132900766543ace9",
+                "url": "https://api.github.com/repos/yiisoft/html/zipball/3b341b8d63c299246cb35882c04f5ad0e9a07ba5",
+                "reference": "3b341b8d63c299246cb35882c04f5ad0e9a07ba5",
                 "shasum": ""
             },
             "require": {
@@ -7295,7 +7295,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -7335,7 +7335,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:52:16+00:00"
+            "time": "2020-11-21T00:42:31+00:00"
         },
         {
             "name": "yiisoft/http",
@@ -7399,12 +7399,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/i18n.git",
-                "reference": "4ccc1e512b0f17067150ccdfcec720d19e983a0a"
+                "reference": "615671a3b7a4a12395b407d1861fe33ec22bd18b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/i18n/zipball/4ccc1e512b0f17067150ccdfcec720d19e983a0a",
-                "reference": "4ccc1e512b0f17067150ccdfcec720d19e983a0a",
+                "url": "https://api.github.com/repos/yiisoft/i18n/zipball/615671a3b7a4a12395b407d1861fe33ec22bd18b",
+                "reference": "615671a3b7a4a12395b407d1861fe33ec22bd18b",
                 "shasum": ""
             },
             "require": {
@@ -7455,7 +7455,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:52:00+00:00"
+            "time": "2020-11-21T00:46:52+00:00"
         },
         {
             "name": "yiisoft/i18n-message-php",
@@ -7463,12 +7463,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/translator-message-php.git",
-                "reference": "6d19d431bcd86d78e2920bf128d273e9b6d07a3c"
+                "reference": "96040d6b90447ca09799d88222315d0252b50b37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/translator-message-php/zipball/6d19d431bcd86d78e2920bf128d273e9b6d07a3c",
-                "reference": "6d19d431bcd86d78e2920bf128d273e9b6d07a3c",
+                "url": "https://api.github.com/repos/yiisoft/translator-message-php/zipball/96040d6b90447ca09799d88222315d0252b50b37",
+                "reference": "96040d6b90447ca09799d88222315d0252b50b37",
                 "shasum": ""
             },
             "require": {
@@ -7521,7 +7521,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T16:59:36+00:00"
+            "time": "2020-11-21T00:42:15+00:00"
         },
         {
             "name": "yiisoft/injector",
@@ -7651,12 +7651,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/log.git",
-                "reference": "577747bf0ffa0012d38a8b03b8acf2b288a25190"
+                "reference": "f2dd99071d51f6cb847dd537890e4c0450107f0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/log/zipball/577747bf0ffa0012d38a8b03b8acf2b288a25190",
-                "reference": "577747bf0ffa0012d38a8b03b8acf2b288a25190",
+                "url": "https://api.github.com/repos/yiisoft/log/zipball/f2dd99071d51f6cb847dd537890e4c0450107f0b",
+                "reference": "f2dd99071d51f6cb847dd537890e4c0450107f0b",
                 "shasum": ""
             },
             "require": {
@@ -7671,7 +7671,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "suggest": {
                 "yiisoft/log-target-db": "version ^3.0 for saving logs to the database",
@@ -7720,7 +7720,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T17:33:41+00:00"
+            "time": "2020-11-21T00:42:09+00:00"
         },
         {
             "name": "yiisoft/log-target-file",
@@ -7728,12 +7728,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/log-target-file.git",
-                "reference": "d4a9255e87592a8fffa93b5714ea45e8c7dc09dd"
+                "reference": "a8d1602ca6a381637ec1675106df35bee2c5a8b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/log-target-file/zipball/d4a9255e87592a8fffa93b5714ea45e8c7dc09dd",
-                "reference": "d4a9255e87592a8fffa93b5714ea45e8c7dc09dd",
+                "url": "https://api.github.com/repos/yiisoft/log-target-file/zipball/a8d1602ca6a381637ec1675106df35bee2c5a8b5",
+                "reference": "a8d1602ca6a381637ec1675106df35bee2c5a8b5",
                 "shasum": ""
             },
             "require": {
@@ -7744,7 +7744,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -7791,7 +7791,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T17:01:32+00:00"
+            "time": "2020-11-21T00:42:12+00:00"
         },
         {
             "name": "yiisoft/mailer",
@@ -7799,12 +7799,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/mailer.git",
-                "reference": "f953a8b61af48c362be422d9c3c40d2eccae05c1"
+                "reference": "10e3ddc2d4cd9ebb07f4b70fb87aad70d6990052"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/mailer/zipball/f953a8b61af48c362be422d9c3c40d2eccae05c1",
-                "reference": "f953a8b61af48c362be422d9c3c40d2eccae05c1",
+                "url": "https://api.github.com/repos/yiisoft/mailer/zipball/10e3ddc2d4cd9ebb07f4b70fb87aad70d6990052",
+                "reference": "10e3ddc2d4cd9ebb07f4b70fb87aad70d6990052",
                 "shasum": ""
             },
             "require": {
@@ -7816,7 +7816,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1",
+                "vimeo/psalm": "^4.2",
                 "yiisoft/di": "^3.0@dev",
                 "yiisoft/event-dispatcher": "^3.0@dev",
                 "yiisoft/log": "^3.0@dev"
@@ -7864,7 +7864,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T16:21:50+00:00"
+            "time": "2020-11-21T00:42:26+00:00"
         },
         {
             "name": "yiisoft/mailer-swiftmailer",
@@ -7872,12 +7872,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/mailer-swiftmailer.git",
-                "reference": "bfe712a0e3240efdfd27cae63803a0ecbe2ab4de"
+                "reference": "6a88e9c34cc66e6bdb83dd5ad5c8a39a26cde94d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/mailer-swiftmailer/zipball/bfe712a0e3240efdfd27cae63803a0ecbe2ab4de",
-                "reference": "bfe712a0e3240efdfd27cae63803a0ecbe2ab4de",
+                "url": "https://api.github.com/repos/yiisoft/mailer-swiftmailer/zipball/6a88e9c34cc66e6bdb83dd5ad5c8a39a26cde94d",
+                "reference": "6a88e9c34cc66e6bdb83dd5ad5c8a39a26cde94d",
                 "shasum": ""
             },
             "require": {
@@ -7888,7 +7888,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1",
+                "vimeo/psalm": "^4.2",
                 "yiisoft/di": "^3.0@dev",
                 "yiisoft/event-dispatcher": "^3.0@dev",
                 "yiisoft/log": "^3.0@dev"
@@ -7945,7 +7945,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T16:22:27+00:00"
+            "time": "2020-11-21T00:42:27+00:00"
         },
         {
             "name": "yiisoft/middleware-dispatcher",
@@ -7953,12 +7953,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/middleware-dispatcher.git",
-                "reference": "d448aac90eed89ca9463e53166f75d6d3f042654"
+                "reference": "8e3136196d69dde392017ab89ee18fa4bc6167a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/middleware-dispatcher/zipball/d448aac90eed89ca9463e53166f75d6d3f042654",
-                "reference": "d448aac90eed89ca9463e53166f75d6d3f042654",
+                "url": "https://api.github.com/repos/yiisoft/middleware-dispatcher/zipball/8e3136196d69dde392017ab89ee18fa4bc6167a1",
+                "reference": "8e3136196d69dde392017ab89ee18fa4bc6167a1",
                 "shasum": ""
             },
             "require": {
@@ -7972,7 +7972,7 @@
                 "nyholm/psr7": "^1.3",
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -8016,7 +8016,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T17:11:41+00:00"
+            "time": "2020-11-21T00:42:47+00:00"
         },
         {
             "name": "yiisoft/network-utilities",
@@ -8024,12 +8024,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/network-utilities.git",
-                "reference": "5730fd0326ce2aa21c342b437535294a1116ee19"
+                "reference": "ca4527e3badb87e10ba24befcce39b0a131f9232"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/network-utilities/zipball/5730fd0326ce2aa21c342b437535294a1116ee19",
-                "reference": "5730fd0326ce2aa21c342b437535294a1116ee19",
+                "url": "https://api.github.com/repos/yiisoft/network-utilities/zipball/ca4527e3badb87e10ba24befcce39b0a131f9232",
+                "reference": "ca4527e3badb87e10ba24befcce39b0a131f9232",
                 "shasum": ""
             },
             "require": {
@@ -8037,8 +8037,8 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
-                "roave/infection-static-analysis-plugin": "^1.3",
-                "vimeo/psalm": "^4.1"
+                "roave/infection-static-analysis-plugin": "^1.4",
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -8080,7 +8080,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:51:44+00:00"
+            "time": "2020-11-21T00:41:57+00:00"
         },
         {
             "name": "yiisoft/profiler",
@@ -8088,12 +8088,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/profiler.git",
-                "reference": "1e7458ea9d07991a9709818490ecf27b4b3fa390"
+                "reference": "eba0a05a8b183402e4465c8a01812a79887a6179"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/profiler/zipball/1e7458ea9d07991a9709818490ecf27b4b3fa390",
-                "reference": "1e7458ea9d07991a9709818490ecf27b4b3fa390",
+                "url": "https://api.github.com/repos/yiisoft/profiler/zipball/eba0a05a8b183402e4465c8a01812a79887a6179",
+                "reference": "eba0a05a8b183402e4465c8a01812a79887a6179",
                 "shasum": ""
             },
             "require": {
@@ -8145,7 +8145,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:51:42+00:00"
+            "time": "2020-11-21T00:41:54+00:00"
         },
         {
             "name": "yiisoft/proxy",
@@ -8153,12 +8153,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/proxy.git",
-                "reference": "60a9e31d694c328d165516de9d8b588f6cc209c6"
+                "reference": "785098c557654bc9dafb979e29773c55e5d67e79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/proxy/zipball/60a9e31d694c328d165516de9d8b588f6cc209c6",
-                "reference": "60a9e31d694c328d165516de9d8b588f6cc209c6",
+                "url": "https://api.github.com/repos/yiisoft/proxy/zipball/785098c557654bc9dafb979e29773c55e5d67e79",
+                "reference": "785098c557654bc9dafb979e29773c55e5d67e79",
                 "shasum": ""
             },
             "require": {
@@ -8206,7 +8206,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:51:35+00:00"
+            "time": "2020-11-21T00:41:46+00:00"
         },
         {
             "name": "yiisoft/request-body-parser",
@@ -8214,12 +8214,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/request-body-parser.git",
-                "reference": "20bc44953e723265e366e48be482a0de5fd72807"
+                "reference": "4943841f6010ddfc5dad8593ee680fb62b2f3c02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/request-body-parser/zipball/20bc44953e723265e366e48be482a0de5fd72807",
-                "reference": "20bc44953e723265e366e48be482a0de5fd72807",
+                "url": "https://api.github.com/repos/yiisoft/request-body-parser/zipball/4943841f6010ddfc5dad8593ee680fb62b2f3c02",
+                "reference": "4943841f6010ddfc5dad8593ee680fb62b2f3c02",
                 "shasum": ""
             },
             "require": {
@@ -8280,7 +8280,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T12:30:52+00:00"
+            "time": "2020-11-21T00:43:09+00:00"
         },
         {
             "name": "yiisoft/router",
@@ -8288,12 +8288,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/router.git",
-                "reference": "a759b786239b738706a9e6418ab9bf591d9a6bb5"
+                "reference": "ede99d0b02de9b0f642b55714d0dabde9be82034"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/router/zipball/a759b786239b738706a9e6418ab9bf591d9a6bb5",
-                "reference": "a759b786239b738706a9e6418ab9bf591d9a6bb5",
+                "url": "https://api.github.com/repos/yiisoft/router/zipball/ede99d0b02de9b0f642b55714d0dabde9be82034",
+                "reference": "ede99d0b02de9b0f642b55714d0dabde9be82034",
                 "shasum": ""
             },
             "require": {
@@ -8310,7 +8310,7 @@
                 "nyholm/psr7": "^1.3",
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -8355,7 +8355,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T12:44:23+00:00"
+            "time": "2020-11-21T00:42:44+00:00"
         },
         {
             "name": "yiisoft/router-fastroute",
@@ -8363,12 +8363,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/router-fastroute.git",
-                "reference": "62541dfef00271851da4cf6b9cc2db25359b5d7c"
+                "reference": "9648c1c6463726da0e9b5d1518a0dec838e79223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/router-fastroute/zipball/62541dfef00271851da4cf6b9cc2db25359b5d7c",
-                "reference": "62541dfef00271851da4cf6b9cc2db25359b5d7c",
+                "url": "https://api.github.com/repos/yiisoft/router-fastroute/zipball/9648c1c6463726da0e9b5d1518a0dec838e79223",
+                "reference": "9648c1c6463726da0e9b5d1518a0dec838e79223",
                 "shasum": ""
             },
             "require": {
@@ -8382,7 +8382,7 @@
                 "phpunit/phpunit": "^9.4",
                 "psr/container": "1.0",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -8427,7 +8427,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:52:29+00:00"
+            "time": "2020-11-21T00:42:45+00:00"
         },
         {
             "name": "yiisoft/security",
@@ -8500,12 +8500,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/serializer.git",
-                "reference": "047677251fefbdcd5bfd059f094e5f609e6c7073"
+                "reference": "7b6a39c41f9504b885988d83458fd87fee5bfaaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/serializer/zipball/047677251fefbdcd5bfd059f094e5f609e6c7073",
-                "reference": "047677251fefbdcd5bfd059f094e5f609e6c7073",
+                "url": "https://api.github.com/repos/yiisoft/serializer/zipball/7b6a39c41f9504b885988d83458fd87fee5bfaaf",
+                "reference": "7b6a39c41f9504b885988d83458fd87fee5bfaaf",
                 "shasum": ""
             },
             "require": {
@@ -8557,7 +8557,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T11:10:59+00:00"
+            "time": "2020-11-21T00:41:56+00:00"
         },
         {
             "name": "yiisoft/session",
@@ -8565,12 +8565,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/session.git",
-                "reference": "01caccc4fef8f1e017908b1ccbd6b84064e0fa7e"
+                "reference": "e6e0f43b52ae77116780b32e3439722e345cf476"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/session/zipball/01caccc4fef8f1e017908b1ccbd6b84064e0fa7e",
-                "reference": "01caccc4fef8f1e017908b1ccbd6b84064e0fa7e",
+                "url": "https://api.github.com/repos/yiisoft/session/zipball/e6e0f43b52ae77116780b32e3439722e345cf476",
+                "reference": "e6e0f43b52ae77116780b32e3439722e345cf476",
                 "shasum": ""
             },
             "require": {
@@ -8584,7 +8584,7 @@
             "require-dev": {
                 "nyholm/psr7": "^1.3",
                 "phpunit/phpunit": "^9.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -8628,7 +8628,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T10:27:51+00:00"
+            "time": "2020-11-21T00:42:48+00:00"
         },
         {
             "name": "yiisoft/strings",
@@ -8695,12 +8695,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/translator.git",
-                "reference": "fa99606d0465025e25eb4fbe003e65f6b11cb5e2"
+                "reference": "288f9dd462285ec6ec6f1017c677d13f744c4019"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/translator/zipball/fa99606d0465025e25eb4fbe003e65f6b11cb5e2",
-                "reference": "fa99606d0465025e25eb4fbe003e65f6b11cb5e2",
+                "url": "https://api.github.com/repos/yiisoft/translator/zipball/288f9dd462285ec6ec6f1017c677d13f744c4019",
+                "reference": "288f9dd462285ec6ec6f1017c677d13f744c4019",
                 "shasum": ""
             },
             "require": {
@@ -8708,10 +8708,9 @@
                 "psr/event-dispatcher": "1.0.0"
             },
             "require-dev": {
-                "phan/phan": "^3.0",
-                "phpunit/phpunit": "^9.3",
-                "roave/infection-static-analysis-plugin": "^1.3",
-                "vimeo/psalm": "^4.1"
+                "phpunit/phpunit": "^9.4",
+                "roave/infection-static-analysis-plugin": "^1.4",
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "type": "library",
@@ -8753,7 +8752,81 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:52:01+00:00"
+            "time": "2020-11-21T00:42:14+00:00"
+        },
+        {
+            "name": "yiisoft/user",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/user.git",
+                "reference": "bacc02479289e5b18d4a4cdc60e1055aa12b5699"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/user/zipball/bacc02479289e5b18d4a4cdc60e1055aa12b5699",
+                "reference": "bacc02479289e5b18d4a4cdc60e1055aa12b5699",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0",
+                "psr/event-dispatcher": "^1.0",
+                "psr/http-factory": "^1.0",
+                "psr/log": "^1.1",
+                "yiisoft/access": "^1.0",
+                "yiisoft/auth": "^1.0",
+                "yiisoft/cookies": "dev-master",
+                "yiisoft/session": "dev-master"
+            },
+            "require-dev": {
+                "infection/infection": "^0.20",
+                "nyholm/psr7": "^1.0",
+                "phpunit/phpunit": "^9.4",
+                "vimeo/psalm": "^4.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                },
+                "config-plugin": {
+                    "params": "config/params.php",
+                    "web": "config/web.php"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yiisoft\\User\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "homepage": "https://www.yiiframework.com/",
+            "keywords": [
+                "user",
+                "yiisoft"
+            ],
+            "support": {
+                "forum": "https://www.yiiframework.com/forum/",
+                "irc": "irc://irc.freenode.net/yii",
+                "issues": "https://github.com/yiisoft/user/issues?state=open",
+                "source": "https://github.com/yiisoft/user",
+                "wiki": "https://www.yiiframework.com/wiki/"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/yiisoft",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/yiisoft",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2020-11-21T10:59:18+00:00"
         },
         {
             "name": "yiisoft/validator",
@@ -8761,12 +8834,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/validator.git",
-                "reference": "6b54ae2ea221d8060aaffda31e72fa321c96da21"
+                "reference": "f2c50bdac04c0e259157c88b872407bc707259aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/validator/zipball/6b54ae2ea221d8060aaffda31e72fa321c96da21",
-                "reference": "6b54ae2ea221d8060aaffda31e72fa321c96da21",
+                "url": "https://api.github.com/repos/yiisoft/validator/zipball/f2c50bdac04c0e259157c88b872407bc707259aa",
+                "reference": "f2c50bdac04c0e259157c88b872407bc707259aa",
                 "shasum": ""
             },
             "require": {
@@ -8834,7 +8907,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:52:54+00:00"
+            "time": "2020-11-20T23:30:46+00:00"
         },
         {
             "name": "yiisoft/var-dumper",
@@ -8842,12 +8915,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/var-dumper.git",
-                "reference": "e5d48d58b69f869fa62d84916e1c4907ff86ec18"
+                "reference": "8e8c41ef0ea6943ea2b9e30e4f5298984ad7d703"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/var-dumper/zipball/e5d48d58b69f869fa62d84916e1c4907ff86ec18",
-                "reference": "e5d48d58b69f869fa62d84916e1c4907ff86ec18",
+                "url": "https://api.github.com/repos/yiisoft/var-dumper/zipball/8e8c41ef0ea6943ea2b9e30e4f5298984ad7d703",
+                "reference": "8e8c41ef0ea6943ea2b9e30e4f5298984ad7d703",
                 "shasum": ""
             },
             "require": {
@@ -8858,7 +8931,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1",
+                "vimeo/psalm": "^4.2",
                 "yiisoft/composer-config-plugin": "^1.0@dev"
             },
             "default-branch": true,
@@ -8902,7 +8975,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T20:51:29+00:00"
+            "time": "2020-11-20T23:38:34+00:00"
         },
         {
             "name": "yiisoft/view",
@@ -8910,12 +8983,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/view.git",
-                "reference": "0077d43ba76625295068b95a9de510f37d86a6ae"
+                "reference": "99d11ef5a3c87052f98dd5706fb515d3d4ec2fcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/view/zipball/0077d43ba76625295068b95a9de510f37d86a6ae",
-                "reference": "0077d43ba76625295068b95a9de510f37d86a6ae",
+                "url": "https://api.github.com/repos/yiisoft/view/zipball/99d11ef5a3c87052f98dd5706fb515d3d4ec2fcb",
+                "reference": "99d11ef5a3c87052f98dd5706fb515d3d4ec2fcb",
                 "shasum": ""
             },
             "require": {
@@ -8934,7 +9007,7 @@
                 "phpunit/phpunit": "^9.4",
                 "psr/container": "1.0.0",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1",
+                "vimeo/psalm": "^4.2",
                 "yiisoft/aliases": "^1.1",
                 "yiisoft/cache": "^3.0@dev",
                 "yiisoft/di": "^3.0@dev",
@@ -8983,7 +9056,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T12:39:51+00:00"
+            "time": "2020-11-21T00:42:51+00:00"
         },
         {
             "name": "yiisoft/widget",
@@ -8991,12 +9064,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/widget.git",
-                "reference": "e971b4c8922624146a026f15d1507976f404ed38"
+                "reference": "0dcb5e6e9e69a64dc8ff2c99657eabefb9df43a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/widget/zipball/e971b4c8922624146a026f15d1507976f404ed38",
-                "reference": "e971b4c8922624146a026f15d1507976f404ed38",
+                "url": "https://api.github.com/repos/yiisoft/widget/zipball/0dcb5e6e9e69a64dc8ff2c99657eabefb9df43a1",
+                "reference": "0dcb5e6e9e69a64dc8ff2c99657eabefb9df43a1",
                 "shasum": ""
             },
             "require": {
@@ -9052,7 +9125,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:52:34+00:00"
+            "time": "2020-11-21T00:42:52+00:00"
         },
         {
             "name": "yiisoft/yii-bulma",
@@ -9060,12 +9133,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii-bulma.git",
-                "reference": "09a7f037a01a3775d873159211d444dbe27e5bc7"
+                "reference": "70ae2e11a529eec417ea6b4c4edac177eafe05fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii-bulma/zipball/09a7f037a01a3775d873159211d444dbe27e5bc7",
-                "reference": "09a7f037a01a3775d873159211d444dbe27e5bc7",
+                "url": "https://api.github.com/repos/yiisoft/yii-bulma/zipball/70ae2e11a529eec417ea6b4c4edac177eafe05fb",
+                "reference": "70ae2e11a529eec417ea6b4c4edac177eafe05fb",
                 "shasum": ""
             },
             "require": {
@@ -9133,7 +9206,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T09:26:49+00:00"
+            "time": "2020-11-21T00:43:03+00:00"
         },
         {
             "name": "yiisoft/yii-console",
@@ -9141,12 +9214,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii-console.git",
-                "reference": "ddf59a678db4e7da63c7fd474db8bc9be357cb87"
+                "reference": "a6473aa4c85ad04a2e6c65d282954dcfb6b6bbff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii-console/zipball/ddf59a678db4e7da63c7fd474db8bc9be357cb87",
-                "reference": "ddf59a678db4e7da63c7fd474db8bc9be357cb87",
+                "url": "https://api.github.com/repos/yiisoft/yii-console/zipball/a6473aa4c85ad04a2e6c65d282954dcfb6b6bbff",
+                "reference": "a6473aa4c85ad04a2e6c65d282954dcfb6b6bbff",
                 "shasum": ""
             },
             "require": {
@@ -9163,7 +9236,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1"
+                "vimeo/psalm": "^4.2"
             },
             "default-branch": true,
             "bin": [
@@ -9218,7 +9291,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T15:56:42+00:00"
+            "time": "2020-11-21T00:42:33+00:00"
         },
         {
             "name": "yiisoft/yii-cycle",
@@ -9226,12 +9299,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii-cycle.git",
-                "reference": "38c8c760c033c343093f184926cec365ae85a8db"
+                "reference": "7dc9bb5329db20130cafde98dd9985f04b980ce9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii-cycle/zipball/38c8c760c033c343093f184926cec365ae85a8db",
-                "reference": "38c8c760c033c343093f184926cec365ae85a8db",
+                "url": "https://api.github.com/repos/yiisoft/yii-cycle/zipball/7dc9bb5329db20130cafde98dd9985f04b980ce9",
+                "reference": "7dc9bb5329db20130cafde98dd9985f04b980ce9",
                 "shasum": ""
             },
             "require": {
@@ -9250,7 +9323,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1",
+                "vimeo/psalm": "^4.2",
                 "yiisoft/test-support": "^3.0@dev"
             },
             "default-branch": true,
@@ -9300,7 +9373,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:52:28+00:00"
+            "time": "2020-11-21T01:00:20+00:00"
         },
         {
             "name": "yiisoft/yii-debug",
@@ -9308,12 +9381,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii-debug.git",
-                "reference": "8cab53e17094c8893f71fc5e3e9b993271255c9a"
+                "reference": "0e02a716a5d1962e6b3ffe8b96f61fe9af427c64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii-debug/zipball/8cab53e17094c8893f71fc5e3e9b993271255c9a",
-                "reference": "8cab53e17094c8893f71fc5e3e9b993271255c9a",
+                "url": "https://api.github.com/repos/yiisoft/yii-debug/zipball/0e02a716a5d1962e6b3ffe8b96f61fe9af427c64",
+                "reference": "0e02a716a5d1962e6b3ffe8b96f61fe9af427c64",
                 "shasum": ""
             },
             "require": {
@@ -9393,7 +9466,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T19:05:20+00:00"
+            "time": "2020-11-21T00:42:58+00:00"
         },
         {
             "name": "yiisoft/yii-event",
@@ -9401,12 +9474,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii-event.git",
-                "reference": "34a30310be751c09814ae851c166bbf763fbe311"
+                "reference": "e159d4d09014df9e8af0325331ff6eb2e23a6e2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii-event/zipball/34a30310be751c09814ae851c166bbf763fbe311",
-                "reference": "34a30310be751c09814ae851c166bbf763fbe311",
+                "url": "https://api.github.com/repos/yiisoft/yii-event/zipball/e159d4d09014df9e8af0325331ff6eb2e23a6e2f",
+                "reference": "e159d4d09014df9e8af0325331ff6eb2e23a6e2f",
                 "shasum": ""
             },
             "require": {
@@ -9419,7 +9492,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.4",
                 "roave/infection-static-analysis-plugin": "^1.4",
-                "vimeo/psalm": "^4.1",
+                "vimeo/psalm": "^4.2",
                 "yiisoft/test-support": "3.0.x-dev"
             },
             "default-branch": true,
@@ -9432,6 +9505,14 @@
                     "common": "config/common.php",
                     "console": "config/console.php",
                     "events": "config/events.php",
+                    "events-web": [
+                        "$events",
+                        "config/events-web.php"
+                    ],
+                    "events-console": [
+                        "$events",
+                        "config/events-console.php"
+                    ],
                     "web": "config/web.php"
                 }
             },
@@ -9467,7 +9548,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-19T17:36:24+00:00"
+            "time": "2020-11-21T00:41:52+00:00"
         },
         {
             "name": "yiisoft/yii-filesystem",
@@ -9475,12 +9556,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii-filesystem.git",
-                "reference": "550f21e95eca8d8f4639d4b3dd5b1abe6b03982a"
+                "reference": "de08518624a2083dda67ae6aa7b556558e739c88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii-filesystem/zipball/550f21e95eca8d8f4639d4b3dd5b1abe6b03982a",
-                "reference": "550f21e95eca8d8f4639d4b3dd5b1abe6b03982a",
+                "url": "https://api.github.com/repos/yiisoft/yii-filesystem/zipball/de08518624a2083dda67ae6aa7b556558e739c88",
+                "reference": "de08518624a2083dda67ae6aa7b556558e739c88",
                 "shasum": ""
             },
             "require": {
@@ -9538,7 +9619,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T18:52:49+00:00"
+            "time": "2020-11-21T00:43:07+00:00"
         },
         {
             "name": "yiisoft/yii-view",
@@ -9546,12 +9627,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii-view.git",
-                "reference": "ddbb15baefdd18daaea00ea1a5b1b2e007b82f95"
+                "reference": "4296f27a27af10b0f045ac894903d1c1b1b00a88"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii-view/zipball/ddbb15baefdd18daaea00ea1a5b1b2e007b82f95",
-                "reference": "ddbb15baefdd18daaea00ea1a5b1b2e007b82f95",
+                "url": "https://api.github.com/repos/yiisoft/yii-view/zipball/4296f27a27af10b0f045ac894903d1c1b1b00a88",
+                "reference": "4296f27a27af10b0f045ac894903d1c1b1b00a88",
                 "shasum": ""
             },
             "require": {
@@ -9616,7 +9697,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T14:20:44+00:00"
+            "time": "2020-11-21T00:42:52+00:00"
         },
         {
             "name": "yiisoft/yii-web",
@@ -9624,12 +9705,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii-web.git",
-                "reference": "a8c9a04ee8f2b388718aa0619ecb86ca2d9e1262"
+                "reference": "e986249c58b2191283139bc1093328a94e43ab34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii-web/zipball/a8c9a04ee8f2b388718aa0619ecb86ca2d9e1262",
-                "reference": "a8c9a04ee8f2b388718aa0619ecb86ca2d9e1262",
+                "url": "https://api.github.com/repos/yiisoft/yii-web/zipball/e986249c58b2191283139bc1093328a94e43ab34",
+                "reference": "e986249c58b2191283139bc1093328a94e43ab34",
                 "shasum": ""
             },
             "require": {
@@ -9718,7 +9799,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-11-18T19:04:55+00:00"
+            "time": "2020-11-21T00:42:50+00:00"
         }
     ],
     "packages-dev": [
@@ -11600,12 +11681,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "d50c04efe771797b10510188c4fbd11ee9fb1bdc"
+                "reference": "44d202bbcf2339adf2941bf629cecfde4f58c35d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/d50c04efe771797b10510188c4fbd11ee9fb1bdc",
-                "reference": "d50c04efe771797b10510188c4fbd11ee9fb1bdc",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/44d202bbcf2339adf2941bf629cecfde4f58c35d",
+                "reference": "44d202bbcf2339adf2941bf629cecfde4f58c35d",
                 "shasum": ""
             },
             "conflict": {
@@ -11733,7 +11814,7 @@
                 "phpfastcache/phpfastcache": ">=5,<5.0.13",
                 "phpmailer/phpmailer": "<6.1.6",
                 "phpmussel/phpmussel": ">=1,<1.6",
-                "phpmyadmin/phpmyadmin": "<4.9.2",
+                "phpmyadmin/phpmyadmin": "<4.9.6|>=5,<5.0.3",
                 "phpoffice/phpexcel": "<1.8.2",
                 "phpoffice/phpspreadsheet": "<1.8",
                 "phpunit/phpunit": ">=4.8.19,<4.8.28|>=5.0.10,<5.6.3",
@@ -11909,7 +11990,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-19T14:02:08+00:00"
+            "time": "2020-11-20T09:02:03+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -13297,16 +13378,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "4.1.1",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "16bfbd9224698bd738c665f33039fade2a1a3977"
+                "reference": "ea9cb72143b77e7520c52fa37290bd8d8bc88fd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/16bfbd9224698bd738c665f33039fade2a1a3977",
-                "reference": "16bfbd9224698bd738c665f33039fade2a1a3977",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/ea9cb72143b77e7520c52fa37290bd8d8bc88fd9",
+                "reference": "ea9cb72143b77e7520c52fa37290bd8d8bc88fd9",
                 "shasum": ""
             },
             "require": {
@@ -13396,9 +13477,9 @@
             ],
             "support": {
                 "issues": "https://github.com/vimeo/psalm/issues",
-                "source": "https://github.com/vimeo/psalm/tree/4.1.1"
+                "source": "https://github.com/vimeo/psalm/tree/4.2.1"
             },
-            "time": "2020-11-02T05:54:12+00:00"
+            "time": "2020-11-20T14:56:53+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -13508,6 +13589,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "yiisoft/assets": 20,
+        "yiisoft/user": 20,
         "yiisoft/cache": 20,
         "yiisoft/cache-file": 20,
         "yiisoft/composer-config-plugin": 20,

@@ -6,8 +6,8 @@ namespace App\Api\External\Controller;
 
 use App\Api\External\Exception\HttpException;
 use App\Module\Link\Api\UserLinkService;
-use App\Module\Link\Domain\Validation\CreateLinkForm;
-use App\Module\Link\Domain\Validation\FindLinkForm;
+use App\Api\Common\Form\CreateLinkForm;
+use App\Api\Common\Form\FindLinkForm;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Form\FormModel;
 use Yiisoft\Http\Status;
@@ -24,7 +24,7 @@ final class LinkController extends ApiController
 
     public function post(UserLinkService $service, ServerRequestInterface $request, CreateLinkForm $form): void
     {
-        $this->validateLinkForm($form, $request->getParsedBody());
+        $this->validateLinkForm($form, (array)$request->getParsedBody());
         $service->createLink($form, $this->getIdentityFromRequest($request));
     }
 
@@ -36,7 +36,7 @@ final class LinkController extends ApiController
 
     private function validateLinkForm(FormModel $form, array $data): void
     {
-        $form->setAttributes($data);
+        $form->load($data);
         if (!$form->validate()) {
             throw new HttpException(Status::BAD_REQUEST, current($form->firstErrors()));
         }

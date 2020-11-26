@@ -24,6 +24,7 @@
         "yiisoft/aliases": "^1.1",
         "yiisoft/assets": "@dev",
         "yiisoft/auth": "^1.0",
+        "yiisoft/user": "^3.0@dev",
         "yiisoft/cache": "@dev",
         "yiisoft/cache-file": "@dev",
         "yiisoft/composer-config-plugin": "^1.0@dev",
@@ -77,17 +78,23 @@
         },
         "config-plugin-output-dir": "runtime/build/config",
         "config-plugin": {
-            "common": "config/common/*.php",
+            "common": [
+                "src/Module/*/Config/common.php",
+                "config/common/*.php"
+            ],
             "params": [
                 "config/params.php",
+                "src/Module/*/Config/params.php",
                 "?config/params-local.php"
             ],
             "web": [
                 "$common",
+                "src/Module/*/Config/web.php",
                 "config/web/*.php"
             ],
             "console": [
                 "$common",
+                "src/Module/*/Config/console.php",
                 "config/console/*.php"
             ],
             "providers": "config/providers.php",
@@ -99,13 +106,18 @@
                 "$providers",
                 "config/providers-console.php"
             ],
-            "events": "config/events.php",
+            "events": [
+                "src/Module/*/Config/events.php",
+                "config/events.php"
+            ],
             "events-web": [
                 "$events",
+                "src/Module/*/Config/events-web.php",
                 "config/events-web.php"
             ],
             "events-console": [
                 "$events",
+                "src/Module/*/Config/events-console.php",
                 "config/events-console.php"
             ],
             "routes": "config/routes.php",

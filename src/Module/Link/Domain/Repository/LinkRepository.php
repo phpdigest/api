@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace App\Module\Link\Domain\Repository;
 
-use App\Common\Domain\Entity\Identity;
+use App\Common\Domain\BaseRepository;
 use App\Module\Link\Domain\Entity\Link;
+use App\Module\User\Domain\Entity\Identity;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Select;
 use Cycle\ORM\Transaction;
 
 /**
- * @method Link findOne($scope)
+ * @method Link findOne(array $scope = [])
  * @method Link findByPK($id)
  */
-final class LinkRepository extends Select\Repository
+final class LinkRepository extends BaseRepository
 {
     private ORMInterface $orm;
 

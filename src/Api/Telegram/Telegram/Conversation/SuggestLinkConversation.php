@@ -69,7 +69,7 @@ final class SuggestLinkConversation extends Conversation
         });
     }
 
-    public function run()
+    public function run(): void
     {
         $this->askLink();
     }

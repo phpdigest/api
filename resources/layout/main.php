@@ -12,6 +12,8 @@ use Yiisoft\Html\Html;
  * @var Yiisoft\Assets\AssetManager $assetManager
  * @var Yiisoft\View\WebView $this
  * @var string $content
+ * @var \Yiisoft\Auth\IdentityInterface $user
+ * @var string $csrf
  */
 
 $assetManager->register([
@@ -21,24 +23,25 @@ $assetManager->register([
 
 $this->setCssFiles($assetManager->getCssFiles());
 $this->setJsFiles($assetManager->getJsFiles());
-?>
-<?php $this->beginPage() ?>
-<!DOCTYPE html>
+
+$this->beginPage()
+
+?><!DOCTYPE html>
 <html lang="<?= Html::encode($applicationParameters->getLanguage()) ?>">
     <?= $this->render('_head') ?>
     <?php $this->beginBody() ?>
         <body>
-            <section class="hero is-fullheight is-light">
+            <section class="hero is-fullheight is-dark">
                 <div class="hero-head has-background-black">
-                    <?= $this->render('_menu') ?>
+                    <?= $this->render('_menu', ['user' => $user, 'csrf' => $csrf]) ?>
                 </div>
                 <?= FlashMessage::widget() ?>
-                <div class="hero-body is-light">
+                <div class="hero-body">
                     <div class="container has-text-centered">
                         <?= $content ?>
                     </div>
                 </div>
-                <div class="hero-footer has-background-black">
+                <div class="hero-footer has-background-black is-dark">
                     <?= $this->render('_footer') ?>
                 </div>
             </section>

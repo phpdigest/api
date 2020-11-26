@@ -5,8 +5,7 @@ declare(strict_types=1);
 use App\Api\External\Controller\LinkController;
 use App\Api\External\Controller\UserController;
 use App\Api\Telegram\Controller\WebhookAction;
-use App\Api\UI\Controller\ContactController;
-use App\Api\UI\Controller\SiteController;
+use App\Api\UI;
 use roxblnfk\SmartStream\Middleware\BucketStreamMiddleware;
 use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\Csrf\CsrfMiddleware;
@@ -14,18 +13,31 @@ use Yiisoft\Http\Method;
 use Yiisoft\Request\Body\RequestBodyParser;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
+use Yiisoft\Session\SessionMiddleware;
+use Yiisoft\User\AutoLoginMiddleware;
 
 return [
     // UI
     Group::create(
         '',
         [
-            Route::get('/', [SiteController::class, 'index'])->name('site/index'),
-            Route::get('/about', [SiteController::class, 'about'])->name('site/about'),
-            Route::methods([Method::GET, Method::POST], '/contact', [ContactController::class, 'contact'])
-                ->name('contact/form'),
+            Route::get('/', [UI\Controller\SiteController::class, 'index'])->name('site/index'),
+            Route::get('/tables', [UI\Controller\SiteController::class, 'tables'])->name('data/tables'),
+            Route::methods([Method::GET, Method::POST], '/register', [UI\Controller\UserController::class, 'register'])
+                ->name('user/register'),
+            Route::methods([Method::GET, Method::POST], '/login', [UI\Controller\UserController::class, 'login'])
+                ->name('user/login'),
+            Route::post('/logout', [UI\Controller\UserController::class, 'logout'])
+                ->name('user/logout'),
+            Route::get('/link', [UI\Controller\LinkController::class, 'form'])
+                ->name('link/form'),
+            Route::post('/link', [UI\Controller\LinkController::class, 'share'])
+                ->name('link/share'),
         ]
-    )->addMiddleware(CsrfMiddleware::class),
+    )
+        // ->addMiddleware(AutoLoginMiddleware::class)
+        ->addMiddleware(SessionMiddleware::class)
+        ->addMiddleware(CsrfMiddleware::class),
 
     // External API
     Group::create(

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Module\Link\Service;
 
-use App\Common\Domain\Entity\Identity;
 use App\Common\Domain\Exception\EntityNotFound;
 use App\Module\Link\Api\UserLinkService;
+use App\Module\User\Domain\Entity\Identity;
 use App\Module\Link\Domain\Entity\Link;
-use App\Module\Link\Domain\Validation\CreateLinkForm;
+use App\Api\Common\Form\CreateLinkForm;
 use App\Module\Link\Domain\Repository\LinkRepository;
 
 final class UserLink implements UserLinkService

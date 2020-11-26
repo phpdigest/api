@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Module\Link\Domain\Entity;
 
-use App\Common\Domain\Entity\Identity;
+use App\Module\User\Domain\Entity\Identity;
 use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Relation\BelongsTo;
@@ -48,7 +48,7 @@ class Link
     private DateTimeImmutable $updated_at;
 
     /**
-     * @BelongsTo(target="App\Common\Domain\Entity\Identity", nullable=false)
+     * @BelongsTo(target="App\Module\User\Domain\Entity\Identity", nullable=false)
      */
     private ?Identity $identity = null;
 

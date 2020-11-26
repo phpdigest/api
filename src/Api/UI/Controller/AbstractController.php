@@ -13,27 +13,21 @@ use Yiisoft\Yii\View\ViewRenderer;
 
 use function array_merge;
 
-abstract class AbstractController implements ViewContextInterface
+abstract class AbstractController
 {
     private ViewRenderer $webView;
-    protected Aliases $aliases;
     protected DataResponseFactoryInterface $responseFactory;
 
     public function __construct(
-        Aliases $aliases,
         DataResponseFactoryInterface $responseFactory,
         ViewRenderer $webView
     ) {
-        $this->aliases = $aliases;
         $this->responseFactory = $responseFactory;
         $this->webView = $webView;
     }
 
     protected function render(string $view, array $parameters = []): ResponseInterface
     {
-        return $this->webView->withCsrf()
-                             ->render($view, $parameters);
+        return $this->webView->render($view, $parameters);
     }
-
-    abstract public function getViewPath(): string;
 }

@@ -7,8 +7,8 @@ namespace App\Api\External\Controller;
 use App\Api\External\Data\ApiBucket;
 use App\Api\External\Data\ErrorBucket;
 use App\Api\External\Exception\HttpException;
-use App\Common\Domain\Entity\Identity;
 use App\Common\Domain\Exception\EntityNotFound;
+use App\Module\User\Domain\Entity\Identity;
 use ErrorException;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -67,6 +67,9 @@ abstract class ApiController implements MiddlewareInterface
         return $bucket;
     }
 
+    /**
+     * @param mixed $data
+     */
     protected function prepareResponse($data, ?ServerRequestInterface $request = null): ResponseInterface
     {
         if ($data instanceof ResponseInterface) {
@@ -96,11 +99,11 @@ abstract class ApiController implements MiddlewareInterface
 
     protected function getIdentityFromRequest(ServerRequestInterface $request): Identity
     {
-        /**
-         * @var Identity $identity
-         */
+        /** @var Identity $identity */
         $identity = $request->getAttribute(Authentication::class);
-
+        if (!$identity instanceof Identity) {
+            throw new HttpException(Status::NOT_FOUND, 'User not found.');
+        }
         return $identity;
     }
 }

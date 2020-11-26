@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Telegram\Helper;
 
-use App\Module\Link\Domain\Validation\Rules\UrlRule;
+use App\Api\Common\Form\Validation\UrlRule;
 
 final class UrlHelper
 {

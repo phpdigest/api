@@ -4,7 +4,7 @@
         <a class="is-hidden-mobile" href="https://www.yiiframework.com/" target="_blank" rel="noopener">
             Yii Framework - <?= date('Y') ?>
         </a>
-        <a class="is-hidden-desktop is-size-6" href="https://www.yiiframework.com/" target="_blank" rel="noopener">
+        <a class="is-hidden-tablet is-size-6" href="https://www.yiiframework.com/" target="_blank" rel="noopener">
             Yii Framework
         </a>
     </div>

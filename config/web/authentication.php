@@ -6,6 +6,7 @@ use App\Common\Application\AuthRequestErrorHandler;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Yiisoft\Auth\AuthenticationMethodInterface;
+use Yiisoft\Auth\Method\HttpHeader;
 use Yiisoft\Auth\Middleware\Authentication;
 
 return [
@@ -15,5 +16,8 @@ return [
             $container->get(ResponseFactoryInterface::class),
             $container->get(AuthRequestErrorHandler::class)
         );
-    }
+    },
+
+    AuthenticationMethodInterface::class => static fn (ContainerInterface $container)
+        => $container->get(HttpHeader::class)->withHeaderName('Authorization'),
 ];
