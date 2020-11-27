@@ -9,6 +9,7 @@ use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
 use Cycle\Annotated\Annotation\Relation\BelongsTo;
 use Cycle\Annotated\Annotation\Table;
+use Cycle\ORM\Promise\Reference;
 use DateTimeImmutable;
 
 
@@ -48,9 +49,10 @@ class Link
     private DateTimeImmutable $updated_at;
 
     /**
+     * @var null|Identity|Reference
      * @BelongsTo(target="App\Module\User\Domain\Entity\Identity", nullable=false)
      */
-    private ?Identity $identity = null;
+    private $identity = null;
 
     private ?int $identity_id = null;
 
