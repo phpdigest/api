@@ -15,47 +15,42 @@ use DateTimeImmutable;
  * @psalm-internal App\Module\User
  *
  * @Entity(
- *     role="user_account",
- *     repository="App\Module\User\Domain\Repository\AccountRepository",
- *     mapper="Yiisoft\Yii\Cycle\Mapper\TimestampedMapper"
+ *     role="user_token",
+ *     repository="App\Module\User\Domain\Repository\IdentityTokenRepository",
+ *     mapper="App\Module\User\Domain\Mapper\TokenMapper"
  * )
  * @Table(
  *     indexes={
- *         @Index(columns={"login"}, unique=true),
- *         @Index(columns={"identity_id"}, unique=true)
+ *         @Index(columns={"type", "token"}, unique=true)
  *     }
  * )
  */
-class Account
+class Token
 {
+    public const TYPE_WEB = 'web';
+    public const TYPE_TELEGRAM = 'telegram';
+
     /**
      * @Column(type="primary")
-     *
-     * @psalm-readonly
      */
     public ?int $id = null;
 
     /**
-     * @Column(type="string(48)")
-     */
-    public string $login;
-
-    /**
      * @Column(type="string")
      */
-    public string $passwordHash;
+    public string $token;
 
     /**
-     * Annotations for this field placed in a mapper class
+     * @Column(type="string(16)")
+     */
+    public string $type;
+
+    /**
+     * Annotations for this field placed in a mapper class {@see \App\Module\User\Domain\Mapper\TokenMapper}
      *
      * @psalm-readonly
      */
     public DateTimeImmutable $created_at;
-
-    /**
-     * Annotations for this field placed in a mapper class
-     */
-    public DateTimeImmutable $updated_at;
 
     /**
      * @BelongsTo(target="App\Module\User\Domain\Entity\Identity", load="eager")
@@ -65,11 +60,10 @@ class Account
     /** @see Identity::$id */
     public ?int $identity_id = null;
 
-    public function __construct(string $login, string $passwordHash)
+    public function __construct(string $token, string $type)
     {
-        $this->login = $login;
-        $this->passwordHash = $passwordHash;
+        $this->token = $token;
+        $this->type = $type;
         $this->created_at = new DateTimeImmutable();
-        $this->updated_at = new DateTimeImmutable();
     }
 }

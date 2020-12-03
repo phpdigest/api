@@ -48,7 +48,7 @@ final class AccountService implements AuthClassic, RegisterClassic
      */
     public function register(string $login, string $password): Identity
     {
-        $identity = $this->identityService->prepareIdentity([]);
+        $identity = $this->identityService->prepareIdentity();
         $account = $this->prepareAccount($identity, $login, $password);
         $this->entityWriter->write([$identity, $account]);
         return $identity;

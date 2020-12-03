@@ -4,22 +4,30 @@ declare(strict_types=1);
 
 namespace App\Api\Telegram\Telegram\Conversation;
 
-use App\Api\Telegram\Helper\UrlHelper;
+use App\Api\Common\Form\CreateLinkForm;
+use App\Api\Telegram\Helper\FormMaker;
+use App\Api\Telegram\Helper\TgIdentityService;
+use App\Module\Link\Api\UserLinkService;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
 
 final class SuggestLinkConversation extends Conversation
 {
     protected string $link = '';
-
     protected string $description = '';
 
-    protected UrlHelper $urlHelper;
+    private FormMaker $formMaker;
+    private UserLinkService $userLinkService;
+    private TgIdentityService $identityService;
 
     public function __construct(
-        UrlHelper $urlValidator
+        FormMaker $formMaker,
+        UserLinkService $userLinkService,
+        TgIdentityService $identityService
     ) {
-        $this->urlHelper = $urlValidator;
+        $this->formMaker = $formMaker;
+        $this->userLinkService = $userLinkService;
+        $this->identityService = $identityService;
     }
 
     public function askLink(): void
@@ -27,11 +35,12 @@ final class SuggestLinkConversation extends Conversation
         $str = 'Введите ссылку';
 
         $this->ask($str, function (Answer $answer) {
-            $this->link = $this->urlHelper->normalize($answer->getText());
+            $this->link = $answer->getText();
 
-            if (!$this->urlHelper->validate($this->link)) {
-                $this->say('Ошибка. Ссылка не распознана.');
+            $form = $this->formMaker->makeForm($this->link, $this->description);
 
+            if (!$form->validate() && $form->hasErrors(CreateLinkForm::FIELD_URL)) {
+                $this->say($form->firstError(CreateLinkForm::FIELD_URL));
                 return;
             }
 
@@ -46,26 +55,45 @@ final class SuggestLinkConversation extends Conversation
         Можно добавлять ссылки и/или произвольный текст. Максимальная длина сообщения - 300 символов.
         TEXT;
         $this->ask($str, function (Answer $answer) {
-            $this->description = $answer->getText();
+            try {
+                $this->description = $answer->getText();
 
-            $this->say('Спасибо. Мы обработаем ваше предложение.');
+                $form = $this->formMaker->makeForm($this->link, $this->description);
+                if (!$form->validate()) {
+                    $this->say(implode("\n", $form->firstErrors()));
+                    return;
+                }
 
-            $quote = <<<MARKDOWN
-            Ссылка: `{$this->link}`
+                $this->say('Спасибо. Мы обработаем ваше предложение.');
 
-            Описание:
-            ```
-            {$this->description}
-            ```
-            MARKDOWN;
+                // get or create identity
+                $identity = $this->identityService->getIdentity((string)$this->getBot()->getUser()->getId());
 
-            /**
-             * TODO: Вызвать сохранение ссылки.
-             */
+                // create link
+                $this->userLinkService->createLink($form, $identity);
 
-            $this->say($quote, [
-                'parse_mode' => 'Markdown',
-            ]);
+                $this->say(
+                    <<<MARKDOWN
+                        Ссылка: `{$this->link}`
+                        Описание:
+                        ```
+                        {$this->description}
+                        ```
+                        MARKDOWN,
+                    ['parse_mode' => 'Markdown']
+                );
+            } catch (\Throwable $e) {
+                $this->say(
+                    <<<ERROR
+                        Error {$e->getCode()}
+                        `{$e->getFile()}:{$e->getLine()}`
+                        ```
+                        {$e->getMessage()}
+                        ```
+                        ERROR,
+                    ['parse_mode' => 'Markdown']
+                );
+            }
         });
     }
 

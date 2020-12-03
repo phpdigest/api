@@ -14,7 +14,11 @@ use Yiisoft\Auth\IdentityInterface;
 /**
  * @psalm-internal App\Module\User
  *
- * @Entity(repository="App\Module\User\Domain\Repository\IdentityRepository", mapper="Yiisoft\Yii\Cycle\Mapper\TimestampedMapper")
+ * @Entity(
+ *     role="user_identity",
+ *     repository="App\Module\User\Domain\Repository\IdentityRepository",
+ *     mapper="Yiisoft\Yii\Cycle\Mapper\TimestampedMapper"
+ * )
  * @Table(
  *     indexes={
  *         @Index(columns={"token"}, unique=true)
@@ -25,16 +29,22 @@ class Identity implements IdentityInterface
 {
     /**
      * @Column(type="primary")
+     *
+     * @psalm-readonly
      */
     public ?int $id = null;
 
     /**
      * @Column(type="string(128)")
+     *
+     * @psalm-readonly
      */
     public string $token;
 
     /**
      * Annotations for this field placed in a mapper class
+     *
+     * @psalm-readonly
      */
     public DateTimeImmutable $created_at;
 

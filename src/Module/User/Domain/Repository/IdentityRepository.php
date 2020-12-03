@@ -6,6 +6,7 @@ namespace App\Module\User\Domain\Repository;
 
 use App\Common\Domain\BaseRepository;
 use App\Module\User\Domain\Entity\Identity;
+use Cycle\ORM\Select;
 use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
 
@@ -14,6 +15,13 @@ use Yiisoft\Auth\IdentityRepositoryInterface;
  */
 class IdentityRepository extends BaseRepository implements IdentityRepositoryInterface
 {
+    private IdentityTokenRepository $identityTokenRepository;
+
+    public function __construct(Select $select, IdentityTokenRepository $identityTokenRepository) {
+        parent::__construct($select);
+        $this->identityTokenRepository = $identityTokenRepository;
+    }
+
     private function findIdentityBy(string $field, string $value): ?Identity
     {
         /** @var null|Identity $identity */
@@ -30,6 +38,6 @@ class IdentityRepository extends BaseRepository implements IdentityRepositoryInt
 
     public function findIdentityByToken(string $token, string $type = null): ?IdentityInterface
     {
-        return $this->findIdentityBy('token', $token);
+        return $this->identityTokenRepository->findIdentityByToken($token, $type);
     }
 }

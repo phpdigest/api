@@ -11,7 +11,7 @@ use Cycle\Annotated\Annotation\Relation\BelongsTo;
 use Cycle\Annotated\Annotation\Table;
 use Cycle\ORM\Promise\Reference;
 use DateTimeImmutable;
-
+use Yiisoft\Auth\IdentityInterface;
 
 /**
  * @Entity(
@@ -50,6 +50,7 @@ class Link
 
     /**
      * @var null|Identity|Reference
+     * @psalm-var null|Identity
      * @BelongsTo(target="App\Module\User\Domain\Entity\Identity", nullable=false)
      */
     private $identity = null;
@@ -87,7 +88,7 @@ class Link
         $this->description = $description;
     }
 
-    public function setIdentity(Identity $identity): void
+    public function setIdentity(IdentityInterface $identity): void
     {
         $this->identity = $identity;
     }

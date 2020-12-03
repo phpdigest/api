@@ -11,6 +11,9 @@ use Yiisoft\Validator\Rule\Required;
 
 class CreateLinkForm extends FormModel
 {
+    public const FIELD_URL = 'url';
+    public const FIELD_DESCRIPTION = 'description';
+
     protected ?string $url = null;
     protected ?string $description = null;
 

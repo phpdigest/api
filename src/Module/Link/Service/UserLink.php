@@ -6,10 +6,10 @@ namespace App\Module\Link\Service;
 
 use App\Common\Domain\Exception\EntityNotFound;
 use App\Module\Link\Api\UserLinkService;
-use App\Module\User\Domain\Entity\Identity;
 use App\Module\Link\Domain\Entity\Link;
 use App\Api\Common\Form\CreateLinkForm;
 use App\Module\Link\Domain\Repository\LinkRepository;
+use Yiisoft\Auth\IdentityInterface;
 
 final class UserLink implements UserLinkService
 {
@@ -20,7 +20,7 @@ final class UserLink implements UserLinkService
         $this->repository = $repository;
     }
 
-    public function createLink(CreateLinkForm $form, Identity $identity): Link
+    public function createLink(CreateLinkForm $form, IdentityInterface $identity): Link
     {
         $link = new Link();
         $link->setUrl($form->getUrl());
@@ -35,14 +35,14 @@ final class UserLink implements UserLinkService
         return $link;
     }
 
-    public function deleteLink(string $url, Identity $identity): void
+    public function deleteLink(string $url, IdentityInterface $identity): void
     {
         $this->repository->delete(
             $this->getLink($url, $identity)
         );
     }
 
-    public function getLink(string $url, Identity $identity): Link
+    public function getLink(string $url, IdentityInterface $identity): Link
     {
         $link = $this->repository->findOneByUrlAndIdentity($url, $identity);
         if ($link === null) {

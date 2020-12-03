@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Api\Telegram\Command\SetWebhookCommand;
 use App\Common\Application\ApplicationParameters;
-use Psr\Container\ContainerInterface;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Factory\Definitions\Reference;
 use Yiisoft\Form\Widget\Field;
@@ -161,5 +161,12 @@ return [
 
     'telegram-bot' => [
         'token' => '',
+    ],
+
+    'yiisoft/yii-console' => [
+        'autoExit' => false,
+        'commands' => [
+            SetWebhookCommand::$defaultName => SetWebhookCommand::class,
+        ],
     ],
 ];

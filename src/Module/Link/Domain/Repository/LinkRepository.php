@@ -6,10 +6,10 @@ namespace App\Module\Link\Domain\Repository;
 
 use App\Common\Domain\BaseRepository;
 use App\Module\Link\Domain\Entity\Link;
-use App\Module\User\Domain\Entity\Identity;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\Select;
 use Cycle\ORM\Transaction;
+use Yiisoft\Auth\IdentityInterface;
 
 /**
  * @method Link findOne(array $scope = [])
@@ -25,7 +25,7 @@ final class LinkRepository extends BaseRepository
         parent::__construct($select);
     }
 
-    public function findOneByUrlAndIdentity(string $url, Identity $identity): ?Link
+    public function findOneByUrlAndIdentity(string $url, IdentityInterface $identity): ?Link
     {
         return $this->findOne(['url' => $url, 'identity_id' => $identity->getId()]);
     }
