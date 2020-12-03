@@ -36,7 +36,7 @@ phpunit.phar
 /node_modules
 .env
 
-#codeception
+# Codeception
 c3.php
 
 # local app configs

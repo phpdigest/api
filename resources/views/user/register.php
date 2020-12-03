@@ -23,7 +23,7 @@ $this->setTitle('Registration');
         Registration
     </p>
 
-    <?= Form::begin()
+    <?= Form::widget()
             ->action($url->generate('user/register'))
             ->options(
                 [
@@ -32,7 +32,7 @@ $this->setTitle('Registration');
                     'enctype' => 'multipart/form-data',
                 ]
             )
-            ->start() ?>
+            ->begin() ?>
 
     <?= $field->config($form, 'login') ?>
     <?= $field->config($form, 'password') ?>

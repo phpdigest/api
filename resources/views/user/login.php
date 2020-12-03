@@ -23,7 +23,7 @@ $this->setTitle('Authentication');
         Authentication
     </p>
 
-    <?= Form::begin()
+    <?= Form::widget()
             ->action($url->generate('user/login'))
             ->options(
                 [
@@ -32,7 +32,7 @@ $this->setTitle('Authentication');
                     'enctype' => 'multipart/form-data',
                 ]
             )
-            ->start() ?>
+            ->begin() ?>
 
     <?= $field->config($form, 'login') ?>
     <?= $field->config($form, 'password') ?>

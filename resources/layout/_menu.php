@@ -16,12 +16,12 @@ use Yiisoft\Yii\Bulma\NavBar;
 $currentUrl = $url->generate($urlMatcher->getCurrentRoute()->getName());
 ?>
 
-<?= NavBar::begin()
+<?= NavBar::widget()
     ->brandLabel($applicationParameters->getName())
     ->brandImage('/images/yii-logo.jpg')
     ->options(['class' => 'is-dark', 'data-sticky' => '', 'data-sticky-shadow' => ''])
     ->itemsOptions(['class' => 'navbar-end is-dark'])
-    ->start();
+    ->begin();
 ?>
     <?php
     if ($user instanceof \Yiisoft\User\GuestIdentity) {
