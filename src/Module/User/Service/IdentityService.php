@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Module\User\Service;
 
-use App\Common\Domain\Writer\EntityWriter;
+use Yiisoft\Yii\Cycle\Data\Writer\EntityWriter;
 use App\Module\User\Api\IdentityTokenService;
 use App\Module\User\Domain\Entity\Identity;
 use App\Module\User\Domain\Entity\Token;

@@ -7,16 +7,16 @@ namespace App\Module\User\Domain\Repository;
 use App\Common\Domain\BaseRepository;
 use App\Module\User\Domain\Entity\Account;
 use Cycle\ORM\Select;
-use Yiisoft\Yii\Cycle\DataReader\SelectDataReader;
+use Yiisoft\Yii\Cycle\Data\Reader\EntityReader;
 
 /**
  * @psalm-internal App\Module\User
  */
 class AccountRepository extends BaseRepository
 {
-    public function findAll(array $scope = [], array $orderBy = []): SelectDataReader
+    public function findAll(array $scope = [], array $orderBy = []): EntityReader
     {
-        return new SelectDataReader($this->select()->where($scope)->orderBy($orderBy));
+        return new EntityReader($this->select()->where($scope)->orderBy($orderBy));
     }
 
     public function findByLogin(string $login): ?Account

@@ -9,19 +9,13 @@ use App\Module\User\Domain\Repository\AccountRepository;
 use App\Module\User\Domain\Repository\IdentityRepository;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Yiisoft\Csrf\CsrfMiddleware;
 use Yiisoft\User\User;
 
 class SiteController extends AbstractController
 {
     public function index(ServerRequestInterface $request): ResponseInterface
     {
-        return $this->render(
-            'site/index',
-            [
-                'csrf' => $request->getAttribute(CsrfMiddleware::PARAMETER_NAME)
-            ]
-        );
+        return $this->render('site/index');
     }
 
     public function tables(
@@ -34,7 +28,6 @@ class SiteController extends AbstractController
         return $this->render(
             'data/tables',
             [
-                'csrf' => $request->getAttribute(CsrfMiddleware::PARAMETER_NAME),
                 'links' => $linkRepository->findAll(),
                 'identities' => $identityRepository->findAll(),
                 'accounts' => $accountRepository->findAll(),

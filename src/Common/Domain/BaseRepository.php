@@ -6,7 +6,7 @@ namespace App\Common\Domain;
 
 use Cycle\ORM\RepositoryInterface;
 use Cycle\ORM\Select;
-use Yiisoft\Yii\Cycle\DataReader\SelectDataReader;
+use Yiisoft\Yii\Cycle\Data\Reader\EntityReader;
 
 abstract class BaseRepository implements RepositoryInterface
 {
@@ -37,7 +37,7 @@ abstract class BaseRepository implements RepositoryInterface
 
     public function findAll(array $scope = [], array $orderBy = []): iterable
     {
-        return new SelectDataReader($this->select()->where($scope)->orderBy($orderBy));
+        return new EntityReader($this->select()->where($scope)->orderBy($orderBy));
     }
 
     protected function select(): Select

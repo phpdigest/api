@@ -36,8 +36,8 @@ return [
         ]
     )
         // ->addMiddleware(AutoLoginMiddleware::class)
-        ->addMiddleware(SessionMiddleware::class)
-        ->addMiddleware(CsrfMiddleware::class),
+        ->addMiddleware(CsrfMiddleware::class)
+        ->addMiddleware(SessionMiddleware::class),
 
     // External API
     Group::create(

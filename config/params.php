@@ -11,6 +11,12 @@ use Yiisoft\Router\UrlGeneratorInterface;
 use Yiisoft\Router\UrlMatcherInterface;
 
 return [
+    'app' => [
+        'charset' => 'UTF-8',
+        'language' => 'en',
+        'name' => 'PHP Digest service',
+    ],
+
     'yiisoft/aliases' => [
         'aliases' => [
             '@root' => dirname(__DIR__),
@@ -23,14 +29,6 @@ return [
             '@views' => '@root/resources/views',
             '@message' => '@root/resources/message',
             '@src' => '@root/src',
-        ],
-    ],
-
-    'yiisoft/form' => [
-        'fieldConfig' => [
-            'inputCssClass()' => ['form-control input field'],
-            'labelOptions()' => [['label' => '']],
-            'errorOptions()' => [['class' => 'has-text-left has-text-danger is-italic']],
         ],
     ],
 
@@ -149,12 +147,6 @@ return [
         'enabled' => true
     ],
 
-    'app' => [
-        'charset' => 'UTF-8',
-        'language' => 'en',
-        'name' => 'PHP Digest service',
-    ],
-
     'mailer' => [
         'adminEmail' => 'admin@example.com'
     ],
@@ -168,5 +160,9 @@ return [
         'commands' => [
             SetWebhookCommand::$defaultName => SetWebhookCommand::class,
         ],
+    ],
+
+    'yiisoft/router' => [
+        'enableCache' => false,
     ],
 ];

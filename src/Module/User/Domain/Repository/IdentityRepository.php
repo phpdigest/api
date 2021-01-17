@@ -9,11 +9,13 @@ use App\Module\User\Domain\Entity\Identity;
 use Cycle\ORM\Select;
 use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
+use Yiisoft\Auth\IdentityWithTokenRepositoryInterface;
 
 /**
  * @psalm-internal App\Module\User
  */
-class IdentityRepository extends BaseRepository implements IdentityRepositoryInterface
+class IdentityRepository extends BaseRepository
+    implements IdentityRepositoryInterface, IdentityWithTokenRepositoryInterface
 {
     private IdentityTokenRepository $identityTokenRepository;
 

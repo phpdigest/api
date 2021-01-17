@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Module\User\Service;
 
-use App\Common\Domain\Writer\EntityWriter;
+use Yiisoft\Yii\Cycle\Data\Writer\EntityWriter;
 use App\Module\User\Api\AuthClassic;
 use App\Module\User\Api\RegisterClassic;
 use App\Module\User\Domain\Entity\Account;
