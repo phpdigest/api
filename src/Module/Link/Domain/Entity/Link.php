@@ -34,7 +34,7 @@ class Link
     private string $url;
 
     /**
-     * @Column(type="string(255)", nullable=true)
+     * @Column(type="text", nullable=true)
      */
     private ?string $description = null;
 

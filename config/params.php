@@ -153,6 +153,9 @@ return [
 
     'telegram-bot' => [
         'token' => '',
+        'chat-config' => [
+            'clean-mode' => false,
+        ],
     ],
 
     'yiisoft/yii-console' => [

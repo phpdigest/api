@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Api\UI\Controller;
 
 use App\Api\UI\Form\ShareLinkForm;
+use App\Api\UI\Widget\FlashMessage;
 use App\Module\Link\Api\UserLinkService;
 use App\Module\User\Api\IdentityFactory;
 use Psr\Http\Message\ResponseInterface;
@@ -32,7 +33,7 @@ final class LinkController extends AbstractController
         UserLinkService $service
     ): ResponseInterface {
         if (!$form->load($request->getParsedBody()) || !$form->validate()) {
-            $flash->add('is-warning', ['header' => 'Fail', 'body' => 'Check the input is correct.'], true);
+            $flash->add(FlashMessage::WARNING, ['header' => 'Fail', 'body' => 'Check the input is correct.'], true);
             return $this->render('link/form', ['form' => $form]);
         }
 
@@ -42,7 +43,7 @@ final class LinkController extends AbstractController
                 $identity = $identityFactory->createIdentity();
                 $user->login($identity);
                 # Inform user about creating an identity
-                $flash->add('is-info', [
+                $flash->add(FlashMessage::INFO, [
                     'header' => 'Note',
                     'body' => 'We have created an anonymous account for you and your session.'
                 ], true);
@@ -54,11 +55,11 @@ final class LinkController extends AbstractController
         }
 
         if (!$success) {
-            $flash->add('is-danger', ['header' => 'Error', 'body' => 'Something wrong.'], true);
+            $flash->add(FlashMessage::DANGER, ['header' => 'Error', 'body' => 'Something wrong.'], true);
             return $this->render('link/form', ['form' => $form]);
         }
 
-        $flash->add('is-success', ['header' => 'Link has been added', 'body' => 'Thank you for your contribution.'], true);
+        $flash->add(FlashMessage::SUCCESS, ['header' => 'Link has been added', 'body' => 'Thank you for your contribution.'], true);
         return $this->responseFactory
             ->createResponse(Status::FOUND)
             ->withHeader(Header::LOCATION, $url->generate('link/form'));

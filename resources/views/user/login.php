@@ -17,36 +17,30 @@ $this->params['breadcrumbs'] = 'Authentication';
 $this->setTitle('Authentication');
 
 ?>
-<div class="column is-4 is-offset-4">
 
-    <p class="subtitle has-text-black">
-        Authentication
-    </p>
+<div class="row">
+    <div class="card col-md-6 offset-md-3">
+        <div class="card-body">
+            <h3 class="card-title">Authentication</h3>
 
-    <?= Form::widget()
-            ->action($url->generate('user/login'))
-            ->options(
-                [
-                    'id' => 'form-register',
-                    'csrf' => $csrf,
-                    'enctype' => 'multipart/form-data',
-                ]
-            )
-            ->begin() ?>
+            <?= Form::widget()
+                    ->action($url->generate('user/login'))
+                    ->options(
+                        [
+                            'id' => 'form-register',
+                            'csrf' => $csrf,
+                            'enctype' => 'multipart/form-data',
+                        ]
+                    )
+                    ->begin() ?>
 
-    <?= $field->config($form, 'login') ?>
-    <?= $field->config($form, 'password') ?>
+            <?= $field->config($form, 'login') ?>
+            <?= $field->config($form, 'password') ?>
 
+            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
 
-    <?= Html::submitButton(
-        'Submit',
-        [
-            'class' => 'button is-block is-info is-fullwidth has-margin-top-15',
-            'id' => 'contact-button',
-            'tabindex' => '5'
-        ]
-    ) ?>
+            <?= Form::end() ?>
 
-    <?= Form::end() ?>
-
+        </div>
+    </div>
 </div>

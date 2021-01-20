@@ -6,6 +6,7 @@ namespace App\Api\UI\Controller;
 
 use App\Api\UI\Form\LoginForm;
 use App\Api\UI\Form\RegisterForm;
+use App\Api\UI\Widget\FlashMessage;
 use App\Module\User\Api\AuthClassic;
 use App\Module\User\Api\RegisterClassic;
 use Psr\Http\Message\ResponseInterface;
@@ -38,18 +39,18 @@ class UserController extends AbstractController
                 );
                 $success = $user->login($identity);
             } catch (\Exception $e) {
-                $flash->add('is-danger', ['header' => 'Error', 'body' => $e->getMessage()], true);
+                $flash->add(FlashMessage::DANGER, ['header' => 'Error', 'body' => $e->getMessage()], true);
                 $success = false;
             }
 
             if ($success) {
-                $flash->add('is-success', ['header' => 'Good job!', 'body'   => 'You are bro now.'], true);
+                $flash->add(FlashMessage::SUCCESS, ['header' => 'Good job!', 'body'   => 'You are bro now.'], true);
                 return $this->responseFactory
                     ->createResponse(Status::FOUND)
                     ->withHeader(Header::LOCATION, $url->generate('data/tables'));
             }
 
-            $flash->add('is-warning', ['header' => 'Fail!', 'body' => 'Registration failed.'], true);
+            $flash->add(FlashMessage::WARNING, ['header' => 'Fail!', 'body' => 'Registration failed.'], true);
         }
 
         return $this->render('user/register', ['form' => $form]);
@@ -78,11 +79,11 @@ class UserController extends AbstractController
             }
 
             if (!$success) {
-                $flash->add('is-warning', ['header' => 'Fail!', 'body' => 'Check the input is correct.'], true);
+                $flash->add(FlashMessage::WARNING, ['header' => 'Fail!', 'body' => 'Check the input is correct.'], true);
                 return $this->renderLoginPage($form);
             }
 
-            $flash->add('is-success', ['header' => 'Hello!', 'body'   => 'You are welcome.'], true);
+            $flash->add(FlashMessage::SUCCESS, ['header' => 'Hello!', 'body'   => 'You are welcome.'], true);
             return $this->responseFactory
                 ->createResponse(Status::FOUND)
                 ->withHeader(Header::LOCATION, $url->generate('data/tables'));

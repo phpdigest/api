@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f3bfe0cb17c2b18fa45fac192c8fc2b",
+    "content-hash": "7b59cb94475b21ed6c0750cb20c54212",
     "packages": [
         {
             "name": "alexkart/curl-builder",
@@ -2148,35 +2148,11 @@
             "time": "2018-02-13T20:26:39+00:00"
         },
         {
-            "name": "npm-asset/bulma",
-            "version": "0.9.1",
+            "name": "npm-asset/bootstrap",
+            "version": "5.0.0-beta1",
             "dist": {
                 "type": "tar",
-                "url": "https://registry.npmjs.org/bulma/-/bulma-0.9.1.tgz"
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "npm-asset/bulma-helpers",
-            "version": "0.3.12",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/bulma-helpers/-/bulma-helpers-0.3.12.tgz"
-            },
-            "type": "npm-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "npm-asset/vizuaalog--bulmajs",
-            "version": "0.11.0",
-            "dist": {
-                "type": "tar",
-                "url": "https://registry.npmjs.org/@vizuaalog/bulmajs/-/bulmajs-0.11.0.tgz"
+                "url": "https://registry.npmjs.org/bootstrap/-/bootstrap-5.0.0-beta1.tgz"
             },
             "type": "npm-asset",
             "license": [
@@ -9319,42 +9295,45 @@
             "time": "2020-12-18T09:52:11+00:00"
         },
         {
-            "name": "yiisoft/yii-bulma",
+            "name": "yiisoft/yii-bootstrap5",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/yiisoft/yii-bulma.git",
-                "reference": "7c2ef656155d3ce1035f43a8f3b1761cd8421bbf"
+                "url": "https://github.com/yiisoft/yii-bootstrap5.git",
+                "reference": "db4ce1ee667aef8a9353b6c8ac831e31b83d7c9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii-bulma/zipball/7c2ef656155d3ce1035f43a8f3b1761cd8421bbf",
-                "reference": "7c2ef656155d3ce1035f43a8f3b1761cd8421bbf",
+                "url": "https://api.github.com/repos/yiisoft/yii-bootstrap5/zipball/db4ce1ee667aef8a9353b6c8ac831e31b83d7c9b",
+                "reference": "db4ce1ee667aef8a9353b6c8ac831e31b83d7c9b",
                 "shasum": ""
             },
             "require": {
-                "npm-asset/bulma": "^0.9.1",
-                "npm-asset/bulma-helpers": "^0.3.12",
-                "npm-asset/vizuaalog--bulmajs": "^0.11.0",
+                "npm-asset/bootstrap": "^5.0.0",
                 "oomphinc/composer-installers-extender": "^2.0.0",
                 "php": "^7.4|^8.0",
-                "yiisoft/arrays": "@dev",
-                "yiisoft/assets": "@dev",
-                "yiisoft/html": "@dev",
-                "yiisoft/widget": "@dev"
+                "yiisoft/arrays": "^3.0@dev",
+                "yiisoft/assets": "^1.0@dev",
+                "yiisoft/html": "^3.0@dev",
+                "yiisoft/json": "^1.0",
+                "yiisoft/widget": "^3.0@dev"
+            },
+            "provide": {
+                "yiisoft/yii-bootstrap": "1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.5",
-                "roave/infection-static-analysis-plugin": "^1.",
+                "phpunit/phpunit": "^9.4",
+                "roave/infection-static-analysis-plugin": "^1.5",
                 "spatie/phpunit-watcher": "^1.23",
-                "vimeo/psalm": "^4.3",
+                "vimeo/psalm": "^4.2",
+                "yiisoft/aliases": "^1.0",
                 "yiisoft/di": "^3.0@dev"
             },
             "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "3.0.x-dev"
                 },
                 "config-plugin": {
                     "params": "config/params.php",
@@ -9363,26 +9342,24 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Yiisoft\\Yii\\Bulma\\": "src"
+                    "Yiisoft\\Yii\\Bootstrap5\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
-            "description": "Collection of Widgets for Bulma CSS framework.",
-            "homepage": "https://www.yiiframework.com/",
+            "description": "Yii Framework Twitter Bootstrap 5 Extension",
             "keywords": [
-                "bulma",
-                "widget",
+                "bootstrap5",
                 "yii"
             ],
             "support": {
-                "forum": "https://www.yiiframework.com/forum/",
+                "forum": "http://www.yiiframework.com/forum/",
                 "irc": "irc://irc.freenode.net/yii",
-                "issues": "https://github.com/yiisoft/yii-bulma/issues?state=open",
-                "source": "https://github.com/yiisoft/yii-bulma",
-                "wiki": "https://www.yiiframework.com/wiki/"
+                "issues": "https://github.com/yiisoft/yii-bootstrap5/issues",
+                "source": "https://github.com/yiisoft/yii-bootstrap5",
+                "wiki": "http://www.yiiframework.com/wiki/"
             },
             "funding": [
                 {
@@ -9394,7 +9371,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2021-01-12T12:30:31+00:00"
+            "time": "2021-01-11T09:00:27+00:00"
         },
         {
             "name": "yiisoft/yii-console",
@@ -12681,12 +12658,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "0f7a0af0970ff222b7c4212e2417580e0e05b257"
+                "reference": "14c6b604f3a3d3ec218e490ce2176d5f380557bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0f7a0af0970ff222b7c4212e2417580e0e05b257",
-                "reference": "0f7a0af0970ff222b7c4212e2417580e0e05b257",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/14c6b604f3a3d3ec218e490ce2176d5f380557bd",
+                "reference": "14c6b604f3a3d3ec218e490ce2176d5f380557bd",
                 "shasum": ""
             },
             "conflict": {
@@ -12768,7 +12745,7 @@
                 "guzzlehttp/guzzle": ">=4-rc.2,<4.2.4|>=5,<5.3.1|>=6,<6.2.1",
                 "illuminate/auth": ">=4,<4.0.99|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.10",
                 "illuminate/cookie": ">=4,<=4.0.11|>=4.1,<=4.1.99999|>=4.2,<=4.2.99999|>=5,<=5.0.99999|>=5.1,<=5.1.99999|>=5.2,<=5.2.99999|>=5.3,<=5.3.99999|>=5.4,<=5.4.99999|>=5.5,<=5.5.49|>=5.6,<=5.6.99999|>=5.7,<=5.7.99999|>=5.8,<=5.8.99999|>=6,<6.18.31|>=7,<7.22.4",
-                "illuminate/database": ">=4,<4.0.99|>=4.1,<4.1.29|>=5.5,<=5.5.44|>=6,<6.18.34|>=7,<7.23.2",
+                "illuminate/database": ">=4,<4.0.99|>=4.1,<4.1.29|>=5.5,<=5.5.44|>=6,<6.20.11|>=7,<7.30.2|>=8,<8.22.1",
                 "illuminate/encryption": ">=4,<=4.0.11|>=4.1,<=4.1.31|>=4.2,<=4.2.22|>=5,<=5.0.35|>=5.1,<=5.1.46|>=5.2,<=5.2.45|>=5.3,<=5.3.31|>=5.4,<=5.4.36|>=5.5,<5.5.40|>=5.6,<5.6.15",
                 "illuminate/view": ">=7,<7.1.2",
                 "ivankristianto/phpwhois": "<=4.3",
@@ -12994,7 +12971,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-14T09:32:54+00:00"
+            "time": "2021-01-16T16:25:01+00:00"
         },
         {
             "name": "sanmai/pipeline",
@@ -14861,7 +14838,7 @@
         "yiisoft/validator": 20,
         "yiisoft/view": 20,
         "yiisoft/widget": 20,
-        "yiisoft/yii-bulma": 20,
+        "yiisoft/yii-bootstrap5": 20,
         "yiisoft/yii-debug": 20,
         "yiisoft/yii-event": 20,
         "yiisoft/yii-swagger": 20,

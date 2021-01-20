@@ -45,7 +45,7 @@
         "yiisoft/validator": "^3.0@dev",
         "yiisoft/view": "@dev",
         "yiisoft/widget": "@dev",
-        "yiisoft/yii-bulma": "@dev",
+        "yiisoft/yii-bootstrap5": "@dev",
         "yiisoft/yii-cycle": "*",
         "yiisoft/yii-debug": "@dev",
         "yiisoft/yii-event": "@dev",

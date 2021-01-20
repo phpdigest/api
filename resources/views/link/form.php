@@ -13,11 +13,11 @@ use Yiisoft\Html\Html;
 $this->setTitle('Share link');
 ?>
 
-<div class="columns is-centered">
-    <div class="column is-7-tablet is-6-desktop">
-        <article class="tile is-child notification is-black">
-            <p class="title">Share link</p>
-            <p class="subtitle">Please fill out the following fields</p>
+<div class="row">
+    <div class="card col-md-6 offset-md-3">
+        <div class="card-body">
+            <h3 class="card-title">Share link</h3>
+            <p>Please fill out the following fields</p>
             <?= Form::widget()
                 ->action($url->generate('link/share'))
                 ->options(['id' => $form->formName(), 'csrf' => $csrf])
@@ -29,13 +29,9 @@ $this->setTitle('Share link');
 
                 <?= Html::submitButton(
                     'Share ' . html::tag('i', '', ['class' => 'fas fa-share', 'aria-hidden' => 'true']),
-                    [
-                        'class' => 'button is-block is-info is-fullwidth has-margin-top-15',
-                        'id' => 'contact-button',
-                        'tabindex' => '5'
-                    ]
+                    ['class' => 'btn btn-primary']
                 ) ?>
             <?= Form::end() ?>
-        </article>
+        </div>
     </div>
 </div>

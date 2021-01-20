@@ -12,19 +12,6 @@ use Cycle\ORM\Mapper\Mapper;
 
 class LinkMapper extends Mapper
 {
-    public function queueCreate($entity, Node $node, State $state): ContextCarrierInterface
-    {
-        $command = parent::queueCreate($entity, $node, $state);
-
-        $state->register('created_at', new \DateTimeImmutable(), true);
-        $command->register('created_at', new \DateTimeImmutable(), true);
-
-        $state->register('updated_at', new \DateTimeImmutable(), true);
-        $command->register('updated_at', new \DateTimeImmutable(), true);
-
-        return $command;
-    }
-
     /**
      * @suppress PhanUndeclaredMethod
      */

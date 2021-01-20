@@ -9,6 +9,8 @@ use BotMan\BotMan\BotMan;
 
 final class SuggestLinkCommand implements CommandInterface
 {
+    public const COMMAND = '/suggest_link';
+
     private SuggestLinkConversation $suggestLinkConversation;
 
     public function __construct(SuggestLinkConversation $suggestLinkConversation)

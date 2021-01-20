@@ -6,10 +6,15 @@ namespace App\Api\UI\Widget;
 
 use Yiisoft\Session\Flash\FlashInterface;
 use Yiisoft\Widget\Widget;
-use Yiisoft\Yii\Bulma\Message;
+use Yiisoft\Yii\Bootstrap5\Alert;
 
 final class FlashMessage extends Widget
 {
+    public const SUCCESS = 'alert-success';
+    public const WARNING = 'alert-warning';
+    public const DANGER = 'alert-danger';
+    public const INFO = 'alert-info';
+
     private FlashInterface $flash;
     private bool $withoutCloseButton = false;
     private string $size = '';
@@ -26,12 +31,13 @@ final class FlashMessage extends Widget
 
         foreach ($flashes as $type => $data) {
             foreach ($data as $message) {
-                $html .= Message::widget()
-                    ->headerColor($type)
-                    ->headerMessage($message['header'] ?? '')
+                $html .= Alert::widget()
+                    // ->heading($message['header'] ?? '')
                     ->body($message['body'] ?? '')
-                    ->withoutCloseButton($this->withoutCloseButton)
-                    ->size($this->size)
+                    ->options([
+                        'class' => $type,
+                    ])
+                    ->closeButtonEnabled(true)
                     ->render();
             }
         }

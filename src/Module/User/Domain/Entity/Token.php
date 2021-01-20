@@ -16,8 +16,7 @@ use DateTimeImmutable;
  *
  * @Entity(
  *     role="user_token",
- *     repository="App\Module\User\Domain\Repository\IdentityTokenRepository",
- *     mapper="App\Module\User\Domain\Mapper\TokenMapper"
+ *     repository="App\Module\User\Domain\Repository\IdentityTokenRepository"
  * )
  * @Table(
  *     indexes={
@@ -46,7 +45,7 @@ class Token
     public string $type;
 
     /**
-     * Annotations for this field placed in a mapper class {@see \App\Module\User\Domain\Mapper\TokenMapper}
+     * @Column(type="datetime")
      *
      * @psalm-readonly
      */

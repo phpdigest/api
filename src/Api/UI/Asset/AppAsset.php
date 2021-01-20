@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace App\Api\UI\Asset;
 
 use Yiisoft\Assets\AssetBundle;
-use Yiisoft\Yii\Bulma\Asset\BulmaAsset;
-use Yiisoft\Yii\Bulma\Asset\BulmaJsAsset;
-use Yiisoft\Yii\Bulma\Asset\BulmaHelpersAsset;
+use Yiisoft\Yii\Bootstrap5\Assets\BootstrapAsset;
 
 class AppAsset extends AssetBundle
 {
@@ -20,8 +18,6 @@ class AppAsset extends AssetBundle
     ];
 
     public array $depends = [
-        BulmaAsset::class,
-        BulmaHelpersAsset::class,
-        BulmaJsAsset::class,
+        BootstrapAsset::class,
     ];
 }

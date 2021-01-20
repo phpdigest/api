@@ -13,6 +13,7 @@ class CreateLinkForm extends FormModel
 {
     public const FIELD_URL = 'url';
     public const FIELD_DESCRIPTION = 'description';
+    public const DESCRIPTION_MAX_LENGTH = 2048;
 
     protected ?string $url = null;
     protected ?string $description = null;
@@ -40,7 +41,7 @@ class CreateLinkForm extends FormModel
                 new UrlRule(),
             ],
             'description' => [
-                (new HasLength())->max(255)->skipOnEmpty(true)
+                (new HasLength())->max(self::DESCRIPTION_MAX_LENGTH)->skipOnEmpty(true)
             ],
         ];
     }
