@@ -8,6 +8,8 @@ use App\Api\Common\Form\CreateLinkForm;
 use App\Api\Telegram\Helper\FormMaker;
 use App\Api\Telegram\Helper\TgIdentityService;
 use App\Api\Telegram\Telegram\ChatConfig;
+use App\Api\Telegram\Telegram\Command\FallbackCommand;
+use App\Api\Telegram\Telegram\Command\StartCommand;
 use App\Api\Telegram\Telegram\Command\SuggestLinkCommand;
 use App\Module\Link\Api\UserLinkService;
 use BotMan\BotMan\Messages\Conversations\Conversation;
@@ -16,6 +18,7 @@ use BotMan\Drivers\Telegram\Extensions\Keyboard;
 use BotMan\Drivers\Telegram\Extensions\KeyboardButton;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
+use Yiisoft\Injector\Injector;
 use Yiisoft\Json\Json;
 
 final class SuggestLinkConversation extends Conversation
@@ -27,23 +30,31 @@ final class SuggestLinkConversation extends Conversation
     protected string $description = '';
     protected ?int $mainMessageId = null;
     protected ?int $lastDeletedId = null;
+    /** @var null|int Max message id for remove */
+    protected ?int $toDeleteMaxId = null;
     protected bool $finishing = false;
 
     private FormMaker $formMaker;
     private UserLinkService $userLinkService;
     private TgIdentityService $identityService;
     private ChatConfig $chatConfig;
+    /**
+     * @var Injector
+     */
+    private Injector $injector;
 
     public function __construct(
         FormMaker $formMaker,
         UserLinkService $userLinkService,
         TgIdentityService $identityService,
-        ChatConfig $chatConfig
+        ChatConfig $chatConfig,
+        Injector $injector
     ) {
         $this->formMaker = $formMaker;
         $this->userLinkService = $userLinkService;
         $this->identityService = $identityService;
         $this->chatConfig = $chatConfig;
+        $this->injector = $injector;
     }
 
     public function start(): void
@@ -55,7 +66,7 @@ final class SuggestLinkConversation extends Conversation
         );
 
         // Save main message id
-        $this->lastDeletedId = $this->mainMessageId = $this->getMessageId($response);
+        $this->toDeleteMaxId = $this->lastDeletedId = $this->mainMessageId = $this->getMessageId($response);
         unset($response);
 
         if ($this->link === '') {
@@ -73,13 +84,12 @@ final class SuggestLinkConversation extends Conversation
             function (Answer $answer) {
                 $this->link = $answer->getText();
                 $answer_id = $answer->getMessage()->getPayload()['message_id'] ?? null;
+                $this->calcUsersAnswer($answer);
 
                 if ($this->link === self::COMMAND_STOP) {
-                    $this->deleteMessages($this->lastDeletedId + 1);
                     $this->cancelConversation();
                     return;
                 }
-
                 $form = $this->formMaker->makeForm($this->link, $this->description);
 
                 if (!$form->validate() && $form->hasErrors(CreateLinkForm::FIELD_URL)) {
@@ -88,11 +98,15 @@ final class SuggestLinkConversation extends Conversation
                     return;
                 }
 
-                if (is_int($answer_id)) {
-                    $this->deleteMessages($answer_id);
-                }
-                $this->updateMainMessage();
+                // Prepare state
+                $deleteFrom = $this->toDeleteMaxId;
+                $deleteTo = $this->lastDeletedId;
+                $this->lastDeletedId = $deleteFrom;
+                // Store state in a cache and ask next question
                 $this->askDescription();
+
+                $this->deleteMessages($deleteFrom, $deleteTo);
+                $this->updateMainMessage();
             }
         );
     }
@@ -112,9 +126,9 @@ final class SuggestLinkConversation extends Conversation
                 try {
                     $this->description = $answer->getText();
                     $answer_id = $answer->getMessage()->getPayload()['message_id'] ?? null;
+                    $this->calcUsersAnswer($answer);
 
                     if ($this->description === self::COMMAND_STOP) {
-                        $this->deleteMessages($this->lastDeletedId + 1);
                         $this->cancelConversation();
                         return;
                     }
@@ -138,7 +152,10 @@ final class SuggestLinkConversation extends Conversation
                     // create link
                     $this->userLinkService->createLink($form, $identity);
 
-                    $response = $this->getBot()->reply('Спасибо. Мы обработаем ваше предложение.');
+                    $response = $this->getBot()->reply(
+                        'Спасибо. Мы обработаем ваше предложение.',
+                        StartCommand::generateMainMenuButtons()->toArray()
+                    );
                     $finishMessageId = $this->getMessageId($response);
                     unset($response);
                     if ($finishMessageId !== null) {
@@ -165,11 +182,33 @@ final class SuggestLinkConversation extends Conversation
         $this->start();
     }
 
+    public function say($message, $additionalParameters = [])
+    {
+        ++$this->toDeleteMaxId;
+        return parent::say($message, $additionalParameters);
+    }
+
+    public function ask($question, $next, $additionalParameters = [])
+    {
+        ++$this->toDeleteMaxId;
+        return parent::ask($question, $next, $additionalParameters);
+    }
+
+    private function calcUsersAnswer(Answer $answer): void
+    {
+        $fromBot = $answer->getMessage()->getPayload()['from']['is_bot'] ?? false;
+        if (!$fromBot) {
+            ++$this->toDeleteMaxId;
+        }
+    }
+
     private function cancelConversation(): void
     {
+        $this->deleteMessages();
         if ($this->chatConfig->cleanMode) {
             $this->getBot()->sendRequest('deleteMessage', ['message_id' => $this->mainMessageId]);
         }
+        StartCommand::replyMainMenu($this->getBot());
     }
 
     private function updateMainMessage(): void
@@ -226,16 +265,17 @@ final class SuggestLinkConversation extends Conversation
         return $str;
     }
 
-    private function deleteMessages(int $from): void
+    private function deleteMessages(int $from = null, int $to = null): void
     {
-        $limit = $this->lastDeletedId ?? $this->mainMessageId;
-        if (!$this->chatConfig->cleanMode || $limit === null || $from <= $limit) {
+        $from = $from ?? $this->toDeleteMaxId;
+        $to = $to ?? $this->lastDeletedId;
+        if (!$this->chatConfig->cleanMode || $to === null || $from <= $to) {
             return;
         }
-        for ($rm = $from; $rm > $limit; --$rm) {
+        $this->lastDeletedId = $from;
+        for ($rm = $from; $rm > $to; --$rm) {
             $this->getBot()->sendRequest('deleteMessage', ['message_id' => $rm]);
         }
-        $this->lastDeletedId = $from;
     }
 
     private function getMessageId($response): ?int

@@ -22,12 +22,19 @@ final class StartCommand implements CommandInterface
             Это бот для помощи сбора новостей из мира PHP для проекта [PHP Digest](https://t.me/phpdigest).
             TEXT;
 
-        $botMan->sendRequest(
-            'sendMessage',
-            [
-                'text' => $text,
-                'parse_mode' => 'Markdown',
-            ] + self::generateMainMenuButtons()->toArray()
+        $botMan->reply($text, ['parse_mode' => 'Markdown']);
+        self::replyMainMenu($botMan);
+    }
+
+    public static function replyMainMenu(BotMan $botMan): void
+    {
+        $text = <<<TEXT
+            Доступные действия:
+            TEXT;
+
+        $botMan->reply(
+            $text,
+            ['parse_mode' => 'Markdown'] + StartCommand::generateMainMenuButtons()->toArray()
         );
     }
 

@@ -8,7 +8,6 @@ use App\Api\Telegram\Helper\FormMaker;
 use App\Api\Telegram\Telegram\Conversation\SuggestLinkConversation;
 use BotMan\BotMan\BotMan;
 use BotMan\BotMan\Messages\Incoming\IncomingMessage;
-use Yiisoft\Json\Json;
 
 final class FallbackCommand implements CommandInterface
 {
@@ -37,23 +36,11 @@ final class FallbackCommand implements CommandInterface
         $form = $this->formMaker->makeForm($text);
 
         if (!$form->validate()) {
-            $this->replyMainMenu($botMan);
+            StartCommand::replyMainMenu($botMan);
             return;
         }
 
         $this->suggestLinkConversation->link = $text;
         $botMan->startConversation($this->suggestLinkConversation);
-    }
-
-    private function replyMainMenu(BotMan $botMan): void
-    {
-        $text = <<<TEXT
-            Доступные действия:
-            TEXT;
-
-        $botMan->reply(
-            $text,
-            ['parse_mode' => 'Markdown'] + StartCommand::generateMainMenuButtons()->toArray()
-        );
     }
 }
