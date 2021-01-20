@@ -211,10 +211,12 @@ final class SuggestLinkConversation extends Conversation
 
                 Ссылка:
                 $this->link
+
+
                 MARKDOWN;
         $description = preg_replace('/(`+)/u', '`', $this->description);
         $str .= $this->description === ''
-            ? "\nОписание отсутствует."
+            ? "Описание отсутствует."
             : <<<MARKDOWN
                 Описание:
                 ```
