@@ -19,11 +19,11 @@ class AccountRepository extends BaseRepository
         return new EntityReader($this->select()->where($scope)->orderBy($orderBy));
     }
 
-    public function findByLogin(string $login): ?Account
+    public function findByUsername(string $username): ?Account
     {
         /** @var null|Account $result */
         $result = $this->select()
-            ->where('login', $login)
+            ->where('username', $username)
             ->load('identity', ['method' => Select\JoinableLoader::JOIN])
             ->fetchOne();
         return $result;

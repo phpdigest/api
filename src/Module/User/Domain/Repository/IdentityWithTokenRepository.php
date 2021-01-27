@@ -7,22 +7,20 @@ namespace App\Module\User\Domain\Repository;
 use App\Common\Domain\BaseRepository;
 use App\Module\User\Domain\Entity\Identity;
 use App\Module\User\Domain\Entity\Token;
+use Cycle\ORM\Select;
+use Yiisoft\Auth\IdentityWithTokenRepositoryInterface;
 
 /**
  * @psalm-internal App\Module\User
  */
-class IdentityTokenRepository extends BaseRepository
+class IdentityWithTokenRepository extends BaseRepository implements IdentityWithTokenRepositoryInterface
 {
-    private function findTokenBy(string $field, string $value): ?Token
-    {
-        /** @var null|Token $token */
-        $token = $this->findOne([$field => $value]);
-        return $token;
-    }
-
     public function findIdentityByToken(string $token, string $type = null): ?Identity
     {
-        $token = $this->findTokenBy('token', $token);
+        /** @var Token $token */
+        $token = $this->select()
+            ->load('identity', ['method' => Select::SINGLE_QUERY])
+            ->fetchOne(['token' => $token, 'type' => $type]);
         return $token === null ? null : $token->identity;
     }
 }

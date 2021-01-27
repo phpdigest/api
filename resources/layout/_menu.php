@@ -2,12 +2,17 @@
 
 declare(strict_types=1);
 
+use App\Api\UI\Controller\Admin\CommonController;
+use App\Api\UI\Controller\LinkController;
+use App\Api\UI\Controller\UserController;
+use Yiisoft\Access\AccessCheckerInterface;
 use Yiisoft\Yii\Bootstrap5\Nav;
 use Yiisoft\Yii\Bootstrap5\NavBar;
 
 /**
  * @var App\Common\Application\ApplicationParameters $applicationParameters
  * @var Yiisoft\Router\UrlGeneratorInterface $url
+ * @var AccessCheckerInterface $accessChecker
  * @var Yiisoft\Router\UrlMatcherInterface $urlMatcher
  * @var \Yiisoft\Auth\IdentityInterface $user
  * @var string $csrf
@@ -22,15 +27,15 @@ echo NavBar::widget()
     ->begin();
 
 $mainMenuButtons = [
-    ['label' => 'Share link', 'url' => $url->generate('link/form')],
+    ['label' => 'Suggest link', 'url' => $url->generate(LinkController::PAGE_SUGGEST_LINK)],
 ];
 if ($user instanceof \Yiisoft\User\GuestIdentity) {
     $userButtons = [
-        ['label' => 'Register', 'url' => $url->generate('user/register')],
-        ['label' => 'Login', 'url' => $url->generate('user/login')]
+        ['label' => 'Register', 'url' => $url->generate(UserController::PAGE_REGISTER)],
+        ['label' => 'Login', 'url' => $url->generate(UserController::PAGE_LOGIN)]
     ];
 } else {
-    $exitUrl = $url->generate('user/logout');
+    $exitUrl = $url->generate(UserController::ACTION_LOGOUT);
     $exitButton = <<<HTML
         <form method="post" action="{$exitUrl}">
             <input hidden name="_csrf" value="{$csrf}">
@@ -40,7 +45,9 @@ if ($user instanceof \Yiisoft\User\GuestIdentity) {
     $userButtons = [
         ['label' => $exitButton, 'encode' => false]
     ];
-    $mainMenuButtons[] = ['label' => 'Data', 'url' => $url->generate('data/tables')];
+    if ($accessChecker->userHasPermission($user->getId(), 'admin_panel')) {
+        $mainMenuButtons[] = ['label' => 'Admin', 'url' => $url->generate(CommonController::PAGE_INDEX)];
+    }
 }
 
 echo Nav::widget()

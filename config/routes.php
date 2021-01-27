@@ -6,13 +6,15 @@ use App\Api\External\Controller\LinkController;
 use App\Api\External\Controller\UserController;
 use App\Api\Telegram\Controller\WebhookAction;
 use App\Api\UI;
+use App\Api\UI\Controller\Admin;
+use App\Module\Rbac\Middleware\PermissionMiddleware;
 use roxblnfk\SmartStream\Middleware\BucketStreamMiddleware;
 use Yiisoft\Auth\Middleware\Authentication;
 use Yiisoft\Csrf\CsrfMiddleware;
-use Yiisoft\Http\Method;
 use Yiisoft\Request\Body\RequestBodyParser;
 use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
+use Yiisoft\Router\UrlGeneratorInterface;
 use Yiisoft\Session\SessionMiddleware;
 use Yiisoft\User\AutoLoginMiddleware;
 
@@ -21,20 +23,40 @@ return [
     Group::create(
         '',
         [
-            Route::get('/', [UI\Controller\SiteController::class, 'index'])->name('site/index'),
-            Route::get('/tables', [UI\Controller\SiteController::class, 'tables'])->name('data/tables'),
-            Route::methods([Method::GET, Method::POST], '/register', [UI\Controller\UserController::class, 'register'])
-                ->name('user/register'),
-            Route::methods([Method::GET, Method::POST], '/login', [UI\Controller\UserController::class, 'login'])
-                ->name('user/login'),
-            Route::post('/logout', [UI\Controller\UserController::class, 'logout'])
-                ->name('user/logout'),
-            Route::get('/link', [UI\Controller\LinkController::class, 'form'])
-                ->name('link/form'),
-            Route::post('/link', [UI\Controller\LinkController::class, 'share'])
-                ->name('link/share'),
+            // Site
+            Route::get('/', [UI\Controller\SiteController::class, 'pageIndex'])
+                ->name(UI\Controller\SiteController::PAGE_INDEX),
+            // User
+            Route::get('/register', [UI\Controller\UserController::class, 'pageRegister'])
+                ->name(UI\Controller\UserController::PAGE_REGISTER),
+            Route::post('/register', [UI\Controller\UserController::class, 'actionRegister'])
+                ->name(UI\Controller\UserController::ACTION_REGISTER),
+            Route::get('/login', [UI\Controller\UserController::class, 'pageLogin'])
+                ->name(UI\Controller\UserController::PAGE_LOGIN),
+            Route::post('/login', [UI\Controller\UserController::class, 'actionLogin'])
+                ->name(UI\Controller\UserController::ACTION_LOGIN),
+            Route::post('/logout', [UI\Controller\UserController::class, 'actionLogout'])
+                ->name(UI\Controller\UserController::ACTION_LOGOUT),
+            // Link
+            Route::get('/link', [UI\Controller\LinkController::class, 'pageSuggestLink'])
+                ->name(UI\Controller\LinkController::PAGE_SUGGEST_LINK),
+            Route::post('/link', [UI\Controller\LinkController::class, 'actionSuggestLink'])
+                ->name(UI\Controller\LinkController::ACTION_SUGGEST_LINK),
+
+            // Admin
+            Group::create('/admin', [
+                Route::get('/index', [Admin\CommonController::class, 'pageIndex'])
+                    ->name(Admin\CommonController::PAGE_INDEX),
+                Group::create('/link', [
+                    Route::get('/suggestions[/{page:\d}]', [Admin\LinkController::class, 'pageSuggestionTable'])
+                        ->name(Admin\LinkController::PAGE_SUGGESTION_TABLE),
+                ]),
+            ])->addMiddleware(static fn (PermissionMiddleware $mw, UrlGeneratorInterface $urlGenerator) => $mw
+                ->withPermission('admin_panel')
+                ->withRedirection($urlGenerator->generate(UI\Controller\SiteController::PAGE_INDEX))),
         ]
     )
+        // todo add after https://github.com/yiisoft/user/issues/11
         // ->addMiddleware(AutoLoginMiddleware::class)
         ->addMiddleware(CsrfMiddleware::class)
         ->addMiddleware(SessionMiddleware::class),

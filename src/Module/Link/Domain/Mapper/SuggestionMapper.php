@@ -10,7 +10,7 @@ use Cycle\ORM\Heap\Node;
 use Cycle\ORM\Heap\State;
 use Cycle\ORM\Mapper\Mapper;
 
-class LinkMapper extends Mapper
+class SuggestionMapper extends Mapper
 {
     /**
      * @suppress PhanUndeclaredMethod

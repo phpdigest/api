@@ -34,9 +34,9 @@ final class AccountService implements AuthClassic, RegisterClassic
         $this->entityWriter = $entityWriter;
     }
 
-    public function login(string $login, string $password): Identity
+    public function logIn(string $username, string $password): Identity
     {
-        $account = $this->accountRepository->findByLogin($login);
+        $account = $this->accountRepository->findByUsername($username);
         if ($account === null || !$this->passwordHasher->validate($password, $account->passwordHash)) {
             throw new \RuntimeException();
         }
@@ -46,18 +46,18 @@ final class AccountService implements AuthClassic, RegisterClassic
     /**
      * Create and save identity with account
      */
-    public function register(string $login, string $password): Identity
+    public function register(string $username, string $password): Identity
     {
         $identity = $this->identityService->prepareIdentity();
-        $account = $this->prepareAccount($identity, $login, $password);
+        $account = $this->prepareAccount($identity, $username, $password);
         $this->entityWriter->write([$identity, $account]);
         return $identity;
     }
 
-    private function prepareAccount(Identity $identity, string $login, string $password): Account
+    private function prepareAccount(Identity $identity, string $username, string $password): Account
     {
         $passwordHash = $this->passwordHasher->hash($password);
-        $account = new Account($login, $passwordHash);
+        $account = new Account($username, $passwordHash);
         $account->identity = $identity;
         return $account;
     }

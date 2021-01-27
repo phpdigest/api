@@ -25,7 +25,7 @@ final class IdentityService implements \App\Module\User\Api\IdentityFactory, Ide
 
     public function prepareIdentity(): Identity
     {
-        return new Identity(Random::string(128));
+        return new Identity();
     }
 
     public function createIdentity(): Identity
@@ -35,17 +35,22 @@ final class IdentityService implements \App\Module\User\Api\IdentityFactory, Ide
         return $identity;
     }
 
-    public function addIdentityToken(IdentityInterface $identity, string $token, string $type): Token
+    public function createIdentityWithToken(string $type, ?string $token): Token
     {
-        $token = new Token($token, $type);
-        $token->identity = $identity;
-        $this->entityWriter->write([$token]);
-        return $token;
+        $identity = $this->prepareIdentity();
+        return $this->addTokenToIdentity($identity, $type, $token);
     }
 
-    public function generateIdentityToken(IdentityInterface $identity, string $type): Token
+    public function addTokenToIdentity(IdentityInterface $identity, string $type, ?string $token): Token
     {
-        $tokenStr = Random::string(self::DEFAULT_TOKEN_LENGTH);
-        return $this->addIdentityToken($identity, $tokenStr, $type);
+        $tokenEntity = new Token($token ?? $this->generateToken(), $type);
+        $tokenEntity->identity = $identity;
+        $this->entityWriter->write([$tokenEntity]);
+        return $tokenEntity;
+    }
+
+    protected function generateToken(): string
+    {
+        return Random::string(self::DEFAULT_TOKEN_LENGTH);
     }
 }

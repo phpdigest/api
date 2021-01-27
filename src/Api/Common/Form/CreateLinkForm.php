@@ -17,6 +17,7 @@ class CreateLinkForm extends FormModel
 
     protected ?string $url = null;
     protected ?string $description = null;
+    protected ?string $source = null;
 
     public function getUrl(): string
     {
@@ -33,7 +34,19 @@ class CreateLinkForm extends FormModel
         return $this->description !== null;
     }
 
-    protected function rules(): array
+    public function withSource(?string $source): self
+    {
+        $new = clone $this;
+        $new->source = $source;
+        return $new;
+    }
+
+    public function getSource(): ?string
+    {
+        return $this->source;
+    }
+
+    public function rules(): array
     {
         return [
             'url' => [

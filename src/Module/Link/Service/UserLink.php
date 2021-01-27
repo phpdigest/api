@@ -6,31 +6,34 @@ namespace App\Module\Link\Service;
 
 use App\Common\Domain\Exception\EntityNotFound;
 use App\Module\Link\Api\UserLinkService;
-use App\Module\Link\Domain\Entity\Link;
+use App\Module\Link\Domain\Entity\Suggestion;
 use App\Api\Common\Form\CreateLinkForm;
-use App\Module\Link\Domain\Repository\LinkRepository;
+use App\Module\Link\Domain\Repository\SuggestionRepository;
 use Yiisoft\Auth\IdentityInterface;
+use Yiisoft\Yii\Cycle\Data\Writer\EntityWriter;
 
 final class UserLink implements UserLinkService
 {
-    private LinkRepository $repository;
+    private SuggestionRepository $repository;
+    private EntityWriter $entityWriter;
 
-    public function __construct(LinkRepository $repository)
-    {
+    public function __construct(
+        SuggestionRepository $repository,
+        EntityWriter $entityWriter
+    ) {
         $this->repository = $repository;
+        $this->entityWriter = $entityWriter;
     }
 
-    public function createLink(CreateLinkForm $form, IdentityInterface $identity): Link
+    public function createSuggestion(CreateLinkForm $form, IdentityInterface $identity): Suggestion
     {
-        $link = new Link();
-        $link->setUrl($form->getUrl());
+        $link = new Suggestion();
+        $link->url = $form->getUrl();
+        $link->source = $form->getSource();
+        $link->description = $form->getDescription();
 
-        if ($form->hasDescription()) {
-            $link->setDescription($form->getDescription());
-        }
-
-        $link->setIdentity($identity);
-        $this->repository->save($link);
+        $link->identity = $identity;
+        $this->entityWriter->write([$link]);
 
         return $link;
     }
@@ -42,7 +45,7 @@ final class UserLink implements UserLinkService
         );
     }
 
-    public function getLink(string $url, IdentityInterface $identity): Link
+    public function getLink(string $url, IdentityInterface $identity): Suggestion
     {
         $link = $this->repository->findOneByUrlAndIdentity($url, $identity);
         if ($link === null) {

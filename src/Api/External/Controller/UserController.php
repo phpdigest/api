@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace App\Api\External\Controller;
 
-use App\Module\User\Api\IdentityFactory;
+use App\Module\User\Api\IdentityTokenService;
+use App\Module\User\Domain\Entity\Token;
 use Psr\Http\Message\ServerRequestInterface;
 
 class UserController extends ApiController
@@ -15,10 +16,10 @@ class UserController extends ApiController
         return ['id' => $identity->getId()];
     }
 
-    public function post(IdentityFactory $service): array
+    public function post(IdentityTokenService $service): array
     {
-        $identity = $service->createIdentity();
+        $token = $service->createIdentityWithToken(Token::TYPE_API, null);
 
-        return ['token' => $identity->token];
+        return ['token' => $token->token];
     }
 }

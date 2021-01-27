@@ -8,16 +8,22 @@ use App\Api\Telegram\Helper\FormMaker;
 use App\Api\Telegram\Telegram\Conversation\SuggestLinkConversation;
 use BotMan\BotMan\BotMan;
 use BotMan\BotMan\Messages\Incoming\IncomingMessage;
+use Yiisoft\Validator\ValidatorInterface;
 
 final class FallbackCommand implements CommandInterface
 {
     private SuggestLinkConversation $suggestLinkConversation;
     private FormMaker $formMaker;
+    private ValidatorInterface $validator;
 
-    public function __construct(SuggestLinkConversation $suggestLinkConversation, FormMaker $formMaker)
-    {
+    public function __construct(
+        SuggestLinkConversation $suggestLinkConversation,
+        FormMaker $formMaker,
+        ValidatorInterface $validator
+    ) {
         $this->suggestLinkConversation = $suggestLinkConversation;
         $this->formMaker = $formMaker;
+        $this->validator = $validator;
     }
 
     public static function getName(): string
@@ -35,7 +41,7 @@ final class FallbackCommand implements CommandInterface
         $text = $message->getText();
         $form = $this->formMaker->makeForm($text);
 
-        if (!$form->validate()) {
+        if (!$form->validate($this->validator)) {
             StartCommand::replyMainMenu($botMan);
             return;
         }

@@ -16,7 +16,7 @@ use DateTimeImmutable;
  *
  * @Entity(
  *     role="user_token",
- *     repository="App\Module\User\Domain\Repository\IdentityTokenRepository"
+ *     repository="App\Module\User\Domain\Repository\IdentityWithTokenRepository"
  * )
  * @Table(
  *     indexes={
@@ -28,6 +28,7 @@ class Token
 {
     public const TYPE_WEB = 'web';
     public const TYPE_TELEGRAM = 'telegram';
+    public const TYPE_API = 'api';
 
     /**
      * @Column(type="primary")

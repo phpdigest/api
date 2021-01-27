@@ -17,7 +17,7 @@ class FindLinkForm extends FormModel
         return $this->url;
     }
 
-    protected function rules(): array
+    public function rules(): array
     {
         return [
             'url' => [

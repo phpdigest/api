@@ -11,6 +11,7 @@ use App\Api\Common\Form\FindLinkForm;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Form\FormModel;
 use Yiisoft\Http\Status;
+use Yiisoft\Validator\ValidatorInterface;
 
 final class LinkController extends ApiController
 {
@@ -19,13 +20,13 @@ final class LinkController extends ApiController
         $this->validateLinkForm($form, $request->getQueryParams());
         $link = $service->getLink($form->getUrl(), $this->getIdentityFromRequest($request));
 
-        return ['url' => $link->getUrl()];
+        return ['url' => $link->url];
     }
 
     public function post(UserLinkService $service, ServerRequestInterface $request, CreateLinkForm $form): void
     {
         $this->validateLinkForm($form, (array)$request->getParsedBody());
-        $service->createLink($form, $this->getIdentityFromRequest($request));
+        $service->createSuggestion($form->withSource('api'), $this->getIdentityFromRequest($request));
     }
 
     public function delete(UserLinkService $service, ServerRequestInterface $request, FindLinkForm $form): void
@@ -37,7 +38,7 @@ final class LinkController extends ApiController
     private function validateLinkForm(FormModel $form, array $data): void
     {
         $form->load($data);
-        if (!$form->validate()) {
+        if (!$form->validate($this->validator)) {
             throw new HttpException(Status::BAD_REQUEST, current($form->firstErrors()));
         }
     }

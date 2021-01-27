@@ -8,5 +8,5 @@ use Yiisoft\Auth\IdentityInterface;
 
 interface RegisterClassic
 {
-    public function register(string $login, string $password): IdentityInterface;
+    public function register(string $username, string $password): IdentityInterface;
 }

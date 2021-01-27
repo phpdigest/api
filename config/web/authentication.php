@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Common\Application\AuthRequestErrorHandler;
+use App\Module\User\Domain\Entity\Token;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Yiisoft\Auth\AuthenticationMethodInterface;
@@ -19,5 +20,5 @@ return [
     },
 
     AuthenticationMethodInterface::class => static fn (ContainerInterface $container)
-        => $container->get(HttpHeader::class)->withHeaderName('Authorization'),
+        => $container->get(HttpHeader::class)->withHeaderName('Authorization')->withTokenType(Token::TYPE_API),
 ];

@@ -6,6 +6,7 @@ namespace App\Module\User\Domain\Entity;
 
 use Cycle\Annotated\Annotation\Column;
 use Cycle\Annotated\Annotation\Entity;
+use Cycle\Annotated\Annotation\Relation\HasOne;
 use Cycle\Annotated\Annotation\Table;
 use Cycle\Annotated\Annotation\Table\Index;
 use DateTimeImmutable;
@@ -19,11 +20,6 @@ use Yiisoft\Auth\IdentityInterface;
  *     repository="App\Module\User\Domain\Repository\IdentityRepository",
  *     mapper="Yiisoft\Yii\Cycle\Mapper\TimestampedMapper"
  * )
- * @Table(
- *     indexes={
- *         @Index(columns={"token"}, unique=true)
- *     }
- * )
  */
 class Identity implements IdentityInterface
 {
@@ -33,13 +29,6 @@ class Identity implements IdentityInterface
      * @psalm-readonly
      */
     public ?int $id = null;
-
-    /**
-     * @Column(type="string(128)")
-     *
-     * @psalm-readonly
-     */
-    public string $token;
 
     /**
      * Annotations for this field placed in a mapper class
@@ -53,11 +42,24 @@ class Identity implements IdentityInterface
      */
     public DateTimeImmutable $updated_at;
 
-    public function __construct(string $token)
+    /**
+     * @HasOne(
+     *     target="App\Module\User\Domain\Entity\Account",
+     *     load="lazy",
+     *     innerKey="id",
+     *     outerKey="identity_id",
+     *     nullable=true,
+     *     fkCreate=false,
+     *     indexCreate=false
+     * )
+     * @var Account
+     */
+    public $account;
+
+    public function __construct()
     {
         $this->created_at = new DateTimeImmutable();
         $this->updated_at = new DateTimeImmutable();
-        $this->token = $token;
     }
 
     public function getId(): ?string

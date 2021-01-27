@@ -7,21 +7,15 @@ namespace App\Module\User\Domain\Repository;
 use App\Common\Domain\BaseRepository;
 use App\Module\User\Domain\Entity\Identity;
 use Cycle\ORM\Select;
-use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\Auth\IdentityRepositoryInterface;
-use Yiisoft\Auth\IdentityWithTokenRepositoryInterface;
 
 /**
  * @psalm-internal App\Module\User
  */
-class IdentityRepository extends BaseRepository
-    implements IdentityRepositoryInterface, IdentityWithTokenRepositoryInterface
+class IdentityRepository extends BaseRepository implements IdentityRepositoryInterface
 {
-    private IdentityTokenRepository $identityTokenRepository;
-
-    public function __construct(Select $select, IdentityTokenRepository $identityTokenRepository) {
+    public function __construct(Select $select, IdentityWithTokenRepository $identityTokenRepository) {
         parent::__construct($select);
-        $this->identityTokenRepository = $identityTokenRepository;
     }
 
     private function findIdentityBy(string $field, string $value): ?Identity
@@ -36,10 +30,5 @@ class IdentityRepository extends BaseRepository
         /** @var null|Identity $identity */
         $identity = $this->findByPK($id);
         return $identity;
-    }
-
-    public function findIdentityByToken(string $token, string $type = null): ?IdentityInterface
-    {
-        return $this->identityTokenRepository->findIdentityByToken($token, $type);
     }
 }

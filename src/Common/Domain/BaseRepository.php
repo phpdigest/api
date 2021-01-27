@@ -35,7 +35,7 @@ abstract class BaseRepository implements RepositoryInterface
         return $this->select()->fetchOne($scope);
     }
 
-    public function findAll(array $scope = [], array $orderBy = []): iterable
+    public function findAll(array $scope = [], array $orderBy = []): EntityReader
     {
         return new EntityReader($this->select()->where($scope)->orderBy($orderBy));
     }

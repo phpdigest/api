@@ -9,13 +9,13 @@ use Yiisoft\Validator\Rule\Required;
 
 final class LoginForm extends FormModel
 {
-    private string $login = '';
+    private string $username = '';
     private string $password = '';
 
     public function attributeLabels(): array
     {
         return [
-            'login' => 'Login',
+            'username' => 'Username',
             'password' => 'Password',
         ];
     }
@@ -28,7 +28,7 @@ final class LoginForm extends FormModel
     public function rules(): array
     {
         return [
-            'login' => [new Required()],
+            'username' => [new Required()],
             'password' => [new Required()],
         ];
     }

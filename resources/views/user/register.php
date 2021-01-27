@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Api\UI\Controller\UserController;
 use Yiisoft\Form\Widget\Form;
 use Yiisoft\Html\Html;
 
@@ -23,7 +24,7 @@ $this->setTitle('Registration');
         <div class="card-body">
             <h3 class="card-title">Registration</h3>
             <?= Form::widget()
-                    ->action($url->generate('user/register'))
+                    ->action($url->generate(UserController::ACTION_REGISTER))
                     ->options(
                         [
                             'id' => 'form-register',
@@ -33,7 +34,7 @@ $this->setTitle('Registration');
                     )
                     ->begin() ?>
 
-            <?= $field->config($form, 'login') ?>
+            <?= $field->config($form, 'username') ?>
             <?= $field->config($form, 'password') ?>
 
 

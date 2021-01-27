@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 use Yiisoft\Injector\Injector;
 use Yiisoft\Json\Json;
+use Yiisoft\Validator\ValidatorInterface;
 
 final class SuggestLinkConversation extends Conversation
 {
@@ -38,23 +39,20 @@ final class SuggestLinkConversation extends Conversation
     private UserLinkService $userLinkService;
     private TgIdentityService $identityService;
     private ChatConfig $chatConfig;
-    /**
-     * @var Injector
-     */
-    private Injector $injector;
+    private ValidatorInterface $validator;
 
     public function __construct(
         FormMaker $formMaker,
         UserLinkService $userLinkService,
         TgIdentityService $identityService,
         ChatConfig $chatConfig,
-        Injector $injector
+        ValidatorInterface $validator
     ) {
         $this->formMaker = $formMaker;
         $this->userLinkService = $userLinkService;
         $this->identityService = $identityService;
         $this->chatConfig = $chatConfig;
-        $this->injector = $injector;
+        $this->validator = $validator;
     }
 
     public function start(): void
@@ -92,7 +90,7 @@ final class SuggestLinkConversation extends Conversation
                 }
                 $form = $this->formMaker->makeForm($this->link, $this->description);
 
-                if (!$form->validate() && $form->hasErrors(CreateLinkForm::FIELD_URL)) {
+                if (!$form->validate($this->validator) && $form->hasErrors(CreateLinkForm::FIELD_URL)) {
                     $this->say($form->firstError(CreateLinkForm::FIELD_URL), ['reply_to_message_id' => $answer_id]);
                     $this->askLink();
                     return;
@@ -137,7 +135,7 @@ final class SuggestLinkConversation extends Conversation
                     }
 
                     $form = $this->formMaker->makeForm($this->link, $this->description);
-                    if (!$form->validate()) {
+                    if (!$form->validate($this->validator)) {
                         $this->say(implode("\n", $form->firstErrors()), ['reply_to_message_id' => $answer_id]);
                         $this->askDescription();
                         return;
@@ -150,7 +148,7 @@ final class SuggestLinkConversation extends Conversation
                     $identity = $this->identityService->getIdentity((string)$this->getBot()->getUser()->getId());
 
                     // create link
-                    $this->userLinkService->createLink($form, $identity);
+                    $this->userLinkService->createSuggestion($form, $identity);
 
                     $response = $this->getBot()->reply(
                         'Спасибо. Мы обработаем ваше предложение.',

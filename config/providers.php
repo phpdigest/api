@@ -7,5 +7,6 @@ declare(strict_types=1);
 use Yiisoft\Arrays\Modifier\ReverseBlockMerge;
 
 return [
+    'yiisoft/cycle-orm/repository-provider' => \Yiisoft\Yii\Cycle\Factory\RepositoryProvider::class,
     ReverseBlockMerge::class => new ReverseBlockMerge()
 ];

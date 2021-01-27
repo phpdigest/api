@@ -24,18 +24,22 @@ use Yiisoft\Http\Status;
 use Yiisoft\Injector\Injector;
 use roxblnfk\SmartStream\Data\DataBucket;
 use roxblnfk\SmartStream\SmartStreamFactory;
+use Yiisoft\Validator\ValidatorInterface;
 
 abstract class ApiController implements MiddlewareInterface
 {
     protected ResponseFactoryInterface $responseFactory;
+    protected ValidatorInterface $validator;
     private Injector $injector;
 
     public function __construct(
         ResponseFactoryInterface $responseFactory,
-        Injector $injector
+        Injector $injector,
+        ValidatorInterface $validator
     ) {
         $this->responseFactory = $responseFactory;
         $this->injector = $injector;
+        $this->validator = $validator;
     }
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -99,7 +103,6 @@ abstract class ApiController implements MiddlewareInterface
 
     protected function getIdentityFromRequest(ServerRequestInterface $request): Identity
     {
-        /** @var Identity $identity */
         $identity = $request->getAttribute(Authentication::class);
         if (!$identity instanceof Identity) {
             throw new HttpException(Status::NOT_FOUND, 'User not found.');

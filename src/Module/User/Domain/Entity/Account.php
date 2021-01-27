@@ -17,11 +17,11 @@ use DateTimeImmutable;
  * @Entity(
  *     role="user_account",
  *     repository="App\Module\User\Domain\Repository\AccountRepository",
- *     mapper="Yiisoft\Yii\Cycle\Mapper\TimestampedMapper"
+ *     mapper="App\Module\User\Domain\Mapper\AccountMapper"
  * )
  * @Table(
  *     indexes={
- *         @Index(columns={"login"}, unique=true),
+ *         @Index(columns={"username"}, unique=true),
  *         @Index(columns={"identity_id"}, unique=true)
  *     }
  * )
@@ -38,7 +38,7 @@ class Account
     /**
      * @Column(type="string(48)")
      */
-    public string $login;
+    public string $username;
 
     /**
      * @Column(type="string")
@@ -46,14 +46,14 @@ class Account
     public string $passwordHash;
 
     /**
-     * Annotations for this field placed in a mapper class
+     * @Column(type="datetime")
      *
      * @psalm-readonly
      */
     public DateTimeImmutable $created_at;
 
     /**
-     * Annotations for this field placed in a mapper class
+     * @Column(type="datetime")
      */
     public DateTimeImmutable $updated_at;
 
@@ -65,9 +65,9 @@ class Account
     /** @see Identity::$id */
     public ?int $identity_id = null;
 
-    public function __construct(string $login, string $passwordHash)
+    public function __construct(string $username, string $passwordHash)
     {
-        $this->login = $login;
+        $this->username = $username;
         $this->passwordHash = $passwordHash;
         $this->created_at = new DateTimeImmutable();
         $this->updated_at = new DateTimeImmutable();

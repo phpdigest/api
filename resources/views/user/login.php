@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Api\UI\Controller\UserController;
 use Yiisoft\Form\Widget\Form;
 use Yiisoft\Html\Html;
 
@@ -24,7 +25,7 @@ $this->setTitle('Authentication');
             <h3 class="card-title">Authentication</h3>
 
             <?= Form::widget()
-                    ->action($url->generate('user/login'))
+                    ->action($url->generate(UserController::ACTION_LOGIN))
                     ->options(
                         [
                             'id' => 'form-register',
@@ -34,7 +35,7 @@ $this->setTitle('Authentication');
                     )
                     ->begin() ?>
 
-            <?= $field->config($form, 'login') ?>
+            <?= $field->config($form, 'username') ?>
             <?= $field->config($form, 'password') ?>
 
             <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>

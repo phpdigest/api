@@ -6,6 +6,8 @@ declare(strict_types=1);
 /** @var string|null $csrf */
 /** @var \App\Common\Application\ApplicationParameters $applicationParameters */
 
+use App\Api\UI\Controller\LinkController;
+
 $this->params['breadcrumbs'] = '/';
 
 $this->setTitle($applicationParameters->getName());
@@ -36,8 +38,8 @@ $this->setTitle($applicationParameters->getName());
                 <i class="fas fa-plus fa-2x"></i>
             </div>
             <div class="card-body">
-                <div class="card-title">Share link</div>
-                <div><a href="<?= $url->generate('link/form') ?>"><i class="fas fa-link"></i> This site</a></div>
+                <div class="card-title">Suggest link</div>
+                <div><a href="<?= $url->generate(LinkController::PAGE_SUGGEST_LINK) ?>"><i class="fas fa-link"></i> This site</a></div>
                 <div><a href="https://t.me/phpdigest_bot/"><i class="fab fa-telegram-plane"></i> Telegram</a></div>
                 <div><a href="https://bit.ly/php-digest-add-link"><i class="fas fa-list"></i> Google forms</a></div>
             </div>

@@ -4,26 +4,22 @@ declare(strict_types=1);
 
 namespace App\Api\Telegram\Helper;
 
-use App\Module\User\Api\IdentityFactory;
 use App\Module\User\Api\IdentityTokenService;
 use App\Module\User\Domain\Entity\Token;
 use Yiisoft\Auth\IdentityInterface;
-use Yiisoft\Auth\IdentityRepositoryInterface;
+use Yiisoft\Auth\IdentityWithTokenRepositoryInterface;
 
 final class TgIdentityService
 {
-    private IdentityRepositoryInterface $identityRepository;
+    private IdentityWithTokenRepositoryInterface $identityRepository;
     private IdentityTokenService $identityTokenService;
-    private IdentityFactory $identityFactory;
 
     public function __construct(
-        IdentityRepositoryInterface $identityRepository,
-        IdentityTokenService $identityTokenService,
-        IdentityFactory $identityFactory
+        IdentityWithTokenRepositoryInterface $identityRepository,
+        IdentityTokenService $identityTokenService
     ) {
         $this->identityRepository = $identityRepository;
         $this->identityTokenService = $identityTokenService;
-        $this->identityFactory = $identityFactory;
     }
 
     public function getIdentity(string $tgToken): IdentityInterface
@@ -34,9 +30,7 @@ final class TgIdentityService
             return $identity;
         }
 
-        // create identity and link with token
-        $identity = $this->identityFactory->createIdentity();
-        $this->identityTokenService->addIdentityToken($identity, $tgToken, Token::TYPE_TELEGRAM);
-        return $identity;
+        $token = $this->identityTokenService->createIdentityWithToken(Token::TYPE_TELEGRAM, $tgToken);
+        return $token->identity;
     }
 }

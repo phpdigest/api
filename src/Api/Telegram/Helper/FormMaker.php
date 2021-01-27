@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Api\Telegram\Helper;
 
-use App\Api\Common\Form\CreateLinkForm;
+use App\Api\Telegram\Form\SuggestLinkFrom;
 use Yiisoft\Injector\Injector;
 
 final class FormMaker
@@ -16,12 +16,12 @@ final class FormMaker
         $this->injector = $injector;
     }
 
-    public function makeForm(string $url, string $description = ''): CreateLinkForm
+    public function makeForm(string $url, string $description = ''): SuggestLinkFrom
     {
-        $form =  $this->injector->make(CreateLinkForm::class);
+        $form =  $this->injector->make(SuggestLinkFrom::class);
         $form->load([
-            CreateLinkForm::FIELD_URL => $url,
-            CreateLinkForm::FIELD_DESCRIPTION => $description,
+            SuggestLinkFrom::FIELD_URL => $url,
+            SuggestLinkFrom::FIELD_DESCRIPTION => $description,
         ], '');
         return $form;
     }
