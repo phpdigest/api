@@ -29,15 +29,15 @@ class OrmDefaultC31f75bfb3c90107422ec5a8d1384730 extends Migration
 
     public function down(): void
     {
-        $this->table('identity')
+        $this->table('user_identity')
             ->addColumn('token', 'string', [
-                'nullable' => false,
+                'nullable' => true,
                 'default'  => null,
                 'size'     => 128
             ])
             ->addIndex(["token"], [
                 'name'   => 'identity_index_token_5f34458bf367f',
-                'unique' => true
+                'unique' => true,
             ])
             ->update();
 
