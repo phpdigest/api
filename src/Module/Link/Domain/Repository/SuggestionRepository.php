@@ -26,9 +26,9 @@ final class SuggestionRepository extends BaseRepository
         parent::__construct($select);
     }
 
-    public function findOneByUrlAndIdentity(string $url, IdentityInterface $identity): ?Suggestion
+    public function findOneByUrlAndIdentity(int $urlId, IdentityInterface $identity): ?Suggestion
     {
-        return $this->findOne(['url' => $url, 'identity_id' => $identity->getId()]);
+        return $this->findOne(['url_id' => $urlId, 'identity_id' => $identity->getId()]);
     }
 
     /**
@@ -40,6 +40,7 @@ final class SuggestionRepository extends BaseRepository
             $this->select()
                 ->where($scope)
                 ->orderBy($orderBy)
+                ->load('url', ['method' => Select::SINGLE_QUERY])
                 ->load('identity', ['method' => Select::SINGLE_QUERY])
                 ->load('identity.account', ['method' => Select::SINGLE_QUERY])
         );

@@ -13,8 +13,14 @@ use Yiisoft\Html\Html;
  * @var \Yiisoft\Auth\IdentityInterface $user
  */
 
-$this->params['breadcrumbs'] = 'Data tables';
+$this->params['breadcrumbs'] = 'Index';
 
-$this->setTitle('Data tables');
+$this->setTitle('Index');
 
-echo Html::a('Suggested links', $url->generate(LinkController::PAGE_SUGGESTION_TABLE));
+?>
+<ul>
+    <li><?= Html::a('URLs', $url->generate(LinkController::PAGE_URL_TABLE)) ?></li>
+    <li><?= Html::a('Suggestions', $url->generate(LinkController::PAGE_SUGGESTION_TABLE)) ?></li>
+</ul>
+
+

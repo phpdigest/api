@@ -30,9 +30,11 @@ class Suggestion
     public ?int $id = null;
 
     /**
-     * @Column(type="string(255)")
+     * @var null|Url|Reference
+     * @psalm-var null|Url
+     * @BelongsTo(target="App\Module\Link\Domain\Entity\Url", nullable=false, load="eager")
      */
-    public string $url;
+    public $url;
 
     /**
      * @Column(type="text", nullable=true)

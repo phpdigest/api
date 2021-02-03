@@ -50,6 +50,8 @@ return [
                 Group::create('/link', [
                     Route::get('/suggestions[/{page:\d}]', [Admin\LinkController::class, 'pageSuggestionTable'])
                         ->name(Admin\LinkController::PAGE_SUGGESTION_TABLE),
+                    Route::get('/urls[/{page:\d}]', [Admin\LinkController::class, 'pageUrlTable'])
+                        ->name(Admin\LinkController::PAGE_URL_TABLE),
                 ]),
             ])->addMiddleware(static fn (PermissionMiddleware $mw, UrlGeneratorInterface $urlGenerator) => $mw
                 ->withPermission('admin_panel')

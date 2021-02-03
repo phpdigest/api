@@ -97,6 +97,8 @@ class OffsetPagination extends Widget
                     $this->pagesCount,
                 ];
             }
+        } elseif ($this->pagesCount === 0) {
+            $this->pages = [];
         } else {
             $this->pages = range(1, $this->pagesCount);
         }
@@ -106,6 +108,9 @@ class OffsetPagination extends Widget
     protected function renderButtons(): string
     {
         $result = '';
+        if (count($this->pages) === 0) {
+            return $result;
+        }
 
         // `Previous` page
         $prevUrl = $this->paginator->isOnFirstPage() ? null : $this->getPageLink($this->currentPage - 1);

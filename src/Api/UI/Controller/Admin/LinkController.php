@@ -6,6 +6,7 @@ namespace App\Api\UI\Controller\Admin;
 
 use App\Api\UI\Controller\AbstractController;
 use App\Module\Link\Domain\Repository\SuggestionRepository;
+use App\Module\Link\Domain\Repository\UrlRepository;
 use App\Module\User\Domain\Repository\AccountRepository;
 use App\Module\User\Domain\Repository\IdentityRepository;
 use Psr\Http\Message\ResponseInterface;
@@ -17,10 +18,11 @@ use Yiisoft\User\User;
 class LinkController extends AbstractController
 {
     public const ROUTE_PREFIX = 'admin_panel_link__';
-    public const PAGE_SUGGESTION_TABLE = self::ROUTE_PREFIX . 'table';
+    public const PAGE_SUGGESTION_TABLE = self::ROUTE_PREFIX . 'suggestion_table';
+    public const PAGE_URL_TABLE = self::ROUTE_PREFIX . 'url_table';
 
     /**
-     * Action for {@see P_SUGGESTION_TABLE}
+     * Action for {@see PAGE_SUGGESTION_TABLE}
      */
     public function pageSuggestionTable(
         ServerRequestInterface $request,
@@ -28,13 +30,35 @@ class LinkController extends AbstractController
     ): ResponseInterface {
         $pageNum = (int)$request->getAttribute('page', 1);
 
-        $dataReader = $suggestionRepository->findAllWithUserAccount()->withSort((new Sort(['id']))->withOrderString('-id'));
+        $dataReader = $suggestionRepository->findAllWithUserAccount()->withSort(Sort::any()->withOrderString('-id'));
         $paginator = (new OffsetPaginator($dataReader))
             ->withPageSize(20)
             ->withCurrentPage($pageNum);
 
         return $this->render(
             'admin/link/suggestions',
+            [
+                'paginator' => $paginator,
+            ]
+        );
+    }
+
+    /**
+     * Action for {@see PAGE_URL_TABLE}
+     */
+    public function pageUrlTable(
+        ServerRequestInterface $request,
+        UrlRepository $urlRepository
+    ): ResponseInterface {
+        $pageNum = (int)$request->getAttribute('page', 1);
+
+        $dataReader = $urlRepository->findAll()->withSort(Sort::any()->withOrderString('-id'));
+        $paginator = (new OffsetPaginator($dataReader))
+            ->withPageSize(20)
+            ->withCurrentPage($pageNum);
+
+        return $this->render(
+            'admin/link/urls',
             [
                 'paginator' => $paginator,
             ]

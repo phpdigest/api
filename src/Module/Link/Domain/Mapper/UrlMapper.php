@@ -10,7 +10,7 @@ use Cycle\ORM\Heap\Node;
 use Cycle\ORM\Heap\State;
 use Cycle\ORM\Mapper\Mapper;
 
-class SuggestionMapper extends Mapper
+class UrlMapper extends Mapper
 {
     public function queueUpdate($entity, Node $node, State $state): ContextCarrierInterface
     {

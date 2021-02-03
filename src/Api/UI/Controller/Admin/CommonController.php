@@ -13,7 +13,7 @@ class CommonController extends AbstractController
     public const PAGE_INDEX = self::ROUTE_PREFIX . 'index';
 
     /**
-     * Action for {@see P_INDEX}
+     * Action for {@see PAGE_INDEX}
      */
     public function pageIndex(): ResponseInterface
     {

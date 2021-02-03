@@ -30,7 +30,7 @@ class UserController extends AbstractController
     public const ACTION_LOGIN = self::ROUTE_PREFIX . 'login_action';
 
     /**
-     * Action for {@see P_REGISTER}
+     * Action for {@see PAGE_REGISTER}
      */
     public function pageRegister(RegisterForm $form): ResponseInterface
     {
@@ -38,7 +38,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * Action for {@see A_REGISTER}
+     * Action for {@see ACTION_REGISTER}
      */
     public function actionRegister(
         ServerRequestInterface $request,
@@ -77,7 +77,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * Action for {@see P_LOGIN}
+     * Action for {@see PAGE_LOGIN}
      */
     public function pageLogin(LoginForm $form): ResponseInterface
     {
@@ -85,7 +85,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * Action for {@see A_LOGIN}
+     * Action for {@see ACTION_LOGIN}
      */
     public function actionLogin(
         ServerRequestInterface $request,
@@ -124,7 +124,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * Action for {@see A_LOGOUT}
+     * Action for {@see ACTION_LOGOUT}
      */
     public function actionLogout(
         UrlGeneratorInterface $url,

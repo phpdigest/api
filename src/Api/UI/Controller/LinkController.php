@@ -6,7 +6,7 @@ namespace App\Api\UI\Controller;
 
 use App\Api\UI\Form\SuggestLinkForm;
 use App\Api\UI\Widget\FlashMessage;
-use App\Module\Link\Api\UserLinkService;
+use App\Module\Link\Api\LinkSuggestionService;
 use App\Module\User\Api\IdentityFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -25,14 +25,14 @@ final class LinkController extends AbstractController
     public const ACTION_SUGGEST_LINK = self::ROUTE_PREFIX . 'suggest_link_action';
 
     /**
-     * Action for {@see P_SUGGEST_LINK}
+     * Action for {@see PAGE_SUGGEST_LINK}
      */
     public function pageSuggestLink(SuggestLinkForm $form): ResponseInterface {
         return $this->render('link/form', ['form' => $form]);
     }
 
     /**
-     * Action for {@see A_SUGGEST_LINK}
+     * Action for {@see ACTION_SUGGEST_LINK}
      */
     public function actionSuggestLink(
         ServerRequestInterface $request,
@@ -41,7 +41,7 @@ final class LinkController extends AbstractController
         SuggestLinkForm $form,
         IdentityFactory $identityFactory,
         User $user,
-        UserLinkService $service,
+        LinkSuggestionService $service,
         ValidatorInterface $validator
     ): ResponseInterface {
         if (!$form->load($request->getParsedBody()) || !$form->validate($validator)) {

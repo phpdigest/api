@@ -11,7 +11,7 @@ use App\Api\Telegram\Telegram\ChatConfig;
 use App\Api\Telegram\Telegram\Command\FallbackCommand;
 use App\Api\Telegram\Telegram\Command\StartCommand;
 use App\Api\Telegram\Telegram\Command\SuggestLinkCommand;
-use App\Module\Link\Api\UserLinkService;
+use App\Module\Link\Api\LinkSuggestionService;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\Drivers\Telegram\Extensions\Keyboard;
@@ -36,14 +36,14 @@ final class SuggestLinkConversation extends Conversation
     protected bool $finishing = false;
 
     private FormMaker $formMaker;
-    private UserLinkService $userLinkService;
+    private LinkSuggestionService $userLinkService;
     private TgIdentityService $identityService;
     private ChatConfig $chatConfig;
     private ValidatorInterface $validator;
 
     public function __construct(
         FormMaker $formMaker,
-        UserLinkService $userLinkService,
+        LinkSuggestionService $userLinkService,
         TgIdentityService $identityService,
         ChatConfig $chatConfig,
         ValidatorInterface $validator

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Api\External\Controller;
 
 use App\Api\External\Exception\HttpException;
-use App\Module\Link\Api\UserLinkService;
+use App\Module\Link\Api\LinkSuggestionService;
 use App\Api\Common\Form\CreateLinkForm;
 use App\Api\Common\Form\FindLinkForm;
 use Psr\Http\Message\ServerRequestInterface;
@@ -15,24 +15,24 @@ use Yiisoft\Validator\ValidatorInterface;
 
 final class LinkController extends ApiController
 {
-    public function get(UserLinkService $service, ServerRequestInterface $request, FindLinkForm $form): array
+    public function get(LinkSuggestionService $service, ServerRequestInterface $request, FindLinkForm $form): array
     {
         $this->validateLinkForm($form, $request->getQueryParams());
-        $link = $service->getLink($form->getUrl(), $this->getIdentityFromRequest($request));
+        $link = $service->findSuggestion($form->getUrl(), $this->getIdentityFromRequest($request));
 
-        return ['url' => $link->url];
+        return ['url' => $link->url->__toString()];
     }
 
-    public function post(UserLinkService $service, ServerRequestInterface $request, CreateLinkForm $form): void
+    public function post(LinkSuggestionService $service, ServerRequestInterface $request, CreateLinkForm $form): void
     {
         $this->validateLinkForm($form, (array)$request->getParsedBody());
         $service->createSuggestion($form->withSource('api'), $this->getIdentityFromRequest($request));
     }
 
-    public function delete(UserLinkService $service, ServerRequestInterface $request, FindLinkForm $form): void
+    public function delete(LinkSuggestionService $service, ServerRequestInterface $request, FindLinkForm $form): void
     {
         $this->validateLinkForm($form, $request->getQueryParams());
-        $service->deleteLink($form->getUrl(), $this->getIdentityFromRequest($request));
+        $service->deleteSuggestion($form->getUrl(), $this->getIdentityFromRequest($request));
     }
 
     private function validateLinkForm(FormModel $form, array $data): void
