@@ -11,7 +11,6 @@ use App\Api\Common\Form\FindLinkForm;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Form\FormModel;
 use Yiisoft\Http\Status;
-use Yiisoft\Validator\ValidatorInterface;
 
 final class LinkController extends ApiController
 {

@@ -53,6 +53,10 @@ return [
                     Route::get('/urls[/{page:\d}]', [Admin\LinkController::class, 'pageUrlTable'])
                         ->name(Admin\LinkController::PAGE_URL_TABLE),
                 ]),
+                Group::create('/user', [
+                    Route::get('/accounts[/{page:\d}]', [Admin\UserController::class, 'pageAccountTable'])
+                        ->name(Admin\UserController::PAGE_ACCOUNT_TABLE),
+                ]),
             ])->addMiddleware(static fn (PermissionMiddleware $mw, UrlGeneratorInterface $urlGenerator) => $mw
                 ->withPermission('admin_panel')
                 ->withRedirection($urlGenerator->generate(UI\Controller\SiteController::PAGE_INDEX))),
