@@ -35,12 +35,12 @@ class Identity implements IdentityInterface
      *
      * @psalm-readonly
      */
-    public DateTimeImmutable $created_at;
+    public ?DateTimeImmutable $created_at = null;
 
     /**
      * Annotations for this field placed in a mapper class
      */
-    public DateTimeImmutable $updated_at;
+    public ?DateTimeImmutable $updated_at = null;
 
     /**
      * @HasOne(
