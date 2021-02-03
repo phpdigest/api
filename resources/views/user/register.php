@@ -35,7 +35,7 @@ $this->setTitle('Registration');
                     ->begin() ?>
 
             <?= $field->config($form, 'username') ?>
-            <?= $field->config($form, 'password') ?>
+            <?= $field->config($form, 'password')->passwordInput() ?>
 
 
             <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
