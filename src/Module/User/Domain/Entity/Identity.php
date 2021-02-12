@@ -18,7 +18,7 @@ use Yiisoft\Auth\IdentityInterface;
  * @Entity(
  *     role="user_identity",
  *     repository="App\Module\User\Domain\Repository\IdentityRepository",
- *     mapper="Yiisoft\Yii\Cycle\Mapper\TimestampedMapper"
+ *     mapper="App\Module\User\Domain\Mapper\IdentityMapper"
  * )
  */
 class Identity implements IdentityInterface
@@ -31,16 +31,16 @@ class Identity implements IdentityInterface
     public ?int $id = null;
 
     /**
-     * Annotations for this field placed in a mapper class
+     * @Column(type="datetime")
      *
      * @psalm-readonly
      */
-    public ?DateTimeImmutable $created_at = null;
+    public DateTimeImmutable $created_at;
 
     /**
-     * Annotations for this field placed in a mapper class
+     * @Column(type="datetime")
      */
-    public ?DateTimeImmutable $updated_at = null;
+    public DateTimeImmutable $updated_at;
 
     /**
      * @HasOne(
