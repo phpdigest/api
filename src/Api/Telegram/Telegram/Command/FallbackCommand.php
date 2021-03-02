@@ -41,7 +41,7 @@ final class FallbackCommand implements CommandInterface
         $text = $message->getText();
         $form = $this->formMaker->makeForm($text);
 
-        if (!$form->validate($this->validator)) {
+        if (!$this->validator->validate($form)) {
             StartCommand::replyMainMenu($botMan);
             return;
         }

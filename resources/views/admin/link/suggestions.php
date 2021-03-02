@@ -48,7 +48,7 @@ $this->setTitle('Suggestions');
                         '<i class="fa fa-share"></i>',
                         $link->url->__toString(),
                         ['rel' => 'nofollow noreferrer', 'target' => '_blank']
-                    ) ?>
+                    )->encode(false) ?>
                     <span class="ms-2"><?= Html::encode($link->description) ?></span>
                 </td>
                 <td class="text-end">

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use App\Api\UI\Controller\Admin\LinkController;
 use App\Api\UI\Widget\OffsetPagination;
-use App\Api\UI\Widget\SourceIcon;
 use App\Module\Link\Domain\Entity\Url;
 use Yiisoft\Html\Html;
 
@@ -44,7 +43,7 @@ $this->setTitle('Url list');
                         '<i class="fa fa-share"></i>',
                         $link->__toString(),
                         ['rel' => 'nofollow noreferrer', 'target' => '_blank']
-                    ) ?>
+                    )->encode(false) ?>
                 </td>
                 <td class="text-nowrap text-muted text-end"><?= $link->created_at->format('d-m-Y') ?></td>
             </tr>

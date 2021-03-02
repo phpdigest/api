@@ -8,7 +8,6 @@ use App\Api\Common\Form\CreateLinkForm;
 use App\Api\Telegram\Helper\FormMaker;
 use App\Api\Telegram\Helper\TgIdentityService;
 use App\Api\Telegram\Telegram\ChatConfig;
-use App\Api\Telegram\Telegram\Command\FallbackCommand;
 use App\Api\Telegram\Telegram\Command\StartCommand;
 use App\Api\Telegram\Telegram\Command\SuggestLinkCommand;
 use App\Module\Link\Api\LinkSuggestionService;
@@ -18,7 +17,6 @@ use BotMan\Drivers\Telegram\Extensions\Keyboard;
 use BotMan\Drivers\Telegram\Extensions\KeyboardButton;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
-use Yiisoft\Injector\Injector;
 use Yiisoft\Json\Json;
 use Yiisoft\Validator\ValidatorInterface;
 
@@ -90,8 +88,8 @@ final class SuggestLinkConversation extends Conversation
                 }
                 $form = $this->formMaker->makeForm($this->link, $this->description);
 
-                if (!$form->validate($this->validator) && $form->hasErrors(CreateLinkForm::FIELD_URL)) {
-                    $this->say($form->firstError(CreateLinkForm::FIELD_URL), ['reply_to_message_id' => $answer_id]);
+                if (!$this->validator->validate($form) && $form->hasErrors(CreateLinkForm::FIELD_URL)) {
+                    $this->say($form->getFirstError(CreateLinkForm::FIELD_URL), ['reply_to_message_id' => $answer_id]);
                     $this->askLink();
                     return;
                 }
@@ -135,8 +133,8 @@ final class SuggestLinkConversation extends Conversation
                     }
 
                     $form = $this->formMaker->makeForm($this->link, $this->description);
-                    if (!$form->validate($this->validator)) {
-                        $this->say(implode("\n", $form->firstErrors()), ['reply_to_message_id' => $answer_id]);
+                    if (!$this->validator->validate($form)) {
+                        $this->say(implode("\n", $form->getFirstErrors()), ['reply_to_message_id' => $answer_id]);
                         $this->askDescription();
                         return;
                     }
@@ -180,13 +178,13 @@ final class SuggestLinkConversation extends Conversation
         $this->start();
     }
 
-    public function say($message, $additionalParameters = [])
+    public function say($message, $additionalParameters = []): self
     {
         ++$this->toDeleteMaxId;
         return parent::say($message, $additionalParameters);
     }
 
-    public function ask($question, $next, $additionalParameters = [])
+    public function ask($question, $next, $additionalParameters = []): self
     {
         ++$this->toDeleteMaxId;
         return parent::ask($question, $next, $additionalParameters);

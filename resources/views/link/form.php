@@ -29,9 +29,9 @@ $this->setTitle('Suggest link');
                     ->textArea(['class' => 'form-control textarea', 'rows' => 2]) ?>
 
                 <?= Html::submitButton(
-                    'Share ' . html::tag('i', '', ['class' => 'fas fa-share', 'aria-hidden' => 'true']),
+                    'Share ' . Html::tag('i', '', ['class' => 'fas fa-share', 'aria-hidden' => 'true']),
                     ['class' => 'btn btn-primary']
-                ) ?>
+                )->encode(false) ?>
             <?= Form::end() ?>
         </div>
     </div>

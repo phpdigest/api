@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Yiisoft\ErrorHandler\ErrorCatcher;
+use Yiisoft\ErrorHandler\Middleware\ErrorCatcher;
 use Yiisoft\Factory\Definitions\Reference;
 use Yiisoft\Injector\Injector;
 use Yiisoft\Middleware\Dispatcher\MiddlewareDispatcher;

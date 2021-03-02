@@ -5,15 +5,10 @@ declare(strict_types=1);
 namespace App\Api\UI\Controller\Admin;
 
 use App\Api\UI\Controller\AbstractController;
-use App\Module\Link\Domain\Repository\SuggestionRepository;
-use App\Module\Link\Domain\Repository\UrlRepository;
 use App\Module\User\Domain\Repository\AccountRepository;
-use App\Module\User\Domain\Repository\IdentityRepository;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Data\Paginator\OffsetPaginator;
-use Yiisoft\Data\Reader\Sort;
-use Yiisoft\User\User;
 
 class UserController extends AbstractController
 {

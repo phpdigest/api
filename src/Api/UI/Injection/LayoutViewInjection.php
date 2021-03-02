@@ -7,16 +7,16 @@ namespace App\Api\UI\Injection;
 use Yiisoft\Access\AccessCheckerInterface;
 use Yiisoft\Router\UrlMatcherInterface;
 use Yiisoft\Yii\View\LayoutParametersInjectionInterface;
-use Yiisoft\User\User;
+use Yiisoft\User\CurrentUser;
 
 class LayoutViewInjection implements LayoutParametersInjectionInterface
 {
-    private User $user;
+    private CurrentUser $user;
     private UrlMatcherInterface $urlMatcher;
     private AccessCheckerInterface $accessChecker;
 
     public function __construct(
-        User $user,
+        CurrentUser $user,
         UrlMatcherInterface $urlMatcher,
         AccessCheckerInterface $accessChecker
     ) {

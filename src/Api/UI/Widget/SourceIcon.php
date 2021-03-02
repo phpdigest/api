@@ -20,6 +20,6 @@ class SourceIcon
             return '';
         }
         Html::addCssClass($options, self::ICONS[$source] ?? 'fas fa-question');
-        return Html::tag('i', '', $options);
+        return Html::tag('i', '', $options)->render();
     }
 }

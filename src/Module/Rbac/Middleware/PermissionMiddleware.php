@@ -9,24 +9,25 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use RuntimeException;
 use Yiisoft\Access\AccessCheckerInterface;
 use Yiisoft\Http\Header;
 use Yiisoft\Http\Status;
-use Yiisoft\User\User;
+use Yiisoft\User\CurrentUser;
 
 final class PermissionMiddleware implements MiddlewareInterface
 {
     private ResponseFactoryInterface $responseFactory;
-    private User $userBox;
+    private CurrentUser $currentUser;
     private AccessCheckerInterface $accessChecker;
 
     public function __construct(
         ResponseFactoryInterface $responseFactory,
-        User $userBox,
+        CurrentUser $currentUser,
         AccessCheckerInterface $accessChecker
     ) {
         $this->responseFactory = $responseFactory;
-        $this->userBox = $userBox;
+        $this->currentUser = $currentUser;
         $this->accessChecker = $accessChecker;
     }
 
@@ -36,9 +37,9 @@ final class PermissionMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         if ($this->permission === null) {
-            throw new \RuntimeException('Permission is not configured.');
+            throw new RuntimeException('Permission is not configured.');
         }
-        $identityId = $this->userBox->getIdentity()->getId();
+        $identityId = $this->currentUser->getIdentity()->getId();
 
         if ($identityId === null || !$this->accessChecker->userHasPermission($identityId, $this->permission)) {
             return $this->redirectionUrl === null

@@ -16,7 +16,6 @@ use Yiisoft\Router\Group;
 use Yiisoft\Router\Route;
 use Yiisoft\Router\UrlGeneratorInterface;
 use Yiisoft\Session\SessionMiddleware;
-use Yiisoft\User\AutoLoginMiddleware;
 
 return [
     // UI
@@ -62,8 +61,8 @@ return [
                 ->withRedirection($urlGenerator->generate(UI\Controller\SiteController::PAGE_INDEX))),
         ]
     )
-        // todo add after https://github.com/yiisoft/user/issues/11
-        // ->addMiddleware(AutoLoginMiddleware::class)
+        // todo add after https://github.com/yiisoft/user/issues/22#issuecomment-784026064
+        // ->addMiddleware(\Yiisoft\User\Login\Token\TokenLoginMiddleware::class)
         ->addMiddleware(CsrfMiddleware::class)
         ->addMiddleware(SessionMiddleware::class),
 

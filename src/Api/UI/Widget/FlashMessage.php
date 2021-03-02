@@ -37,7 +37,6 @@ final class FlashMessage extends Widget
                     ->options([
                         'class' => $type,
                     ])
-                    ->closeButtonEnabled(true)
                     ->render();
             }
         }

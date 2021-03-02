@@ -8,6 +8,7 @@ use App\Api\UI\Form\SuggestLinkForm;
 use App\Api\UI\Widget\FlashMessage;
 use App\Module\Link\Api\LinkSuggestionService;
 use App\Module\User\Api\IdentityFactory;
+use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Http\Header;
@@ -15,7 +16,7 @@ use Yiisoft\Http\Status;
 use Yiisoft\Router\UrlGeneratorInterface;
 use Yiisoft\Session\Flash\FlashInterface;
 use Yiisoft\User\GuestIdentity;
-use Yiisoft\User\User;
+use Yiisoft\User\CurrentUser;
 use Yiisoft\Validator\ValidatorInterface;
 
 final class LinkController extends AbstractController
@@ -40,20 +41,20 @@ final class LinkController extends AbstractController
         UrlGeneratorInterface $url,
         SuggestLinkForm $form,
         IdentityFactory $identityFactory,
-        User $user,
+        CurrentUser $currentUser,
         LinkSuggestionService $service,
         ValidatorInterface $validator
     ): ResponseInterface {
-        if (!$form->load($request->getParsedBody()) || !$form->validate($validator)) {
+        if (!$form->load($request->getParsedBody()) || !$validator->validate($form)) {
             $flash->add(FlashMessage::WARNING, ['header' => 'Fail', 'body' => 'Check the input is correct.'], true);
             return $this->pageSuggestLink($form);
         }
 
         try {
-            $identity = $user->getIdentity();
+            $identity = $currentUser->getIdentity();
             if ($identity instanceof GuestIdentity) {
                 $identity = $identityFactory->createIdentity();
-                $user->login($identity);
+                $currentUser->login($identity);
                 # Inform user about creating an identity
                 $flash->add(FlashMessage::INFO, [
                     'header' => 'Note',
@@ -61,8 +62,8 @@ final class LinkController extends AbstractController
                 ], true);
             }
             $service->createSuggestion($form, $identity);
-            $success = $user->login($identity);
-        } catch (\Exception $e) {
+            $success = $currentUser->login($identity);
+        } catch (Exception $e) {
             $success = false;
         }
 

@@ -11,34 +11,47 @@ use App\Api\Common\Form\FindLinkForm;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Form\FormModel;
 use Yiisoft\Http\Status;
+use Yiisoft\Validator\ValidatorInterface;
 
 final class LinkController extends ApiController
 {
-    public function get(LinkSuggestionService $service, ServerRequestInterface $request, FindLinkForm $form): array
-    {
-        $this->validateLinkForm($form, $request->getQueryParams());
+    public function get(
+        ValidatorInterface $validator,
+        LinkSuggestionService $service,
+        ServerRequestInterface $request,
+        FindLinkForm $form
+    ): array {
+        $this->validateLinkForm($validator, $form, $request->getQueryParams());
         $link = $service->findSuggestion($form->getUrl(), $this->getIdentityFromRequest($request));
 
         return ['url' => $link->url->__toString()];
     }
 
-    public function post(LinkSuggestionService $service, ServerRequestInterface $request, CreateLinkForm $form): void
-    {
-        $this->validateLinkForm($form, (array)$request->getParsedBody());
+    public function post(
+        ValidatorInterface $validator,
+        LinkSuggestionService $service,
+        ServerRequestInterface $request,
+        CreateLinkForm $form
+    ): void {
+        $this->validateLinkForm($validator, $form, (array)$request->getParsedBody());
         $service->createSuggestion($form->withSource('api'), $this->getIdentityFromRequest($request));
     }
 
-    public function delete(LinkSuggestionService $service, ServerRequestInterface $request, FindLinkForm $form): void
-    {
-        $this->validateLinkForm($form, $request->getQueryParams());
+    public function delete(
+        ValidatorInterface $validator,
+        LinkSuggestionService $service,
+        ServerRequestInterface $request,
+        FindLinkForm $form
+    ): void {
+        $this->validateLinkForm($validator, $form, $request->getQueryParams());
         $service->deleteSuggestion($form->getUrl(), $this->getIdentityFromRequest($request));
     }
 
-    private function validateLinkForm(FormModel $form, array $data): void
+    private function validateLinkForm(ValidatorInterface $validator, FormModel $form, array $data): void
     {
         $form->load($data);
-        if (!$form->validate($this->validator)) {
-            throw new HttpException(Status::BAD_REQUEST, current($form->firstErrors()));
+        if (!$validator->validate($form)) {
+            throw new HttpException(Status::BAD_REQUEST, current($form->getFirstErrors()));
         }
     }
 }

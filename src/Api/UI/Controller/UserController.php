@@ -10,6 +10,7 @@ use App\Api\UI\Form\RegisterForm;
 use App\Api\UI\Widget\FlashMessage;
 use App\Module\User\Api\AuthClassic;
 use App\Module\User\Api\RegisterClassic;
+use Exception;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Yiisoft\Http\Header;
@@ -17,7 +18,7 @@ use Yiisoft\Http\Method;
 use Yiisoft\Http\Status;
 use Yiisoft\Router\UrlGeneratorInterface;
 use Yiisoft\Session\Flash\FlashInterface;
-use Yiisoft\User\User;
+use Yiisoft\User\CurrentUser;
 use Yiisoft\Validator\ValidatorInterface;
 
 class UserController extends AbstractController
@@ -46,19 +47,19 @@ class UserController extends AbstractController
         UrlGeneratorInterface $url,
         RegisterForm $form,
         RegisterClassic $registerClassic,
-        User $user,
+        CurrentUser $user,
         ValidatorInterface $validator
     ): ResponseInterface {
         $body = $request->getParsedBody();
 
-        if ($form->load($body) && $form->validate($validator)) {
+        if ($form->load($body) && $validator->validate($form)) {
             try {
                 $identity = $registerClassic->register(
                     $form->getAttributeValue('username'),
                     $form->getAttributeValue('password')
                 );
                 $success = $user->login($identity);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $flash->add(FlashMessage::DANGER, ['header' => 'Error', 'body' => $e->getMessage()], true);
                 $success = false;
             }
@@ -93,20 +94,20 @@ class UserController extends AbstractController
         UrlGeneratorInterface $url,
         LoginForm $form,
         AuthClassic $authClassic,
-        User $user,
+        CurrentUser $user,
         ValidatorInterface $validator
     ): ResponseInterface {
         $body = $request->getParsedBody();
         $method = $request->getMethod();
 
-        if (($method === Method::POST) && $form->load($body) && $form->validate($validator)) {
+        if (($method === Method::POST) && $form->load($body) && $validator->validate($form)) {
             try {
                 $identity = $authClassic->logIn(
                     $form->getAttributeValue('username'),
                     $form->getAttributeValue('password')
                 );
                 $success = $user->login($identity);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $success = false;
             }
 
@@ -128,9 +129,9 @@ class UserController extends AbstractController
      */
     public function actionLogout(
         UrlGeneratorInterface $url,
-        User $user
+        CurrentUser $user
     ): ResponseInterface {
-        $user->logout(true);
+        $user->logout();
         return $this->responseFactory
             ->createResponse(Status::FOUND)
             ->withHeader(Header::LOCATION, $url->generate(SiteController::PAGE_INDEX));
